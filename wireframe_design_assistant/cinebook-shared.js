@@ -253,7 +253,126 @@
   }
 
   /* ==========================================================================
-     3. INTERACTIVE WIREFRAME CLICK-THROUGH HOOKS
+     3. UNIFY STAFF SIDEBAR (Screens 15-19)
+     ========================================================================== */
+  function unifyStaffSidebar() {
+    const isStaffScreen = /^(15|16|17|18|19)_cinebook/.test(currentFolder);
+    if (!isStaffScreen) return;
+
+    let aside = document.querySelector('aside');
+    if (!aside) return;
+
+    // Define links
+    const links = [
+      { id: '15_cinebook_staff_dashboard', icon: 'dashboard', text: 'Dashboard', fill: 0 },
+      { id: '16_cinebook_manage_showtimes', icon: 'event', text: 'Showtimes', fill: 0 },
+      { id: '17_cinebook_manage_halls', icon: 'door_open', text: 'Halls & Seats', fill: 0 },
+      { id: '18_cinebook_ticket_check_in', icon: 'qr_code_scanner', text: 'Ticket Check-in', fill: 0 },
+      { id: '19_cinebook_staff_revenue_report', icon: 'assessment', text: 'Revenue Report', fill: 0 }
+    ];
+
+    let navHtml = '';
+    links.forEach(l => {
+      const isActive = currentFolder.includes(l.id);
+      const activeClass = isActive 
+        ? 'bg-primary dark:bg-primary text-on-primary dark:text-on-primary' 
+        : 'text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant';
+      const fillIcon = isActive ? 1 : l.fill;
+      
+      navHtml += `
+        <a class="flex items-center gap-3 px-3 py-2 text-label-md font-label-md rounded transition-all duration-200 ${activeClass}" href="../${l.id}/code.html">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' ${fillIcon};">${l.icon}</span>
+          ${l.text}
+        </a>
+      `;
+    });
+
+    aside.innerHTML = `
+      <div class="mb-8 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center overflow-hidden">
+          <span class="material-symbols-outlined text-secondary">badge</span>
+        </div>
+        <div>
+          <h1 class="text-headline-sm font-headline-sm font-bold text-primary dark:text-on-surface">Staff Portal</h1>
+          <p class="text-label-sm font-label-sm text-secondary">Cinema Operations</p>
+        </div>
+      </div>
+      <nav class="flex-1 flex flex-col gap-1">
+        ${navHtml}
+      </nav>
+      <div class="mt-auto border-t border-outline-variant pt-4 flex flex-col gap-2">
+        <button class="w-full bg-primary text-on-primary text-label-md font-label-md py-2 px-4 rounded-sm hover:bg-surface-tint transition-colors flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined" style="font-size: 18px;">qr_code_scanner</span>
+          Quick Scan
+        </button>
+        <a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-lowest rounded text-label-md font-label-md transition-colors mt-2" href="../1_cinebook_home_page/code.html">
+          <span class="material-symbols-outlined">logout</span>
+          Sign Out
+        </a>
+      </div>
+    `;
+  }
+
+  /* ==========================================================================
+     4. UNIFY ADMIN SIDEBAR (Screens 20-25)
+     ========================================================================== */
+  function unifyAdminSidebar() {
+    const isAdminScreen = /^(20|21|22|23|24|25)_cinebook/.test(currentFolder);
+    if (!isAdminScreen) return;
+
+    let aside = document.querySelector('aside');
+    if (!aside) return;
+
+    // Define links
+    const links = [
+      { id: '20_cinebook_admin_global_dashboard', icon: 'dashboard', text: 'Global Dashboard', fill: 0 },
+      { id: '21_cinebook_manage_movies', icon: 'movie', text: 'Movies Catalog', fill: 0 },
+      { id: '22_cinebook_manage_cinemas', icon: 'business', text: 'Cinemas Network', fill: 0 },
+      { id: '23_cinebook_user_management', icon: 'group', text: 'Users & RBAC', fill: 0 },
+      { id: '24_cinebook_promotions_management', icon: 'local_activity', text: 'Promotions', fill: 0 },
+      { id: '25_cinebook_system_monitoring', icon: 'monitor_heart', text: 'System Monitoring', fill: 0 }
+    ];
+
+    let navHtml = '';
+    links.forEach(l => {
+      const isActive = currentFolder.includes(l.id);
+      const activeClass = isActive 
+        ? 'bg-primary dark:bg-primary text-on-primary dark:text-on-primary' 
+        : 'text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant';
+      const fillIcon = isActive ? 1 : l.fill;
+      
+      navHtml += `
+        <a class="flex items-center gap-3 px-3 py-2 text-label-md font-label-md rounded transition-all duration-200 ${activeClass}" href="../${l.id}/code.html">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' ${fillIcon};">${l.icon}</span>
+          ${l.text}
+        </a>
+      `;
+    });
+
+    aside.innerHTML = `
+      <div class="mb-8 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center overflow-hidden">
+          <span class="material-symbols-outlined text-secondary">admin_panel_settings</span>
+        </div>
+        <div>
+          <h1 class="text-headline-sm font-headline-sm font-bold text-primary dark:text-on-surface">Admin Console</h1>
+          <p class="text-label-sm font-label-sm text-secondary">System Management</p>
+        </div>
+      </div>
+      <nav class="flex-1 flex flex-col gap-1">
+        ${navHtml}
+      </nav>
+      <div class="mt-auto border-t border-outline-variant pt-4 flex flex-col gap-2">
+        <a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-lowest rounded text-label-md font-label-md transition-colors" href="../1_cinebook_home_page/code.html">
+          <span class="material-symbols-outlined">logout</span>
+          Sign Out
+        </a>
+      </div>
+    `;
+  }
+
+  /* ==========================================================================
+     5. INTERACTIVE WIREFRAME CLICK-THROUGH HOOKS
      ========================================================================== */
   function wireUpInteractiveLinks() {
     document.querySelectorAll('button, a').forEach(el => {
@@ -312,11 +431,15 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       unifyTopNavBar();
+      unifyStaffSidebar();
+      unifyAdminSidebar();
       injectFloatingAIWidget();
       wireUpInteractiveLinks();
     });
   } else {
     unifyTopNavBar();
+    unifyStaffSidebar();
+    unifyAdminSidebar();
     injectFloatingAIWidget();
     wireUpInteractiveLinks();
   }
