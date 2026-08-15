@@ -30,56 +30,71 @@
   }
 
   /* ==========================================================================
-     1. STANDARDIZED TOP HEADER (Single Search Bar, Fixed Dimensions)
+     1. STANDARDIZED TOP HEADER (Single Clean Search Bar, Clean Outermost Replace)
      ========================================================================== */
   function unifyTopNavBar() {
-    const existingNav = document.querySelector('nav') || document.querySelector('header');
-    if (!existingNav) return;
+    // Only apply Customer Global Header on customer screens (1 to 14)
+    const isCustomerScreen = /^(1|2|3|4|5|6|7|8|9|10|11|12|13|14)_cinebook/.test(currentFolder);
+    if (!isCustomerScreen) return;
+
+    // Find top-level header/nav container outside main content
+    let topNav = null;
+    const candidates = document.querySelectorAll('body > nav, body > header, nav, header');
+    for (let el of candidates) {
+      if (el.closest('main') || el.closest('section') || el.closest('aside') || el.closest('footer')) continue;
+      topNav = el;
+      break;
+    }
+
+    if (!topNav) return;
+
+    // Always target the outermost header/nav element to prevent nested duplication
+    const outerHeader = topNav.closest('header') || topNav.closest('nav') || topNav;
 
     const isMoviesActive = currentFolder.includes('movie_list') || currentFolder.includes('movie_detail') || currentFolder.includes('seat_selection');
     const isOffersActive = currentFolder.includes('combo_snacks') || currentFolder.includes('promotions');
 
-    const headerHTML = `
-      <header class="cb-header">
-        <div class="cb-header-container">
-          <!-- Left: Logo & Navigation Links -->
-          <div class="cb-nav-left">
-            <a href="../1_cinebook_home_page/code.html" class="cb-brand-logo">
-              CineBook
+    const headerElem = document.createElement('header');
+    headerElem.className = 'cb-header';
+    headerElem.innerHTML = `
+      <div class="cb-header-container">
+        <!-- Left: Logo & Navigation Links -->
+        <div class="cb-nav-left">
+          <a href="../1_cinebook_home_page/code.html" class="cb-brand-logo">
+            CineBook
+          </a>
+          
+          <nav class="cb-nav-menu">
+            <a href="../2_cinebook_movie_list/code.html" class="cb-nav-item ${isMoviesActive ? 'active' : ''}">
+              Movies
             </a>
-            
-            <nav class="cb-nav-menu">
-              <a href="../2_cinebook_movie_list/code.html" class="cb-nav-item ${isMoviesActive ? 'active' : ''}">
-                Movies
-              </a>
-              <a href="../7_cinebook_combo_snacks/code.html" class="cb-nav-item ${isOffersActive ? 'active' : ''}">
-                Offers
-              </a>
-            </nav>
-          </div>
-
-          <!-- Right: Single Search Bar + Account Button -->
-          <div class="cb-nav-right">
-            <div class="cb-search-wrap">
-              <span class="material-symbols-outlined cb-search-icon">search</span>
-              <input type="text" id="cb-global-search-input" class="cb-search-input" placeholder="Search movies, genres, cinemas...">
-            </div>
-
-            <a href="../13_cinebook_user_profile/code.html" class="cb-account-btn">
-              <span class="material-symbols-outlined" style="font-size: 18px;">person</span>
-              <span>Account</span>
+            <a href="../7_cinebook_combo_snacks/code.html" class="cb-nav-item ${isOffersActive ? 'active' : ''}">
+              Offers
             </a>
-          </div>
+          </nav>
         </div>
-      </header>
+
+        <!-- Right: Single Search Bar + Account Button -->
+        <div class="cb-nav-right">
+          <div class="cb-search-wrap">
+            <span class="material-symbols-outlined cb-search-icon">search</span>
+            <input type="text" id="cb-global-search-input" class="cb-search-input" placeholder="Search movies, genres, cinemas...">
+          </div>
+
+          <a href="../13_cinebook_user_profile/code.html" class="cb-account-btn">
+            <span class="material-symbols-outlined" style="font-size: 18px;">person</span>
+            <span>Account</span>
+          </a>
+        </div>
+      </div>
     `;
 
-    // Replace the existing nav/header
-    existingNav.outerHTML = headerHTML;
+    // Replace the entire outer header with the clean standardized header
+    outerHeader.replaceWith(headerElem);
 
-    // Remove any redundant mobile search container in <main>
+    // Remove any leftover mobile search bars inside <main>
     document.querySelectorAll('.md\\:hidden').forEach(el => {
-      if (el.querySelector('input[placeholder*="Search"]')) {
+      if (el.querySelector('input[placeholder*="Search"]') || el.querySelector('input[placeholder*="search"]')) {
         el.remove();
       }
     });
@@ -99,6 +114,9 @@
      2. FLOATING AI ASSISTANT CHAT BUBBLE (Góc dưới bên phải màn hình)
      ========================================================================== */
   function injectFloatingAIWidget() {
+    // Only on customer screens
+    const isCustomerScreen = /^(1|2|3|4|5|6|7|8|9|10|11|12|13|14)_cinebook/.test(currentFolder);
+    if (!isCustomerScreen) return;
     if (document.getElementById('cb-floating-chat-btn')) return;
 
     // Circular Floating Message Button
