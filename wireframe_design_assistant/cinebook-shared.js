@@ -1,6 +1,6 @@
 /**
- * CineBook Low-Fidelity Blueprint — Shared Wireframe Header & AI Pop-up
- * Strictly adheres to DESIGN.md (Clean Grayscale Wireframe, Inter Typography, Standard UX)
+ * CineBook Low-Fidelity Blueprint — Standardized Top Header & Floating AI Message Bubble
+ * Strictly adheres to DESIGN.md (Single Search Bar, Fixed Dimensions, Bottom Chat Bubble)
  */
 
 (function () {
@@ -21,7 +21,7 @@
     document.head.appendChild(link);
   }
 
-  // Ensure Google Material Symbols and Inter Fonts are loaded
+  // Ensure Google Material Symbols font is loaded
   if (!document.querySelector('link[href*="Material+Symbols"]')) {
     const iconLink = document.createElement('link');
     iconLink.rel = 'stylesheet';
@@ -30,7 +30,7 @@
   }
 
   /* ==========================================================================
-     1. STANDARDIZED TOP NAVBAR (Wireframe Standard: Logo + Movies + Offers + Search + Ask AI + Account)
+     1. STANDARDIZED TOP HEADER (Single Search Bar, Fixed Dimensions)
      ========================================================================== */
   function unifyTopNavBar() {
     const existingNav = document.querySelector('nav') || document.querySelector('header');
@@ -39,48 +39,50 @@
     const isMoviesActive = currentFolder.includes('movie_list') || currentFolder.includes('movie_detail') || currentFolder.includes('seat_selection');
     const isOffersActive = currentFolder.includes('combo_snacks') || currentFolder.includes('promotions');
 
-    const navHTML = `
-      <div class="cb-nav-wrapper">
-        <div class="cb-nav-inner">
-          <!-- Left: Logo & Standard Navigation Links -->
-          <div style="display: flex; align-items: center; gap: 32px; height: 100%;">
-            <a href="../1_cinebook_home_page/code.html" class="cb-logo">
+    const headerHTML = `
+      <header class="cb-header">
+        <div class="cb-header-container">
+          <!-- Left: Logo & Navigation Links -->
+          <div class="cb-nav-left">
+            <a href="../1_cinebook_home_page/code.html" class="cb-brand-logo">
               CineBook
             </a>
             
-            <div class="cb-nav-links">
-              <a href="../2_cinebook_movie_list/code.html" class="cb-nav-link ${isMoviesActive ? 'active' : ''}">
+            <nav class="cb-nav-menu">
+              <a href="../2_cinebook_movie_list/code.html" class="cb-nav-item ${isMoviesActive ? 'active' : ''}">
                 Movies
               </a>
-              <a href="../7_cinebook_combo_snacks/code.html" class="cb-nav-link ${isOffersActive ? 'active' : ''}">
+              <a href="../7_cinebook_combo_snacks/code.html" class="cb-nav-item ${isOffersActive ? 'active' : ''}">
                 Offers
               </a>
-            </div>
+            </nav>
           </div>
 
-          <!-- Right: Search Bar + Ask AI + Account -->
+          <!-- Right: Single Search Bar + Account Button -->
           <div class="cb-nav-right">
-            <div class="cb-search-bar">
+            <div class="cb-search-wrap">
               <span class="material-symbols-outlined cb-search-icon">search</span>
               <input type="text" id="cb-global-search-input" class="cb-search-input" placeholder="Search movies, genres, cinemas...">
             </div>
 
-            <button type="button" class="cb-btn-ai" onclick="window.toggleCineBookAIWidget()">
-              <span class="material-symbols-outlined" style="font-size: 18px;">auto_awesome</span>
-              <span>Ask AI</span>
-            </button>
-
-            <a href="../13_cinebook_user_profile/code.html" class="cb-btn-account">
+            <a href="../13_cinebook_user_profile/code.html" class="cb-account-btn">
               <span class="material-symbols-outlined" style="font-size: 18px;">person</span>
               <span>Account</span>
             </a>
           </div>
         </div>
-      </div>
+      </header>
     `;
 
-    // Replace outer navbar with standardized container
-    existingNav.outerHTML = navHTML;
+    // Replace the existing nav/header
+    existingNav.outerHTML = headerHTML;
+
+    // Remove any redundant mobile search container in <main>
+    document.querySelectorAll('.md\\:hidden').forEach(el => {
+      if (el.querySelector('input[placeholder*="Search"]')) {
+        el.remove();
+      }
+    });
 
     // Search enter handler
     const searchInput = document.getElementById('cb-global-search-input');
@@ -94,45 +96,46 @@
   }
 
   /* ==========================================================================
-     2. FLOATING AI ASSISTANT POP-UP WIDGET (Clean Low-Fidelity Wireframe Pop-up)
+     2. FLOATING AI ASSISTANT CHAT BUBBLE (Góc dưới bên phải màn hình)
      ========================================================================== */
   function injectFloatingAIWidget() {
-    if (document.getElementById('cb-floating-ai-trigger')) return;
+    if (document.getElementById('cb-floating-chat-btn')) return;
 
-    // Trigger Pill Button
+    // Circular Floating Message Button
     const trigger = document.createElement('button');
-    trigger.id = 'cb-floating-ai-trigger';
+    trigger.id = 'cb-floating-chat-btn';
     trigger.type = 'button';
+    trigger.title = 'Hỏi trợ lý CineBook AI';
     trigger.innerHTML = `
-      <span class="material-symbols-outlined" style="font-size: 18px;">auto_awesome</span>
-      <span>Ask AI</span>
+      <span class="material-symbols-outlined" style="font-size: 24px;">chat</span>
+      <span class="cb-chat-badge">AI</span>
     `;
     trigger.onclick = () => window.toggleCineBookAIWidget();
     document.body.appendChild(trigger);
 
-    // Chat Drawer Popup
-    const chatWidget = document.createElement('div');
-    chatWidget.id = 'cb-floating-ai-widget';
-    chatWidget.innerHTML = `
+    // Floating Chat Drawer Modal
+    const chatModal = document.createElement('div');
+    chatModal.id = 'cb-floating-chat-modal';
+    chatModal.innerHTML = `
       <div class="cb-chat-header">
         <div class="cb-chat-title">
           <span class="material-symbols-outlined" style="font-size: 20px;">smart_toy</span>
           <span>CineBook AI Assistant</span>
         </div>
-        <button type="button" onclick="window.toggleCineBookAIWidget(false)" style="background: transparent; border: none; cursor: pointer; color: #4b5563; display: flex; padding: 4px; border-radius: 4px;">
+        <button type="button" onclick="window.toggleCineBookAIWidget(false)" style="background: transparent; border: none; cursor: pointer; color: #6b7280; display: flex; padding: 4px; border-radius: 4px;">
           <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
         </button>
       </div>
 
       <div class="cb-chat-body" id="cb-chat-messages">
         <div class="cb-msg ai">
-          Hello! I am your <strong>CineBook AI Assistant</strong>. What movie are you looking for today, or how can I assist with your booking?
+          👋 Hello! I am your <strong>CineBook AI Assistant</strong>. What movie are you looking for today, or how can I assist with your booking?
         </div>
 
         <div class="cb-suggestion-chips">
-          <div class="cb-chip" onclick="window.sendAiQuickQuery('Recommend top trending Sci-Fi movies')">Sci-Fi Movies</div>
-          <div class="cb-chip" onclick="window.sendAiQuickQuery('Showtimes for tonight')">Showtimes Tonight</div>
-          <div class="cb-chip" onclick="window.sendAiQuickQuery('How does seat locking work?')">VIP Seat Selection</div>
+          <div class="cb-chip" onclick="window.sendAiQuickQuery('Recommend top trending Sci-Fi movies')">🎬 Sci-Fi Movies</div>
+          <div class="cb-chip" onclick="window.sendAiQuickQuery('Showtimes for tonight')">🍿 Showtimes Tonight</div>
+          <div class="cb-chip" onclick="window.sendAiQuickQuery('How does VIP seat locking work?')">🎟️ Seat Selection</div>
         </div>
       </div>
 
@@ -143,26 +146,26 @@
         </button>
       </div>
     `;
-    document.body.appendChild(chatWidget);
+    document.body.appendChild(chatModal);
   }
 
   // Global toggle function
   window.toggleCineBookAIWidget = function (forcedState) {
-    const widget = document.getElementById('cb-floating-ai-widget');
-    if (!widget) return;
+    const modal = document.getElementById('cb-floating-chat-modal');
+    if (!modal) return;
     if (typeof forcedState === 'boolean') {
-      if (forcedState) widget.classList.add('open');
-      else widget.classList.remove('open');
+      if (forcedState) modal.classList.add('open');
+      else modal.classList.remove('open');
     } else {
-      widget.classList.toggle('open');
+      modal.classList.toggle('open');
     }
-    if (widget.classList.contains('open')) {
+    if (modal.classList.contains('open')) {
       const input = document.getElementById('cb-chat-input');
       if (input) input.focus();
     }
   };
 
-  // AI Chat interaction simulation
+  // AI Chat simulation
   window.sendAiChat = function () {
     const input = document.getElementById('cb-chat-input');
     const msg = input ? input.value.trim() : '';
@@ -184,7 +187,7 @@
     // AI typing placeholder
     const aiMsg = document.createElement('div');
     aiMsg.className = 'cb-msg ai';
-    aiMsg.innerHTML = 'Thinking via pgvector semantic search...';
+    aiMsg.innerHTML = 'Searching via pgvector semantic search...';
     messages.appendChild(aiMsg);
     messages.scrollTop = messages.scrollHeight;
 
@@ -192,8 +195,8 @@
       let replyHtml = '';
       if (text.includes('Sci-Fi') || text.includes('movie')) {
         replyHtml = `I found a top match: <strong>"The Architect's Dream"</strong> (IMAX 2D).<br><br>
-        Rating: <strong>8.5/10</strong><br>
-        Showtime: <strong>19:30 Tonight</strong><br><br>
+        ⭐ Rating: <strong>8.5/10</strong><br>
+        🕒 Showtime: <strong>19:30 Tonight</strong><br><br>
         <div style="display: flex; gap: 8px; margin-top: 6px;">
           <a href="../4_cinebook_movie_detail/code.html" style="background: #000000; color: #ffffff; padding: 6px 12px; border-radius: 4px; font-size: 12px; text-decoration: none; font-weight: 600;">Movie Details</a>
           <a href="../6_cinebook_seat_selection/code.html" style="background: #f3f4f6; color: #000000; border: 1px solid #d1d5db; padding: 6px 12px; border-radius: 4px; font-size: 12px; text-decoration: none; font-weight: 600;">Select Seats</a>
@@ -255,7 +258,7 @@
       }
     });
 
-    // Make movie cards clickable to go to Movie Detail
+    // Movie cards click handler
     document.querySelectorAll('.group.cursor-pointer, [data-alt]').forEach(card => {
       const parent = card.closest('.flex-col') || card;
       if (!parent.hasAttribute('data-wired')) {
