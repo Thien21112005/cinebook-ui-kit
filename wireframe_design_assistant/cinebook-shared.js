@@ -4,7 +4,6 @@
  */
 
 (function () {
-  // Determine current screen from URL
   const currentPath = window.location.pathname;
   let currentFolder = '';
   const match = currentPath.match(/([0-9]+_cinebook_[^/]+)/);
@@ -30,14 +29,12 @@
   }
 
   /* ==========================================================================
-     1. STANDARDIZED TOP HEADER (Single Clean Search Bar, Clean Outermost Replace)
+     1. STANDARDIZED TOP HEADER (Normal Search + AI Search Dual Access)
      ========================================================================== */
   function unifyTopNavBar() {
-    // Only apply Customer Global Header on customer screens (1 to 14)
     const isCustomerScreen = /^(1|2|3|4|5|6|7|8|9|10|11|12|13|14)_cinebook/.test(currentFolder);
     if (!isCustomerScreen) return;
 
-    // Find top-level header/nav container outside main content
     let topNav = null;
     const candidates = document.querySelectorAll('body > nav, body > header, nav, header');
     for (let el of candidates) {
@@ -47,59 +44,62 @@
     }
 
     if (!topNav) return;
-
-    // Always target the outermost header/nav element to prevent nested duplication
     const outerHeader = topNav.closest('header') || topNav.closest('nav') || topNav;
 
     const isMoviesActive = currentFolder.includes('movie_list') || currentFolder.includes('movie_detail');
     const isAiSearchActive = currentFolder.includes('ai_search');
 
-    const headerHTML = `
-      <header class="cb-header">
-        <div class="cb-header-container">
-          <!-- Left: Logo & Navigation Links -->
-          <div class="cb-nav-left">
-            <a href="../1_cinebook_home_page/code.html" class="cb-brand-logo">
-              CineBook
+    const headerElem = document.createElement('header');
+    headerElem.className = 'cb-header';
+    headerElem.innerHTML = `
+      <div class="cb-header-container">
+        <!-- Left: Logo & Navigation Links -->
+        <div class="cb-nav-left">
+          <a href="../1_cinebook_home_page/code.html" class="cb-brand-logo">
+            CineBook
+          </a>
+          
+          <nav class="cb-nav-menu">
+            <a href="../2_cinebook_movie_list/code.html" class="cb-nav-item ${isMoviesActive ? 'active' : ''}">
+              <span class="material-symbols-outlined" style="font-size: 18px;">movie</span>
+              <span>Movies</span>
             </a>
-            
-            <nav class="cb-nav-menu">
-              <a href="../2_cinebook_movie_list/code.html" class="cb-nav-item ${isMoviesActive ? 'active' : ''}">
-                Movies
-              </a>
-              <a href="../3_cinebook_ai_search/code.html" class="cb-nav-item ${isAiSearchActive ? 'active' : ''}">
-                AI Search
-              </a>
-            </nav>
-          </div>
-
-          <!-- Right: Single Search Bar + Account Button -->
-          <div class="cb-nav-right">
-            <div class="cb-search-wrap">
-              <span class="material-symbols-outlined cb-search-icon">search</span>
-              <input type="text" id="cb-global-search-input" class="cb-search-input" placeholder="Search movies, genres, cinemas...">
-            </div>
-
-            <a href="../13_cinebook_user_profile/code.html" class="cb-account-btn">
-              <span class="material-symbols-outlined" style="font-size: 18px;">person</span>
-              <span>Account</span>
+            <a href="../3_cinebook_ai_search/code.html" class="cb-nav-item ${isAiSearchActive ? 'active' : ''}">
+              <span class="material-symbols-outlined" style="font-size: 18px;">auto_awesome</span>
+              <span>AI Search</span>
             </a>
-          </div>
+          </nav>
         </div>
-      </header>
+
+        <!-- Right: Search Bar + Account Button -->
+        <div class="cb-nav-right">
+          <div class="cb-search-wrap">
+            <span class="material-symbols-outlined cb-search-icon">search</span>
+            <input type="text" id="cb-global-search-input" class="cb-search-input" placeholder="Search movies, genres, cinemas...">
+            <button type="button" id="cb-ai-search-btn" class="cb-ai-search-pill" title="Chuyển sang Tìm kiếm AI">
+              <span class="material-symbols-outlined" style="font-size: 14px;">auto_awesome</span>
+              <span>AI</span>
+            </button>
+          </div>
+
+          <a href="../13_cinebook_user_profile/code.html" class="cb-account-btn">
+            <span class="material-symbols-outlined" style="font-size: 18px;">person</span>
+            <span>Account</span>
+          </a>
+        </div>
+      </div>
     `;
 
-    // Replace the entire outer header with the clean standardized header
     outerHeader.replaceWith(headerElem);
 
-    // Remove any leftover mobile search bars inside <main>
+    // Clean up any extra mobile search bars
     document.querySelectorAll('.md\\:hidden').forEach(el => {
       if (el.querySelector('input[placeholder*="Search"]') || el.querySelector('input[placeholder*="search"]')) {
         el.remove();
       }
     });
 
-    // Search enter handler
+    // Search events
     const searchInput = document.getElementById('cb-global-search-input');
     if (searchInput) {
       searchInput.addEventListener('keydown', (e) => {
@@ -108,30 +108,35 @@
         }
       });
     }
+
+    const aiSearchBtn = document.getElementById('cb-ai-search-btn');
+    if (aiSearchBtn) {
+      aiSearchBtn.addEventListener('click', () => {
+        window.location.href = '../3_cinebook_ai_search/code.html';
+      });
+    }
   }
 
   /* ==========================================================================
      2. FLOATING AI ASSISTANT CHAT BUBBLE (Góc dưới bên phải màn hình)
      ========================================================================== */
   function injectFloatingAIWidget() {
-    // Only on customer screens
     const isCustomerScreen = /^(1|2|3|4|5|6|7|8|9|10|11|12|13|14)_cinebook/.test(currentFolder);
     if (!isCustomerScreen) return;
     if (document.getElementById('cb-floating-chat-btn')) return;
 
-    // Circular Floating Message Button
-    const trigger = document.createElement('button');
-    trigger.id = 'cb-floating-chat-btn';
-    trigger.type = 'button';
-    trigger.title = 'Hỏi trợ lý CineBook AI';
-    trigger.innerHTML = `
+    // 1. Create Floating Button
+    const chatBtn = document.createElement('button');
+    chatBtn.id = 'cb-floating-chat-btn';
+    chatBtn.type = 'button';
+    chatBtn.title = 'Hỏi trợ lý CineBook AI';
+    chatBtn.innerHTML = `
       <span class="material-symbols-outlined" style="font-size: 24px;">chat</span>
       <span class="cb-chat-badge">AI</span>
     `;
-    trigger.onclick = () => window.toggleCineBookAIWidget();
-    document.body.appendChild(trigger);
+    document.body.appendChild(chatBtn);
 
-    // Floating Chat Drawer Modal
+    // 2. Create Floating Modal
     const chatModal = document.createElement('div');
     chatModal.id = 'cb-floating-chat-modal';
     chatModal.innerHTML = `
@@ -140,7 +145,7 @@
           <span class="material-symbols-outlined" style="font-size: 20px;">smart_toy</span>
           <span>CineBook AI Assistant</span>
         </div>
-        <button type="button" onclick="window.toggleCineBookAIWidget(false)" style="background: transparent; border: none; cursor: pointer; color: #6b7280; display: flex; padding: 4px; border-radius: 4px;">
+        <button type="button" id="cb-chat-close-btn" class="cb-chat-close-btn">
           <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
         </button>
       </div>
@@ -150,63 +155,80 @@
           👋 Hello! I am your <strong>CineBook AI Assistant</strong>. What movie are you looking for today, or how can I assist with your booking?
         </div>
 
-        <div class="cb-suggestion-chips">
-          <div class="cb-chip" onclick="window.sendAiQuickQuery('Recommend top trending Sci-Fi movies')">🎬 Sci-Fi Movies</div>
-          <div class="cb-chip" onclick="window.sendAiQuickQuery('Showtimes for tonight')">🍿 Showtimes Tonight</div>
-          <div class="cb-chip" onclick="window.sendAiQuickQuery('How does VIP seat locking work?')">🎟️ Seat Selection</div>
+        <div class="cb-suggestion-chips" id="cb-suggestion-chips">
+          <button type="button" class="cb-chip" data-query="Recommend top trending Sci-Fi movies">🎬 Sci-Fi Movies</button>
+          <button type="button" class="cb-chip" data-query="Showtimes for tonight">🍿 Showtimes Tonight</button>
+          <button type="button" class="cb-chip" data-query="How does VIP seat locking work?">🎟️ Seat Selection</button>
         </div>
       </div>
 
       <div class="cb-chat-footer">
-        <input type="text" id="cb-chat-input" class="cb-chat-input" placeholder="Ask AI anything..." onkeydown="if(event.key==='Enter') window.sendAiChat()">
-        <button type="button" class="cb-chat-send" onclick="window.sendAiChat()">
+        <input type="text" id="cb-chat-input" class="cb-chat-input" placeholder="Ask AI anything...">
+        <button type="button" id="cb-chat-send-btn" class="cb-chat-send">
           <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
         </button>
       </div>
     `;
     document.body.appendChild(chatModal);
+
+    // 3. Attach Direct Event Listeners
+    chatBtn.addEventListener('click', () => {
+      chatModal.classList.toggle('open');
+      if (chatModal.classList.contains('open')) {
+        const input = document.getElementById('cb-chat-input');
+        if (input) input.focus();
+      }
+    });
+
+    const closeBtn = document.getElementById('cb-chat-close-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        chatModal.classList.remove('open');
+      });
+    }
+
+    const sendBtn = document.getElementById('cb-chat-send-btn');
+    const inputField = document.getElementById('cb-chat-input');
+
+    function handleSend() {
+      const text = inputField.value.trim();
+      if (!text) return;
+      inputField.value = '';
+      executeAiQuery(text);
+    }
+
+    if (sendBtn) sendBtn.addEventListener('click', handleSend);
+    if (inputField) {
+      inputField.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleSend();
+      });
+    }
+
+    // Attach click handlers on chips
+    document.querySelectorAll('#cb-suggestion-chips .cb-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const query = chip.getAttribute('data-query');
+        if (query) executeAiQuery(query);
+      });
+    });
   }
 
-  // Global toggle function
-  window.toggleCineBookAIWidget = function (forcedState) {
-    const modal = document.getElementById('cb-floating-chat-modal');
-    if (!modal) return;
-    if (typeof forcedState === 'boolean') {
-      if (forcedState) modal.classList.add('open');
-      else modal.classList.remove('open');
-    } else {
-      modal.classList.toggle('open');
-    }
-    if (modal.classList.contains('open')) {
-      const input = document.getElementById('cb-chat-input');
-      if (input) input.focus();
-    }
-  };
-
-  // AI Chat simulation
-  window.sendAiChat = function () {
-    const input = document.getElementById('cb-chat-input');
-    const msg = input ? input.value.trim() : '';
-    if (!msg) return;
-    input.value = '';
-    window.sendAiQuickQuery(msg);
-  };
-
-  window.sendAiQuickQuery = function (text) {
+  // Execute AI query with live response
+  function executeAiQuery(text) {
     const messages = document.getElementById('cb-chat-messages');
     if (!messages) return;
 
-    // User message
-    const userMsg = document.createElement('div');
-    userMsg.className = 'cb-msg user';
-    userMsg.innerText = text;
-    messages.appendChild(userMsg);
+    // Append user bubble
+    const userBubble = document.createElement('div');
+    userBubble.className = 'cb-msg user';
+    userBubble.innerText = text;
+    messages.appendChild(userBubble);
 
-    // AI typing placeholder
-    const aiMsg = document.createElement('div');
-    aiMsg.className = 'cb-msg ai';
-    aiMsg.innerHTML = 'Searching via pgvector semantic search...';
-    messages.appendChild(aiMsg);
+    // Append AI loading bubble
+    const aiBubble = document.createElement('div');
+    aiBubble.className = 'cb-msg ai';
+    aiBubble.innerHTML = 'Searching via pgvector semantic search...';
+    messages.appendChild(aiBubble);
     messages.scrollTop = messages.scrollHeight;
 
     setTimeout(() => {
@@ -215,7 +237,7 @@
         replyHtml = `I found a top match: <strong>"The Architect's Dream"</strong> (IMAX 2D).<br><br>
         ⭐ Rating: <strong>8.5/10</strong><br>
         🕒 Showtime: <strong>19:30 Tonight</strong><br><br>
-        <div style="display: flex; gap: 8px; margin-top: 6px;">
+        <div style="display: flex; gap: 8px; margin-top: 8px;">
           <a href="../4_cinebook_movie_detail/code.html" style="background: #000000; color: #ffffff; padding: 6px 12px; border-radius: 4px; font-size: 12px; text-decoration: none; font-weight: 600;">Movie Details</a>
           <a href="../6_cinebook_seat_selection/code.html" style="background: #f3f4f6; color: #000000; border: 1px solid #d1d5db; padding: 6px 12px; border-radius: 4px; font-size: 12px; text-decoration: none; font-weight: 600;">Select Seats</a>
         </div>`;
@@ -225,10 +247,10 @@
         • <strong>Stellar Voyage</strong> — 20:15 (Hall 2)<br><br>
         <a href="../4_cinebook_movie_detail/code.html" style="background: #000000; color: #ffffff; padding: 6px 12px; border-radius: 4px; font-size: 12px; text-decoration: none; font-weight: 600; display: inline-block;">View Details</a>`;
       }
-      aiMsg.innerHTML = replyHtml;
+      aiBubble.innerHTML = replyHtml;
       messages.scrollTop = messages.scrollHeight;
     }, 400);
-  };
+  }
 
   /* ==========================================================================
      3. INTERACTIVE WIREFRAME CLICK-THROUGH HOOKS
@@ -239,37 +261,37 @@
       
       if (text.includes('book ticket') || text.includes('book now') || text.includes('đặt vé')) {
         if (!el.getAttribute('href') || el.getAttribute('href') === '#') {
-          el.onclick = (e) => {
+          el.addEventListener('click', (e) => {
             e.preventDefault();
             if (currentFolder.includes('movie_detail')) {
               window.location.href = '../6_cinebook_seat_selection/code.html';
             } else {
               window.location.href = '../4_cinebook_movie_detail/code.html';
             }
-          };
+          });
         }
       }
 
       if (text.includes('proceed to payment') || text.includes('select snacks') || text.includes('continue') || text.includes('tiếp tục')) {
-        el.onclick = (e) => {
+        el.addEventListener('click', (e) => {
           e.preventDefault();
           if (currentFolder.includes('seat_selection')) {
             window.location.href = '../7_cinebook_combo_snacks/code.html';
           } else if (currentFolder.includes('combo_snacks')) {
             window.location.href = '../8_cinebook_payment_checkout/code.html';
           }
-        };
+        });
       }
 
       if (text.includes('pay now') || text.includes('checkout') || text.includes('confirm payment') || text.includes('thanh toán')) {
-        el.onclick = (e) => {
+        el.addEventListener('click', (e) => {
           e.preventDefault();
           window.location.href = '../9_cinebook_booking_success/code.html';
-        };
+        });
       }
 
       if (text.includes('view ticket') || text.includes('ticket details') || text.includes('chi tiết vé')) {
-        el.onclick = (e) => {
+        el.addEventListener('click', (e) => {
           e.preventDefault();
           window.location.href = '../12_cinebook_ticket_details/code.html';
         };
