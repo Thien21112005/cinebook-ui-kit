@@ -294,7 +294,7 @@
         el.addEventListener('click', (e) => {
           e.preventDefault();
           window.location.href = '../12_cinebook_ticket_details/code.html';
-        };
+        });
       }
     });
 
