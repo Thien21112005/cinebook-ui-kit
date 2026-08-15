@@ -51,42 +51,42 @@
     // Always target the outermost header/nav element to prevent nested duplication
     const outerHeader = topNav.closest('header') || topNav.closest('nav') || topNav;
 
-    const isMoviesActive = currentFolder.includes('movie_list') || currentFolder.includes('movie_detail') || currentFolder.includes('seat_selection');
-    const isOffersActive = currentFolder.includes('combo_snacks') || currentFolder.includes('promotions');
+    const isMoviesActive = currentFolder.includes('movie_list') || currentFolder.includes('movie_detail');
+    const isAiSearchActive = currentFolder.includes('ai_search');
 
-    const headerElem = document.createElement('header');
-    headerElem.className = 'cb-header';
-    headerElem.innerHTML = `
-      <div class="cb-header-container">
-        <!-- Left: Logo & Navigation Links -->
-        <div class="cb-nav-left">
-          <a href="../1_cinebook_home_page/code.html" class="cb-brand-logo">
-            CineBook
-          </a>
-          
-          <nav class="cb-nav-menu">
-            <a href="../2_cinebook_movie_list/code.html" class="cb-nav-item ${isMoviesActive ? 'active' : ''}">
-              Movies
+    const headerHTML = `
+      <header class="cb-header">
+        <div class="cb-header-container">
+          <!-- Left: Logo & Navigation Links -->
+          <div class="cb-nav-left">
+            <a href="../1_cinebook_home_page/code.html" class="cb-brand-logo">
+              CineBook
             </a>
-            <a href="../7_cinebook_combo_snacks/code.html" class="cb-nav-item ${isOffersActive ? 'active' : ''}">
-              Offers
-            </a>
-          </nav>
-        </div>
-
-        <!-- Right: Single Search Bar + Account Button -->
-        <div class="cb-nav-right">
-          <div class="cb-search-wrap">
-            <span class="material-symbols-outlined cb-search-icon">search</span>
-            <input type="text" id="cb-global-search-input" class="cb-search-input" placeholder="Search movies, genres, cinemas...">
+            
+            <nav class="cb-nav-menu">
+              <a href="../2_cinebook_movie_list/code.html" class="cb-nav-item ${isMoviesActive ? 'active' : ''}">
+                Movies
+              </a>
+              <a href="../3_cinebook_ai_search/code.html" class="cb-nav-item ${isAiSearchActive ? 'active' : ''}">
+                AI Search
+              </a>
+            </nav>
           </div>
 
-          <a href="../13_cinebook_user_profile/code.html" class="cb-account-btn">
-            <span class="material-symbols-outlined" style="font-size: 18px;">person</span>
-            <span>Account</span>
-          </a>
+          <!-- Right: Single Search Bar + Account Button -->
+          <div class="cb-nav-right">
+            <div class="cb-search-wrap">
+              <span class="material-symbols-outlined cb-search-icon">search</span>
+              <input type="text" id="cb-global-search-input" class="cb-search-input" placeholder="Search movies, genres, cinemas...">
+            </div>
+
+            <a href="../13_cinebook_user_profile/code.html" class="cb-account-btn">
+              <span class="material-symbols-outlined" style="font-size: 18px;">person</span>
+              <span>Account</span>
+            </a>
+          </div>
         </div>
-      </div>
+      </header>
     `;
 
     // Replace the entire outer header with the clean standardized header
