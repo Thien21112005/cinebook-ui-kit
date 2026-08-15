@@ -32,7 +32,7 @@
      1. STANDARDIZED TOP HEADER (Normal Search + AI Search Dual Access)
      ========================================================================== */
   function unifyTopNavBar() {
-    const isCustomerScreen = /^(1|2|3|4|5|6|7|8|9|10|11|12|13|14)_cinebook/.test(currentFolder);
+    const isCustomerScreen = /^(1|2|3|4|5|6|7|8|9|10|11|12|13|14|26|27|28)_cinebook/.test(currentFolder);
     if (!isCustomerScreen) return;
 
     let topNav = null;
@@ -386,9 +386,15 @@
     let aside = document.querySelector('aside');
     if (!aside) return;
 
-    // We only want to replace the content inside the sticky div
-    let stickyDiv = aside.querySelector('.sticky');
-    if (!stickyDiv) return;
+    // Find the container div inside aside (could be .sticky or just the first div)
+    let sidebarContainer = aside.querySelector('div.bg-surface, div.bg-white, .sticky');
+    if (!sidebarContainer) {
+      sidebarContainer = aside.firstElementChild; // fallback
+    }
+    if (!sidebarContainer) return;
+
+    // Overwrite any hardcoded border or background styles to match our unified design
+    sidebarContainer.className = "bg-surface border border-outline-variant rounded-DEFAULT p-4 sticky top-24";
 
     // Define links
     const links = [
@@ -415,7 +421,7 @@
       `;
     });
 
-    stickyDiv.innerHTML = `
+    sidebarContainer.innerHTML = `
       <div class="flex items-center gap-4 mb-6 pb-6 border-b border-outline-variant">
         <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant overflow-hidden">
           <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">person</span>
