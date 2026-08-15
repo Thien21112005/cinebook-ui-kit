@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html lang="en" style=""><head>
+<!DOCTYPE html><html lang="en" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>CineBook - AI Search</title>
@@ -261,38 +261,53 @@
 </div>
 <!-- Movie Grid (Bento/Asymmetric style for top results) -->
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-<!-- Result 1: High Relevance (Spans more columns) -->
-<article class="col-span-1 md:col-span-8 bg-surface-container-lowest border-2 border-primary flex flex-col sm:flex-row rounded-sm overflow-hidden group">
-<div class="w-full sm:w-2/5 aspect-[2/3] sm:aspect-auto sm:h-full relative bg-surface-container">
-<div class="w-full h-full bg-cover bg-center" data-alt="A cinematic movie poster placeholder showing a stylized, high-contrast black and white illustration of a family running towards a glowing, futuristic portal. The lighting is dramatic but soft, indicating a lighthearted sci-fi adventure suitable for all ages. Minimalist design with strong geometric framing." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCt_BZ2z56o1ekw98NntV886rqNWmucZ7KVyqx2cKApRNjh12bu_bwAxY-ma3BBd-qiIJYWn-bpK2R9mWDbAY_Ctxm6WxC3GXB21tN4PwbZGbCkcY1ucy0ahP4kdmVSEbOqJwCor9C7TyJIM5dFTKKkV_ZdDZKCQmwRywCCWsF-x0Ve3Hchx3uZhKaWZ1H7JTt7H51cxsqLO-51Z1BvuGp9BZtJYxH15mH5InNnB3Xtb17RQI75FSjBIw')"></div>
-<div class="absolute top-2 left-2 bg-surface-container-lowest border border-outline px-2 py-1 text-label-sm font-label-sm text-primary flex items-center gap-1 rounded-sm shadow-sm">
+<!-- Result 1: High Relevance (Hover Overlay) -->
+<article class="col-span-1 md:col-span-4 bg-surface-container-lowest border-2 border-primary flex flex-col rounded-sm overflow-hidden group relative cursor-pointer">
+<div class="w-full aspect-[2/3] relative bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="A cinematic movie poster placeholder showing a stylized, high-contrast black and white illustration of a family running towards a glowing, futuristic portal." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCt_BZ2z56o1ekw98NntV886rqNWmucZ7KVyqx2cKApRNjh12bu_bwAxY-ma3BBd-qiIJYWn-bpK2R9mWDbAY_Ctxm6WxC3GXB21tN4PwbZGbCkcY1ucy0ahP4kdmVSEbOqJwCor9C7TyJIM5dFTKKkV_ZdDZKCQmwRywCCWsF-x0Ve3Hchx3uZhKaWZ1H7JTt7H51cxsqLO-51Z1BvuGp9BZtJYxH15mH5InNnB3Xtb17RQI75FSjBIw')"></div>
+<div class="absolute top-2 left-2 bg-surface-container-lowest border border-outline px-2 py-1 text-label-sm font-label-sm text-primary flex items-center gap-1 rounded-sm shadow-sm z-10">
 <span class="material-symbols-outlined filled-icon text-[14px] text-green-600" data-icon="star">star</span>
                         98% Match
                     </div>
 </div>
-<div class="p-6 flex flex-col justify-between flex-grow">
+
+<!-- Hover Overlay (Slides up from bottom) -->
+<div class="absolute inset-0 bg-black/90 p-6 flex flex-col justify-end translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-20">
 <div>
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-headline-md font-headline-md text-primary group-hover:underline cursor-pointer">The Journey Beyond</h3>
-<span class="px-2 py-1 border border-outline-variant text-mono-sm font-mono-sm text-secondary rounded-sm">PG</span>
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-headline-sm font-headline-sm text-white">The Journey Beyond</h3>
+<span class="px-2 py-1 border border-gray-600 text-mono-sm font-mono-sm text-gray-300 rounded-sm">PG</span>
 </div>
-<p class="text-body-sm font-body-sm text-secondary mb-4">Adventure • Sci-Fi • Family</p>
-<div class="bg-surface-variant p-3 border-l-2 border-primary mb-4">
-<p class="text-body-sm font-body-sm text-primary">
-<span class="font-bold">Why this matches:</span> Features "gentle action" sequences driven by exploration rather than conflict. Highly rated for family viewing.
+<p class="text-body-sm font-body-sm text-gray-400 mb-4">Adventure • Sci-Fi • Family</p>
+
+<div class="bg-white/10 p-3 border-l-2 border-white mb-4">
+<p class="text-body-sm font-body-sm text-white leading-relaxed">
+<span class="font-bold text-green-400">Why this matches:</span> Features "gentle action" sequences driven by exploration rather than conflict. Highly rated for family viewing.
                             </p>
 </div>
-<p class="text-body-md font-body-md text-on-surface-variant line-clamp-3 mb-6">
+
+<p class="text-body-sm font-body-sm text-gray-300 line-clamp-3 mb-6 leading-relaxed">
                             When a mysterious artifact activates in their backyard, the Miller family is transported to a parallel world. To get home, they must navigate a landscape of bizarre creatures and gentle challenges that test their bonds.
                         </p>
 </div>
-<div class="flex gap-4">
-<button class="flex-1 bg-primary text-on-primary py-2 px-4 text-label-md font-label-md rounded-sm hover:bg-surface-tint transition-colors text-center">
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-white text-black py-2 px-4 text-label-md font-label-md rounded-sm hover:bg-gray-200 transition-colors text-center font-bold">
                             Book Now
                         </button>
-<button class="px-4 py-2 border border-outline text-primary hover:bg-surface-container-low transition-colors rounded-sm flex items-center justify-center" title="Add to Watchlist">
+<button class="px-4 py-2 border border-gray-500 text-white hover:bg-white/10 transition-colors rounded-sm flex items-center justify-center" title="Add to Watchlist">
 <span class="material-symbols-outlined" data-icon="bookmark_add">bookmark_add</span>
 </button>
+</div>
+</div>
+
+<!-- Base title shown when NOT hovered (Optional, but good for clarity) -->
+<div class="p-4 flex flex-col flex-grow bg-surface-container-lowest group-hover:opacity-0 transition-opacity duration-300">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1 truncate">The Journey Beyond</h3>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Adventure • Sci-Fi • Family</p>
+<div class="mt-auto">
+<span class="text-body-sm text-primary font-bold flex items-center gap-1">
+    <span class="material-symbols-outlined text-[16px]">touch_app</span> Hover for AI Insights
+</span>
 </div>
 </div>
 </article>
