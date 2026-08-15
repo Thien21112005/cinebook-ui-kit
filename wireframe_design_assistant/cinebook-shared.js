@@ -377,7 +377,66 @@
   }
 
   /* ==========================================================================
-     5. INTERACTIVE WIREFRAME CLICK-THROUGH HOOKS
+     5. UNIFY USER ACCOUNT SIDEBAR (Screens 13, 26, 27, 28)
+     ========================================================================== */
+  function unifyUserSidebar() {
+    const isUserAccountScreen = /^(13|26|27|28)_cinebook/.test(currentFolder);
+    if (!isUserAccountScreen) return;
+
+    let aside = document.querySelector('aside');
+    if (!aside) return;
+
+    // We only want to replace the content inside the sticky div
+    let stickyDiv = aside.querySelector('.sticky');
+    if (!stickyDiv) return;
+
+    // Define links
+    const links = [
+      { id: '13_cinebook_user_profile', icon: 'account_circle', text: 'Profile Details', fill: 0 },
+      { id: '26_cinebook_my_tickets', icon: 'confirmation_number', text: 'My Tickets', fill: 0 },
+      { id: '27_cinebook_membership_points', icon: 'star', text: 'Membership & Points', fill: 0 },
+      { id: '28_cinebook_preferences', icon: 'settings', text: 'Preferences', fill: 0 }
+    ];
+
+    let navHtml = '';
+    links.forEach(l => {
+      const isActive = currentFolder.includes(l.id);
+      const activeClass = isActive 
+        ? 'bg-surface-container-low text-primary border-l-2 border-primary' 
+        : 'text-secondary hover:bg-surface-container-lowest border-l-2 border-transparent';
+      const fillIcon = isActive ? 1 : l.fill;
+      
+      // Added whitespace-nowrap to prevent ugly wrapping
+      navHtml += `
+        <a class="flex items-center gap-3 px-3 py-2 rounded-r-DEFAULT text-label-md font-label-md whitespace-nowrap transition-colors ${activeClass}" href="../${l.id}/code.html">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' ${fillIcon};">${l.icon}</span>
+          ${l.text}
+        </a>
+      `;
+    });
+
+    stickyDiv.innerHTML = `
+      <div class="flex items-center gap-4 mb-6 pb-6 border-b border-outline-variant">
+        <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant overflow-hidden">
+          <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">person</span>
+        </div>
+        <div>
+          <h2 class="text-label-md font-label-md text-primary">Alex Mercer</h2>
+          <p class="text-body-sm font-body-sm text-secondary">Member since 2023</p>
+        </div>
+      </div>
+      <nav class="flex flex-col gap-1">
+        ${navHtml}
+        <a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-lowest rounded-DEFAULT text-label-md font-label-md transition-colors mt-4 border-t border-outline-variant pt-4" href="../1_cinebook_home_page/code.html">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">logout</span>
+          Sign Out
+        </a>
+      </nav>
+    `;
+  }
+
+  /* ==========================================================================
+     6. INTERACTIVE WIREFRAME CLICK-THROUGH HOOKS
      ========================================================================== */
   function wireUpInteractiveLinks() {
     document.querySelectorAll('button, a').forEach(el => {
@@ -436,6 +495,7 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       unifyTopNavBar();
+      unifyUserSidebar();
       unifyStaffSidebar();
       unifyAdminSidebar();
       injectFloatingAIWidget();
@@ -443,6 +503,7 @@
     });
   } else {
     unifyTopNavBar();
+    unifyUserSidebar();
     unifyStaffSidebar();
     unifyAdminSidebar();
     injectFloatingAIWidget();
