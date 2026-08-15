@@ -270,9 +270,7 @@
             }
           });
         }
-      }
-
-      if (text.includes('proceed') || text.includes('snack') || text.includes('continue') || text.includes('tiếp tục')) {
+      } else if (text.includes('proceed') || text.includes('snack') || text.includes('continue') || text.includes('tiếp tục')) {
         el.addEventListener('click', (e) => {
           e.preventDefault();
           if (currentFolder.includes('seat_selection')) {
@@ -281,16 +279,12 @@
             window.location.href = '../8_cinebook_payment_checkout/code.html';
           }
         });
-      }
-
-      if (text.includes('pay') || text.includes('checkout') || text.includes('complete') || text.includes('thanh toán')) {
+      } else if (text.includes('pay') || text.includes('checkout') || text.includes('complete') || text.includes('thanh toán')) {
         el.addEventListener('click', (e) => {
           e.preventDefault();
           window.location.href = '../9_cinebook_booking_success/code.html';
         });
-      }
-
-      if (text.includes('view ticket') || text.includes('ticket details') || text.includes('chi tiết vé')) {
+      } else if (text.includes('view ticket') || text.includes('ticket details') || text.includes('chi tiết vé')) {
         el.addEventListener('click', (e) => {
           e.preventDefault();
           window.location.href = '../12_cinebook_ticket_details/code.html';
