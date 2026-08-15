@@ -1560,6 +1560,45 @@
         desc: "Dashboard giám sát kỹ thuật: Throughput TPS, Redis Redlock contention, RabbitMQ queue lag, latency benchmark.",
         techNote: "Prometheus exporter metrics + Grafana embed / live charts, k6 load testing monitor.",
         connections: [20]
+      },
+      {
+        id: 26,
+        folder: "26_cinebook_my_tickets",
+        title: "Vé của tôi",
+        titleEn: "My Tickets",
+        role: "user",
+        category: "auth",
+        x: 4550,
+        y: 250,
+        desc: "Quản lý vé đã đặt và vé sắp tới.",
+        techNote: "API fetch from ticket service.",
+        connections: [13]
+      },
+      {
+        id: 27,
+        folder: "27_cinebook_membership_points",
+        title: "Điểm thưởng & Hạng thành viên",
+        titleEn: "Membership & Points",
+        role: "user",
+        category: "auth",
+        x: 4550,
+        y: 720,
+        desc: "Thông tin hạng thành viên và điểm thưởng tích lũy.",
+        techNote: "API fetch from loyalty service.",
+        connections: [13]
+      },
+      {
+        id: 28,
+        folder: "28_cinebook_preferences",
+        title: "Cài đặt tài khoản",
+        titleEn: "Preferences",
+        role: "user",
+        category: "auth",
+        x: 4550,
+        y: 1220,
+        desc: "Quản lý thông báo và quyền riêng tư.",
+        techNote: "API patch to user preferences.",
+        connections: [13]
       }
     ];
 

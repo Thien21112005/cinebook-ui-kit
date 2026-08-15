@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineBook - Preferences</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #111827; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        
+        /* Minimalist toggle switch styling */
+        .toggle-checkbox:checked { right: 0; border-color: black; }
+        .toggle-checkbox:checked + .toggle-label { background-color: black; }
+        .toggle-checkbox { right: 0; z-index: 1; border-color: #e2e8f0; transition: all 0.3s; }
+        .toggle-label { width: 3rem; height: 1.5rem; background-color: #e2e8f0; border-radius: 9999px; position: relative; cursor: pointer; transition: all 0.3s; }
+        .toggle-label::after { content: ''; position: absolute; top: 2px; left: 2px; width: 1.25rem; height: 1.25rem; background-color: white; border-radius: 50%; transition: all 0.3s; }
+        .toggle-checkbox:checked + .toggle-label::after { transform: translateX(100%); }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+<header></header>
+
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-6 py-8 flex flex-col md:flex-row gap-8">
+    <aside class="w-full md:w-64 shrink-0">
+        <div class="bg-white border border-gray-200 rounded-md p-6">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-gray-100 rounded flex items-center justify-center text-gray-500">
+                    <span class="material-symbols-outlined">person</span>
+                </div>
+                <div>
+                    <h2 class="font-bold text-gray-900">Alex Mercer</h2>
+                    <p class="text-sm text-gray-500">Member since 2023</p>
+                </div>
+            </div>
+            
+            <nav class="flex flex-col gap-1 border-t border-gray-200 pt-4">
+                <a href="../13_cinebook_user_profile/code.html" class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">account_circle</span> Profile Details
+                </a>
+                <a href="../26_cinebook_my_tickets/code.html" class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">confirmation_number</span> My Tickets
+                </a>
+                <a href="../27_cinebook_membership_points/code.html" class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">star</span> Membership & Points
+                </a>
+                <a href="../28_cinebook_preferences/code.html" class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-gray-900 bg-gray-100 border-l-4 border-black transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">settings</span> Preferences
+                </a>
+                <div class="my-2 border-t border-gray-100"></div>
+                <a href="../1_cinebook_home_page/code.html" class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-red-600 hover:bg-red-50 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">logout</span> Sign Out
+                </a>
+            </nav>
+        </div>
+    </aside>
+
+    <section class="flex-grow">
+        <h1 class="text-3xl font-bold mb-2">Preferences</h1>
+        <p class="text-gray-500 mb-8">Manage your notifications, privacy, and account settings.</p>
+
+        <div class="bg-white border border-gray-200 rounded p-6 mb-6">
+            <h3 class="text-lg font-bold mb-4 border-b border-gray-100 pb-2">Notifications</h3>
+            
+            <div class="flex items-center justify-between py-3">
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm">Email Receipts</h4>
+                    <p class="text-sm text-gray-500">Send booking confirmations and receipts via email.</p>
+                </div>
+                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                    <input type="checkbox" name="toggle" id="email-receipts" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                    <label for="email-receipts" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between py-3 border-t border-gray-100">
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm">Promotional Offers</h4>
+                    <p class="text-sm text-gray-500">Receive special discounts, combo offers, and rewards.</p>
+                </div>
+                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                    <input type="checkbox" name="toggle" id="promotions" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <label for="promotions" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between py-3 border-t border-gray-100">
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm">SMS Reminders</h4>
+                    <p class="text-sm text-gray-500">Get a text message 2 hours before your movie starts.</p>
+                </div>
+                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                    <input type="checkbox" name="toggle" id="sms" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                    <label for="sms" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded p-6">
+            <h3 class="text-lg font-bold mb-4 border-b border-gray-100 pb-2">Privacy & Security</h3>
+            
+            <div class="py-3 flex justify-between items-center">
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm">Change Password</h4>
+                    <p class="text-sm text-gray-500">Update your account password.</p>
+                </div>
+                <button class="px-4 py-2 border border-gray-300 rounded text-sm font-bold hover:bg-gray-50 transition-colors">Update</button>
+            </div>
+
+            <div class="py-3 border-t border-gray-100 flex justify-between items-center">
+                <div>
+                    <h4 class="font-bold text-red-600 text-sm">Delete Account</h4>
+                    <p class="text-sm text-gray-500">Permanently delete your CineBook account and data.</p>
+                </div>
+                <button class="px-4 py-2 border border-red-200 text-red-600 rounded text-sm font-bold hover:bg-red-50 transition-colors">Delete</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="../cinebook-shared.js"></script>
+</body>
+</html>

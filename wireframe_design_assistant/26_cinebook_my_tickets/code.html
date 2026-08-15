@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineBook - My Tickets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #111827; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .cb-nav-active { font-weight: 700; background-color: #f3f4f6; border-left: 3px solid #000000; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+<!-- The shared Top Nav Bar will be injected here via cinebook-shared.js -->
+<header></header>
+
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-6 py-8 flex flex-col md:flex-row gap-8">
+    <!-- Sidebar Account Nav -->
+    <aside class="w-full md:w-64 shrink-0">
+        <div class="bg-white border border-gray-200 rounded-md p-6">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-gray-100 rounded flex items-center justify-center text-gray-500">
+                    <span class="material-symbols-outlined">person</span>
+                </div>
+                <div>
+                    <h2 class="font-bold text-gray-900">Alex Mercer</h2>
+                    <p class="text-sm text-gray-500">Member since 2023</p>
+                </div>
+            </div>
+            
+            <nav class="flex flex-col gap-1 border-t border-gray-200 pt-4">
+                <a href="../13_cinebook_user_profile/code.html" class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">account_circle</span> Profile Details
+                </a>
+                <a href="../26_cinebook_my_tickets/code.html" class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-gray-900 bg-gray-100 border-l-4 border-black transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">confirmation_number</span> My Tickets
+                </a>
+                <a href="../27_cinebook_membership_points/code.html" class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">star</span> Membership & Points
+                </a>
+                <a href="../28_cinebook_preferences/code.html" class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">settings</span> Preferences
+                </a>
+                <div class="my-2 border-t border-gray-100"></div>
+                <a href="../1_cinebook_home_page/code.html" class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-red-600 hover:bg-red-50 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">logout</span> Sign Out
+                </a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <section class="flex-grow">
+        <h1 class="text-3xl font-bold mb-2">My Tickets</h1>
+        <p class="text-gray-500 mb-8">View and manage your upcoming and past movie tickets.</p>
+
+        <!-- Tabs -->
+        <div class="flex gap-6 border-b border-gray-200 mb-6">
+            <button class="pb-3 border-b-2 border-black font-bold text-gray-900 text-sm">Upcoming</button>
+            <button class="pb-3 border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-900 text-sm">Past Tickets</button>
+        </div>
+
+        <!-- Ticket Cards -->
+        <div class="flex flex-col gap-4">
+            <!-- Ticket 1 -->
+            <div class="bg-white border border-gray-200 rounded p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:shadow-sm transition-shadow">
+                <div class="flex gap-4 items-start">
+                    <div class="w-16 h-20 bg-gray-200 rounded flex-shrink-0">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMUOXVTGWvoRnz9olqK58_N3HB9qKA4TD_o0D1vPJ4kD5Y4T6faHk9wtqJCCxFUfxvq94RBgmdO2owCzsZvN5sZQT9Cj4tFpMsQviefAm2lbIrNyLBz3zS1X9qlaet0PF-rbXqlvRcjk1Zy218cMFdCRFjloKV1qy7WBHdWe3UyYVjAcmSkqWOo3_s_p7Cbv8MrlSWu8oRGWPIM9K9CN_-EAzowvx6tlgLkuFhVkvyJlAdRLdaeAPEJQ" class="w-full h-full object-cover grayscale opacity-80 rounded" alt="Poster">
+                    </div>
+                    <div>
+                        <span class="inline-block bg-black text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider mb-2">Upcoming</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Dune: Part Two (IMAX)</h3>
+                        <p class="text-sm text-gray-500 mb-1">Sat, Oct 24 • 19:30</p>
+                        <p class="text-sm text-gray-500">Hall 1 • Seats: G12, G13</p>
+                    </div>
+                </div>
+                <div class="w-full sm:w-auto mt-2 sm:mt-0">
+                    <button class="w-full sm:w-auto bg-black text-white px-4 py-2 rounded text-sm font-bold hover:bg-gray-800 transition-colors">View Ticket</button>
+                </div>
+            </div>
+
+            <!-- Ticket 2 -->
+            <div class="bg-white border border-gray-200 rounded p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:shadow-sm transition-shadow">
+                <div class="flex gap-4 items-start">
+                    <div class="w-16 h-20 bg-gray-200 rounded flex-shrink-0">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB27-IBTzDYRsPMLuDQmOUmYyToaCH5ZaNJYGrcVbJtZagiL8JSdnRfXN4zFH7fVUjcQlfRJN-yUVoJce75jIRtI8ktN3oiy5H1YD6UepQtnv9QdzYz5-dWq82VSpB3cI-495p_S2-LQGXxqhyqbv6f7PdbQBZwH0m6jaI_4JXoA4nDFrxRBR7gHPkmdNkR-wuzKJ1CCqF3GusPR7N2NARDDnuAItVkFxAO5QPZPfg6-q3J2IqA6QoIeQ" class="w-full h-full object-cover grayscale opacity-80 rounded" alt="Poster">
+                    </div>
+                    <div>
+                        <span class="inline-block bg-black text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider mb-2">Upcoming</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">The Architect's Dream</h3>
+                        <p class="text-sm text-gray-500 mb-1">Sun, Oct 25 • 20:00</p>
+                        <p class="text-sm text-gray-500">Hall 3 • Seats: J15</p>
+                    </div>
+                </div>
+                <div class="w-full sm:w-auto mt-2 sm:mt-0">
+                    <button class="w-full sm:w-auto bg-black text-white px-4 py-2 rounded text-sm font-bold hover:bg-gray-800 transition-colors">View Ticket</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="../cinebook-shared.js"></script>
+</body>
+</html>

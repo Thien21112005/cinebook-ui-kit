@@ -259,7 +259,7 @@
     document.querySelectorAll('button, a').forEach(el => {
       const text = (el.innerText || '').trim().toLowerCase();
       
-      if (text.includes('book ticket') || text.includes('book now') || text.includes('đặt vé')) {
+      if (text.includes('book') || text.includes('đặt vé') || text.includes('get tickets')) {
         if (!el.getAttribute('href') || el.getAttribute('href') === '#') {
           el.addEventListener('click', (e) => {
             e.preventDefault();
@@ -272,7 +272,7 @@
         }
       }
 
-      if (text.includes('proceed to payment') || text.includes('select snacks') || text.includes('continue') || text.includes('tiếp tục')) {
+      if (text.includes('proceed') || text.includes('snack') || text.includes('continue') || text.includes('tiếp tục')) {
         el.addEventListener('click', (e) => {
           e.preventDefault();
           if (currentFolder.includes('seat_selection')) {
@@ -283,7 +283,7 @@
         });
       }
 
-      if (text.includes('pay now') || text.includes('checkout') || text.includes('confirm payment') || text.includes('thanh toán')) {
+      if (text.includes('pay') || text.includes('checkout') || text.includes('complete') || text.includes('thanh toán')) {
         el.addEventListener('click', (e) => {
           e.preventDefault();
           window.location.href = '../9_cinebook_booking_success/code.html';
