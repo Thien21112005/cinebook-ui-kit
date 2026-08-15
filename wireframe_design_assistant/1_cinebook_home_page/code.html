@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CineBook - Home Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#5e5e5e",
+                        "surface-dim": "#d9dadb",
+                        "inverse-primary": "#c6c6c6",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container": "#edeeef",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary": "#000000",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary-fixed-variant": "#404754",
+                        "surface-container-low": "#f3f4f5",
+                        "on-error": "#ffffff",
+                        "outline": "#7e7576",
+                        "background": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed-variant": "#474747",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-secondary-container": "#5e6572",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#cfc4c5",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "on-secondary-fixed": "#151c27",
+                        "primary-container": "#1b1b1b",
+                        "primary": "#000000",
+                        "on-primary-container": "#848484",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-container": "#1b1b1b",
+                        "secondary-container": "#dce2f3",
+                        "secondary-fixed": "#dce2f3",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#848484",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-primary-fixed": "#1b1b1b",
+                        "secondary": "#585f6c",
+                        "surface-bright": "#f8f9fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "sidebar-width": "240px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "mono-sm": ["Courier Prime"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "mono-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface border-b border-outline-variant w-full sticky top-0 z-50">
+<div class="max-w-container-max mx-auto px-gutter flex justify-between items-center h-16"><!-- Left Section: Logo + Nav Links -->
+<div class="flex items-center gap-8">
+    <a class="text-headline-md font-headline-md font-bold text-primary" href="#">CineBook</a>
+    <div class="hidden md:flex items-center gap-1 h-full">
+        <a class="h-full flex items-center px-4 text-primary font-bold border-b-2 border-primary hover:bg-surface-container-low transition-colors duration-200" href="#">
+            <span class="text-body-md font-body-md">Movies</span>
+        </a>
+        <a class="h-full flex items-center px-4 text-secondary hover:bg-surface-container-low transition-colors duration-200" href="#">
+            <span class="text-body-md font-body-md">Offers</span>
+        </a>
+    </div>
+</div>
+
+<!-- Right Section: Search Bar + Ask AI + Account -->
+<div class="flex items-center gap-4">
+    <div class="hidden md:flex items-center border border-outline-variant rounded bg-surface px-3 py-1.5 focus-within:border-primary transition-colors w-[400px]">
+        <span class="material-symbols-outlined text-on-surface-variant mr-2" style="font-size: 20px;">search</span>
+        <input class="bg-transparent border-none p-0 text-body-sm font-body-sm text-on-surface focus:ring-0 w-full placeholder-on-surface-variant" placeholder="Search movies, genres, theaters..." type="text">
+    </div>
+    <button class="flex items-center gap-1 px-3 py-1.5 rounded bg-surface-container-high text-primary hover:bg-surface-variant transition-colors border border-outline-variant">
+        <span class="material-symbols-outlined" style="font-size: 18px;">auto_awesome</span>
+        <span class="text-label-sm font-label-sm">Ask AI</span>
+    </button>
+    <button class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-sm hover:bg-surface-tint transition-colors">
+        <span class="material-symbols-outlined" style="font-size: 20px;">person</span>
+        <span class="text-label-md font-label-md">Account</span>
+    </button>
+</div></div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-6 flex flex-col gap-12">
+<!-- Mobile Search (Visible only on small screens) -->
+<div class="md:hidden w-full flex items-center border border-outline-variant rounded bg-surface px-3 py-2 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none p-0 text-body-sm font-body-sm text-on-surface focus:ring-0 w-full placeholder-on-surface-variant" placeholder="Search movies..." type="text">
+<button class="flex items-center gap-1 ml-2 px-2 py-1 rounded bg-surface-container-high text-primary hover:bg-surface-variant transition-colors border border-outline-variant">
+    <span class="material-symbols-outlined" style="font-size: 18px;">auto_awesome</span>
+    <span class="text-label-sm font-label-sm">Ask AI</span>
+</button></div>
+<!-- Hero Section -->
+<section class="w-full">
+<div class="relative w-full h-[400px] md:h-[500px] rounded border border-outline-variant overflow-hidden group cursor-pointer bg-surface-container">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full transition-transform duration-700 group-hover:scale-105" data-alt="A highly detailed cinematic shot of a futuristic cityscape at dusk, featuring towering skyscrapers with glowing neon highlights in stark white and deep black contrasts. The mood is intense and dramatic, typical of a blockbuster sci-fi movie poster. The lighting highlights architectural details with sharp shadows, adhering to a minimalist, high-contrast light mode aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAc1ZiWIRcU9xY2DxM6Y0TGfQ2No8sBPYDdxehwV6hoWxfrvAkkvQNGDo8q5kWPT8QJ6VuiRxzLzHLMSy-H8yTP9eBt1KP1VbxwuSpFmMB0eEbg2SbXVv2Id0OGsBzEBCiMaSjjjptTaC-_V29unmoGLfckBXR_gW7zp4OkYkamGRPcSafgcRYO1xi-RakQf11Yjal7g-bwikidcScV5JMHztQLfw7MfmCON3n6wXA4gbdEYff7i34R1A')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
+<div class="max-w-2xl text-white">
+<span class="inline-block border border-white/50 px-2 py-1 mb-4 text-label-sm font-label-sm uppercase tracking-widest backdrop-blur-sm">Premiere</span>
+<h1 class="text-display-lg font-display-lg mb-2">The Architect's Dream</h1>
+<p class="text-body-lg font-body-lg text-gray-200 mb-6 opacity-90">In a world where memories are constructed, one man must deconstruct his past to save the future. A stunning visual masterpiece.</p>
+<button class="bg-white text-black px-8 py-3 rounded-sm text-label-md font-label-md hover:bg-gray-100 transition-colors flex items-center gap-2 w-max">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+                            Book Tickets
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Now Showing Grid -->
+<section class="w-full">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary">Now Showing</h2>
+<p class="text-body-sm font-body-sm text-secondary mt-1">Book tickets for movies currently in theaters</p>
+</div>
+<a class="text-label-md font-label-md text-primary hover:underline flex items-center gap-1" href="#">
+                    View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+<!-- Movie Card 1 -->
+<div class="flex flex-col group cursor-pointer bg-surface border border-outline-variant p-2 rounded-sm hover:border-primary transition-colors">
+<div class="relative w-full aspect-[2/3] bg-surface-container mb-3 overflow-hidden rounded-sm border border-outline-variant">
+<img class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" data-alt="A minimalist movie poster featuring a stark, high-contrast black and white portrait of an astronaut looking upwards. The lighting is dramatic, emphasizing the texture of the spacesuit. The background is pure white. The aesthetic is clean, objective, and architectural, fitting a low-fidelity minimalist design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPJ12Vw1E0tObJtgFEOrRMh-mIRP_S8ywxa54IVEJpyXnpreCJN1MAgdRSQ-BTh-tDVHa47gQkvXQYbwif5WOpVNgQIaWS2gnUcozQrjjMkdYk9viOvXBRDX-ePrdgMVFPs_U4tju6N5aRE9zaGiysJL5yTpUp_hF9Fmldmy5ri2gSRDLxZ-yXF7rqlN4JK_LfIfjMSKL1VwMq2-ps8O_j4kl3Mp73LwUpGKMsBpsy5r_Kh27cIl3FKg">
+<div class="absolute top-2 right-2 bg-surface text-primary border border-outline-variant px-2 py-0.5 text-label-sm font-label-sm rounded-sm">8.5</div>
+</div>
+<div class="px-1 flex-grow flex flex-col">
+<h3 class="text-headline-sm font-headline-sm text-on-surface truncate" title="Stellar Voyage">Stellar Voyage</h3>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Sci-Fi • 2h 15m</p>
+<button class="mt-auto w-full border border-primary text-primary py-2 rounded-sm text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors">
+                            Book Now
+                        </button>
+</div>
+</div>
+<!-- Movie Card 2 -->
+<div class="flex flex-col group cursor-pointer bg-surface border border-outline-variant p-2 rounded-sm hover:border-primary transition-colors">
+<div class="relative w-full aspect-[2/3] bg-surface-container mb-3 overflow-hidden rounded-sm border border-outline-variant">
+<img class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" data-alt="A tense, minimalist action movie poster showing a lone figure walking down an empty, perfectly symmetrical concrete hallway. High contrast lighting with sharp shadows. The color palette relies heavily on stark whites and deep blacks. The mood is analytical and cold." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1qfdYXhkHqLP1H344siPYCimDHcT5PuO-aogW0KZNKddQKyUskiegIJJ5xM99l_QzPFcUEC6tZE78oUrQ8Q5B5_v_Ni27dc5OucYOZInetV_H_T4DiOyoqiT9w1ZLAVTWrF6N3mOx9Be-fuokhK4gl-Lu154BJgyQ8e0VwXXcpeKEsW52jE51ZgGooNwJ1om-G_ZG0VreTtS6beFcSiI1HQsRsH97dALWEP0KtgKzv0q7xd7rbdcASQ">
+<div class="absolute top-2 right-2 bg-surface text-primary border border-outline-variant px-2 py-0.5 text-label-sm font-label-sm rounded-sm">7.8</div>
+</div>
+<div class="px-1 flex-grow flex flex-col">
+<h3 class="text-headline-sm font-headline-sm text-on-surface truncate" title="The Courier">The Courier</h3>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Action • Thriller</p>
+<button class="mt-auto w-full border border-primary text-primary py-2 rounded-sm text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors">
+                            Book Now
+                        </button>
+</div>
+</div>
+<!-- Movie Card 3 -->
+<div class="flex flex-col group cursor-pointer bg-surface border border-outline-variant p-2 rounded-sm hover:border-primary transition-colors">
+<div class="relative w-full aspect-[2/3] bg-surface-container mb-3 overflow-hidden rounded-sm border border-outline-variant">
+<img class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" data-alt="A minimalist drama movie poster depicting a close-up of a broken teacup on a pristine white table. Soft, natural lighting creates subtle gray shadows. The composition is highly structured and objective, conveying a quiet emotional weight within a clean, light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrNzP9tyI88pG1Q0AokdzZFG8RYAPXmPX9MCwCspns633ZDbbfv1DhKra7cHaVxyZi4kkE0YCaEktfoV287FnGrtnNCpAA1vxvv6hvE4_KWMYJeC7slPvAxZn8-SZEaRy-caDKWbpq7GeBHvmBOA4s4-wBJwYtD2LHTHAMs9Ch3lLfGq0k92jDHV6Y79K31Wt9IOApi5MO__66V7ZsAMK77mtv5czChCSQOJNOiEo-eTZYMAYLUMG_lA">
+<div class="absolute top-2 right-2 bg-surface text-primary border border-outline-variant px-2 py-0.5 text-label-sm font-label-sm rounded-sm">9.2</div>
+</div>
+<div class="px-1 flex-grow flex flex-col">
+<h3 class="text-headline-sm font-headline-sm text-on-surface truncate" title="Shattered Porcelain">Shattered Porcelain</h3>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Drama • 1h 45m</p>
+<button class="mt-auto w-full border border-primary text-primary py-2 rounded-sm text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors">
+                            Book Now
+                        </button>
+</div>
+</div>
+<!-- Movie Card 4 -->
+<div class="flex flex-col group cursor-pointer bg-surface border border-outline-variant p-2 rounded-sm hover:border-primary transition-colors">
+<div class="relative w-full aspect-[2/3] bg-surface-container mb-3 overflow-hidden rounded-sm border border-outline-variant">
+<img class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" data-alt="A striking minimalist comedy poster featuring a perfectly round, bright yellow lemon centered against a vast, empty white background. A tiny, highly detailed black and white figure stands on top of the lemon. The lighting is high-key and flawless, emphasizing architectural clarity over visual clutter." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCorKHS2IyKb8BC4-OpzDYX5PzU5aggb8i_Wb6tGshdzpOzQ63sp4QLgkSDqV8RqkfR_Pqa1Pq4vDSVUWiL1QckWRBUdT_bAzUEzFHD9DsL1FyNQjwRrkhkjFjFaBR-pIJskGBYhIsRUvVxsS5CAloVDe0uqPH4Z-nHCMgYr36-TO9JFC-k9MfOvK9ysE19djB0T_LwhnWWIpR-0k5bNCde2gOiHuPdxcEQZ8DQFXD_G3Ciprgse9Zc0w">
+<div class="absolute top-2 right-2 bg-surface text-primary border border-outline-variant px-2 py-0.5 text-label-sm font-label-sm rounded-sm">6.5</div>
+</div>
+<div class="px-1 flex-grow flex flex-col">
+<h3 class="text-headline-sm font-headline-sm text-on-surface truncate" title="Sour Notes">Sour Notes</h3>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Comedy • 1h 30m</p>
+<button class="mt-auto w-full border border-primary text-primary py-2 rounded-sm text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors">
+                            Book Now
+                        </button>
+</div>
+</div>
+<!-- Movie Card 5 (Hidden on smaller screens to maintain grid balance) -->
+<div class="hidden lg:flex flex-col group cursor-pointer bg-surface border border-outline-variant p-2 rounded-sm hover:border-primary transition-colors">
+<div class="relative w-full aspect-[2/3] bg-surface-container mb-3 overflow-hidden rounded-sm border border-outline-variant">
+<img class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" data-alt="A stark minimalist horror poster showing the silhouette of a twisted tree branch against a pale, almost white, foggy sky. High contrast with deep blacks outlining the branch details. The mood is eerie yet restrained, fitting an analytical, low-fidelity design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtMUd7-qBS4PR30TOHRNXk2HQX3scysb1IyCEqospfWQtyDRt87ANNUeXB6hKeWYgS-Eh6qW3GgF3kN4TzvaSPL-onAqK548fahn6GZ7Rir7ZWBtWoGrWqNP-_JO-iufKsSg1hiULYJlN4B-QCagyd4vWBjnZDWz4BHXUZabR-9bprO1xlvMR22IhBdOostkih20QOUeJbul-h6FEirakKXjUciYcPXeQ5zeE1fb0UAlIQ8q-hOU7iJA">
+<div class="absolute top-2 right-2 bg-surface text-primary border border-outline-variant px-2 py-0.5 text-label-sm font-label-sm rounded-sm">7.1</div>
+</div>
+<div class="px-1 flex-grow flex flex-col">
+<h3 class="text-headline-sm font-headline-sm text-on-surface truncate" title="The Whispering Woods">The Whispering Woods</h3>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Horror • 1h 50m</p>
+<button class="mt-auto w-full border border-primary text-primary py-2 rounded-sm text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors">
+                            Book Now
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Coming Soon -->
+<section class="w-full mb-12">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary">Coming Soon</h2>
+<p class="text-body-sm font-body-sm text-secondary mt-1">Set reminders for upcoming releases</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Coming Soon Card 1 -->
+<div class="flex flex-col bg-surface-container-low border border-outline-variant p-4 rounded-sm">
+<div class="w-full aspect-[16/9] bg-surface-variant mb-4 overflow-hidden rounded-sm border border-outline-variant relative">
+<img class="object-cover w-full h-full opacity-80 grayscale" data-alt="A minimalist architectural landscape showing a vast, empty stadium bathed in stark, bright white light. Bold, geometric lines define the structure. The color palette is strictly grayscale, creating an objective and highly structured mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMUOXVTGWvoRnz9olqK58_N3HB9qKA4TD_o0D1vPJ4kD5Y4T6faHk9wtqJCCxFUfxvq94RBgmdO2owCzsZvN5sZQT9Cj4tFpMsQviefAm2lbIrNyLBz3zS1X9qlaet0PF-rbXqlvRcjk1Zy218cMFdCRFjloKV1qy7WBHdWe3UyYVjAcmSkqWOo3_s_p7Cbv8MrlSWu8oRGWPIM9K9CN_-EAzowvx6tlgLkuFhVkvyJlAdRLdaeAPEJQ">
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl">play_circle</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">The Final Match</h3>
+<p class="text-body-sm font-body-sm text-secondary mt-1 mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span> Oct 15
+                    </p>
+<button class="mt-auto w-full bg-surface text-primary border border-outline-variant py-2 rounded-sm text-label-md font-label-md hover:border-primary transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">notifications</span> Remind Me
+                    </button>
+</div>
+<!-- Coming Soon Card 2 -->
+<div class="flex flex-col bg-surface-container-low border border-outline-variant p-4 rounded-sm">
+<div class="w-full aspect-[16/9] bg-surface-variant mb-4 overflow-hidden rounded-sm border border-outline-variant relative">
+<img class="object-cover w-full h-full opacity-80 grayscale" data-alt="A high-contrast, minimalist image of an old-fashioned typewriter key isolated on a pure white background. The letter 'Q' is clearly visible in stark black. The image emphasizes bold outlines and architectural clarity, evoking an analytical tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB27-IBTzDYRsPMLuDQmOUmYyToaCH5ZaNJYGrcVbJtZagiL8JSdnRfXN4zFH7fVUjcQlfRJN-yUVoJce75jIRtI8ktN3oiy5H1YD6UepQtnv9QdzYz5-dWq82VSpB3cI-495p_S2-LQGXxqhyqbv6f7PdbQBZwH0m6jaI_4JXoA4nDFrxRBR7gHPkmdNkR-wuzKJ1CCqF3GusPR7N2NARDDnuAItVkFxAO5QPZPfg6-q3J2IqA6QoIeQ">
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl">play_circle</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Ghostwriter</h3>
+<p class="text-body-sm font-body-sm text-secondary mt-1 mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span> Oct 22
+                    </p>
+<button class="mt-auto w-full bg-surface text-primary border border-outline-variant py-2 rounded-sm text-label-md font-label-md hover:border-primary transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">notifications</span> Remind Me
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant w-full py-8 px-gutter flex flex-col items-center gap-4 mt-auto">
+<div class="text-label-md font-label-md font-bold text-on-surface">CineBook</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-opacity duration-200" href="#">Contact Us</a>
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-opacity duration-200" href="#">About</a>
+</div>
+<div class="text-body-sm font-body-sm text-secondary mt-4">
+            © 2024 CineBook Systems. All rights reserved.
+        </div>
+</footer>
+
+
+<script src="../cinebook-shared.js"></script>
+</body></html>

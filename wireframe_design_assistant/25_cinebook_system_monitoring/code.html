@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineBook - System Monitoring</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#5e6572",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#dce2f3",
+                        "surface-container": "#edeeef",
+                        "tertiary-fixed": "#e2e2e2",
+                        "outline-variant": "#cfc4c5",
+                        "secondary-fixed": "#dce2f3",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#848484",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#5e5e5e",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "primary": "#000000",
+                        "primary-container": "#1b1b1b",
+                        "on-surface": "#191c1d",
+                        "tertiary-container": "#1b1b1b",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "error-container": "#ffdad6",
+                        "surface": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e2e2e2",
+                        "on-primary-fixed-variant": "#474747",
+                        "outline": "#7e7576",
+                        "inverse-surface": "#2e3132",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-tertiary-container": "#848484",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary-fixed-variant": "#404754",
+                        "surface-bright": "#f8f9fa",
+                        "on-secondary-fixed": "#151c27",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed": "#1b1b1b",
+                        "inverse-primary": "#c6c6c6",
+                        "surface-variant": "#e1e3e4",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-error-container": "#93000a",
+                        "secondary": "#585f6c",
+                        "surface-dim": "#d9dadb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "sidebar-width": "240px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "mono-sm": ["Courier Prime"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "mono-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-container-high'); 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline'); 
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased font-body-md text-body-md bg-background text-on-background">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 w-[240px] h-screen flex flex-col p-4 bg-surface-container-low text-primary border-r border-outline-variant z-50">
+<div class="mb-8">
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">Admin Portal</h1>
+<p class="text-body-sm font-body-sm text-secondary mt-1">Management Console</p>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<!-- Iterating through JSON tabs -->
+<!-- Highlight 'Dashboard' as active semantic match for monitoring -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-label-md font-label-md bg-primary text-on-primary rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-label-md font-label-md text-secondary hover:bg-surface-variant hover:text-on-surface transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">movie</span>
+                    Movies
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-label-md font-label-md text-secondary hover:bg-surface-variant hover:text-on-surface transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+                    Staff
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-label-md font-label-md text-secondary hover:bg-surface-variant hover:text-on-surface transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+                    Users
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-label-md font-label-md text-secondary hover:bg-surface-variant hover:text-on-surface transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">assessment</span>
+                    Reports
+                </a>
+</li>
+</ul>
+<div class="mt-auto pt-4 border-t border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Staff Profile Picture" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small, circular avatar portrait of an administrator in a high-contrast black and white style, professional setting, minimalistic corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoQeXeSo32NhbiM-Bj47J9iZQzN6m5d3852p5qYe8vSD3VIF1cCcg5GiQ508mHdzBe_rDrXVRFKIUpUyMylDT0F2UFlzJOVQoz3SOMGKSiar4NtegBN2wJczOv7s0A5NSTS8ydEADOIyExCmxmTN9Jvr8BoQNdQwxpoTrqwplw44RYpHTip5ks2Dzd5y8-qzsd5BRP7Tl51NF8vhFgpeum0FyXX8Z4ldMoLf_QDsv-E1z5rXB4f7E85A"/>
+<span class="text-label-md font-label-md">Admin</span>
+</div>
+<button class="w-8 h-8 flex items-center justify-center rounded-sm bg-primary text-on-primary hover:bg-surface-tint transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-1 flex flex-col h-screen overflow-y-auto bg-background">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-6 border-b border-outline-variant bg-surface sticky top-0 z-40">
+<h2 class="text-headline-md font-headline-md text-on-surface">System Monitoring</h2>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-label-md font-label-md text-secondary bg-surface-container-low px-3 py-1.5 border border-outline-variant rounded-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">circle</span>
+                    All Systems Operational
+                </div>
+<button class="p-2 text-secondary hover:text-primary transition-colors border border-outline-variant bg-surface-container-lowest rounded-sm h-9 w-9 flex items-center justify-center">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-6 max-w-container-max mx-auto w-full flex flex-col gap-6">
+<!-- Metric Cards Row -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Uptime -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-sm flex flex-col hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-widest">Global Uptime</span>
+<span class="material-symbols-outlined text-primary">public</span>
+</div>
+<div class="text-display-lg font-display-lg mb-1">99.99%</div>
+<div class="text-body-sm font-body-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">trending_up</span>
+                        +0.01% vs last month
+                    </div>
+</div>
+<!-- Error Rate -->
+<div class="bg-surface-container-lowest border-2 border-primary p-4 rounded-sm flex flex-col relative overflow-hidden">
+<div class="flex justify-between items-start mb-4 relative z-10">
+<span class="text-label-sm font-label-sm text-primary font-bold uppercase tracking-widest">Error Rate (5xx)</span>
+<span class="material-symbols-outlined text-primary">warning</span>
+</div>
+<div class="text-display-lg font-display-lg mb-1 relative z-10">0.12%</div>
+<div class="text-body-sm font-body-sm text-secondary flex items-center gap-1 relative z-10">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+                        -0.05% vs last week
+                    </div>
+<!-- Decorative background pattern for active/alerting card -->
+<div class="absolute -right-4 -bottom-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">warning</span>
+</div>
+</div>
+<!-- Cache Hit Rate -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-sm flex flex-col hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-widest">CDN Cache Hit</span>
+<span class="material-symbols-outlined text-primary">memory</span>
+</div>
+<div class="text-display-lg font-display-lg mb-1">94.8%</div>
+<div class="text-body-sm font-body-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">horizontal_rule</span>
+                        Stable across regions
+                    </div>
+</div>
+</section>
+<!-- Main Panels Container -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- System Logs (Takes 2 columns) -->
+<section class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-sm flex flex-col h-[500px]">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="text-label-md font-label-md text-primary">Real-time System Logs</h3>
+<div class="flex gap-2">
+<button class="px-2 py-1 text-label-sm font-label-sm border border-outline-variant rounded-sm bg-surface-container-lowest hover:bg-surface-variant">Filter</button>
+<button class="px-2 py-1 text-label-sm font-label-sm border border-outline-variant rounded-sm bg-surface-container-lowest hover:bg-surface-variant">Export</button>
+</div>
+</div>
+<div class="flex-1 p-4 bg-tertiary text-on-tertiary font-mono-sm text-mono-sm overflow-y-auto rounded-b-sm">
+<div class="flex flex-col gap-1 opacity-80">
+<div class="flex gap-4"><span class="text-outline">10:42:01</span><span class="text-primary-fixed-dim">[INFO]</span><span>Worker instance initialized successfully in region eu-west.</span></div>
+<div class="flex gap-4"><span class="text-outline">10:42:15</span><span class="text-primary-fixed-dim">[INFO]</span><span>Payment gateway sync completed. 0 retries.</span></div>
+<div class="flex gap-4"><span class="text-outline">10:43:05</span><span class="text-primary-fixed-dim">[INFO]</span><span>User session token refreshed for ID 88492.</span></div>
+<div class="flex gap-4"><span class="text-outline">10:44:12</span><span class="text-surface-container-high font-bold">[WARN]</span><span>Database query taking longer than expected (&gt;200ms). Slow query log updated.</span></div>
+<div class="flex gap-4"><span class="text-outline">10:45:00</span><span class="text-primary-fixed-dim">[INFO]</span><span>Cron job 'cleanup_stale_sessions' started.</span></div>
+<div class="flex gap-4"><span class="text-outline">10:45:02</span><span class="text-primary-fixed-dim">[INFO]</span><span>Cron job 'cleanup_stale_sessions' finished. Removed 45 records.</span></div>
+<div class="flex gap-4"><span class="text-outline">10:46:18</span><span class="text-primary-fixed-dim">[INFO]</span><span>API rate limit approaching for key start_***_9k.</span></div>
+<div class="flex gap-4"><span class="text-outline">10:47:33</span><span class="text-surface-container-lowest font-bold border-l-2 border-surface-container-lowest pl-2 bg-surface-tint/20">[ERROR] Failed to connect to Redis cache cluster. Retrying (1/3)...</span></div>
+<div class="flex gap-4"><span class="text-outline">10:47:35</span><span class="text-primary-fixed-dim">[INFO]</span><span>Redis connection restored.</span></div>
+<div class="flex gap-4"><span class="text-outline">10:48:10</span><span class="text-primary-fixed-dim">[INFO]</span><span>New movie asset uploaded: poster_matrix.jpg.</span></div>
+<div class="flex gap-4"><span class="text-outline">10:49:01</span><span class="text-primary-fixed-dim">[INFO]</span><span>Heartbeat check passed.</span></div>
+</div>
+</div>
+</section>
+<!-- Server Status List (Takes 1 column) -->
+<section class="lg:col-span-1 bg-surface-container-lowest border border-outline-variant rounded-sm flex flex-col h-[500px]">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="text-label-md font-label-md text-primary">Service Nodes</h3>
+<span class="text-label-sm font-label-sm text-secondary">US East</span>
+</div>
+<div class="flex-1 overflow-y-auto p-0">
+<ul class="flex flex-col">
+<!-- Node Item -->
+<li class="flex items-center justify-between p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div>
+<div class="text-label-md font-label-md text-primary">API Gateway-01</div>
+<div class="text-label-sm font-label-sm text-secondary font-mono-sm mt-0.5">CPU: 42% | RAM: 2.1GB</div>
+</div>
+</div>
+<span class="px-2 py-1 text-[10px] uppercase font-bold border border-primary text-primary rounded-sm">Healthy</span>
+</li>
+<!-- Node Item -->
+<li class="flex items-center justify-between p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div>
+<div class="text-label-md font-label-md text-primary">API Gateway-02</div>
+<div class="text-label-sm font-label-sm text-secondary font-mono-sm mt-0.5">CPU: 38% | RAM: 1.9GB</div>
+</div>
+</div>
+<span class="px-2 py-1 text-[10px] uppercase font-bold border border-primary text-primary rounded-sm">Healthy</span>
+</li>
+<!-- Node Item - Warning -->
+<li class="flex items-center justify-between p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors bg-surface-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<div>
+<div class="text-label-md font-label-md text-primary">DB Primary Node</div>
+<div class="text-label-sm font-label-sm text-secondary font-mono-sm mt-0.5">CPU: 88% | RAM: 14.5GB</div>
+</div>
+</div>
+<span class="px-2 py-1 text-[10px] uppercase font-bold border border-outline text-outline rounded-sm">Load</span>
+</li>
+<!-- Node Item -->
+<li class="flex items-center justify-between p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div>
+<div class="text-label-md font-label-md text-primary">Cache-Cluster-A</div>
+<div class="text-label-sm font-label-sm text-secondary font-mono-sm mt-0.5">Mem: 8.2GB/16GB</div>
+</div>
+</div>
+<span class="px-2 py-1 text-[10px] uppercase font-bold border border-primary text-primary rounded-sm">Healthy</span>
+</li>
+<!-- Node Item -->
+<li class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div>
+<div class="text-label-md font-label-md text-primary">Worker-Pool-X</div>
+<div class="text-label-sm font-label-sm text-secondary font-mono-sm mt-0.5">Tasks: 124 Queue: 0</div>
+</div>
+</div>
+<span class="px-2 py-1 text-[10px] uppercase font-bold border border-primary text-primary rounded-sm">Healthy</span>
+</li>
+</ul>
+</div>
+</section>
+</div>
+<!-- Placeholder for Grafana Embed -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-sm flex flex-col mt-4">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="text-label-md font-label-md text-primary">Network Traffic (Grafana View)</h3>
+<span class="material-symbols-outlined text-secondary text-[20px]">open_in_new</span>
+</div>
+<div class="h-[300px] w-full flex items-center justify-center bg-surface relative overflow-hidden">
+<!-- Subtle background to look like a chart area -->
+<div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+<div class="text-center z-10 flex flex-col items-center">
+<span class="material-symbols-outlined text-outline text-[48px] mb-2">monitoring</span>
+<p class="text-body-md font-body-md text-secondary">Grafana Dashboard Embedded Here</p>
+<p class="text-label-sm font-label-sm text-outline mt-1">iframe src="https://grafana.internal.cinebook.sys/d/network..."</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CineBook - Booking Success</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#848484",
+                      "outline-variant": "#cfc4c5",
+                      "secondary-fixed": "#dce2f3",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#191c1d",
+                      "surface-dim": "#d9dadb",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#4c4546",
+                      "tertiary": "#000000",
+                      "surface-container-high": "#e7e8e9",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#7e7576",
+                      "on-primary-container": "#848484",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "inverse-surface": "#2e3132",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#404754",
+                      "secondary": "#585f6c",
+                      "on-primary-fixed": "#1b1b1b",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "surface-container": "#edeeef",
+                      "on-secondary-container": "#5e6572",
+                      "surface-variant": "#e1e3e4",
+                      "tertiary-container": "#1b1b1b",
+                      "primary": "#000000",
+                      "on-secondary-fixed": "#151c27",
+                      "primary-fixed": "#e2e2e2",
+                      "on-primary-fixed-variant": "#474747",
+                      "on-primary": "#ffffff",
+                      "surface": "#f8f9fa",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "secondary-fixed-dim": "#c0c7d6",
+                      "surface-container-low": "#f3f4f5",
+                      "surface-container-highest": "#e1e3e4",
+                      "error": "#ba1a1a",
+                      "primary-container": "#1b1b1b",
+                      "background": "#f8f9fa",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-background": "#191c1d",
+                      "secondary-container": "#dce2f3",
+                      "surface-bright": "#f8f9fa",
+                      "surface-tint": "#5e5e5e",
+                      "inverse-primary": "#c6c6c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sidebar-width": "240px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "mono-sm": [
+                              "Courier Prime"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "mono-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md"><header class="bg-surface-container-lowest border-b border-outline-variant h-16 px-gutter flex items-center justify-between w-full sticky top-0 z-50">
+    <div class="flex items-center gap-8">
+        <div class="text-headline-md font-bold text-primary tracking-tight">CineBook</div>
+        <nav class="flex items-center gap-6">
+            <a href="#" class="text-label-md font-label-md text-on-surface hover:text-primary transition-colors">Movies</a>
+            <a href="#" class="text-label-md font-label-md text-on-surface hover:text-primary transition-colors">Offers</a>
+        </nav>
+    </div>
+    <div class="flex items-center gap-4">
+        <div class="relative flex items-center">
+            <span class="material-symbols-outlined absolute left-3 text-secondary">search</span>
+            <input type="text" placeholder="Search movies, cinemas..." class="w-[400px] bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-sm focus:ring-1 focus:ring-primary">
+        </div>
+        <button class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-full text-label-md font-label-md hover:bg-on-surface-variant transition-colors">
+            <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+            Ask AI
+        </button>
+        <button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors">
+            <span class="material-symbols-outlined text-on-surface">account_circle</span>
+        </button>
+    </div>
+</header>
+<!-- Transactional Screen - No Global Nav Shell -->
+<main class="flex-grow flex items-center justify-center p-gutter">
+<div class="max-w-md w-full bg-surface-container-lowest border border-outline-variant p-8 flex flex-col items-center text-center">
+<!-- Success Indicator -->
+<div class="mb-6 flex flex-col items-center">
+<span class="material-symbols-outlined text-6xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h1 class="text-headline-md font-headline-md text-primary">Booking Confirmed</h1>
+<p class="text-body-sm font-body-sm text-secondary mt-2">Your tickets are ready.</p>
+</div>
+<!-- Booking ID -->
+<div class="w-full border-t border-outline-variant py-4 flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider mb-1">Booking ID</span>
+<span class="text-mono-sm font-mono-sm font-bold bg-surface-container-low px-3 py-1 border border-outline-variant rounded-sm">CB-123456</span>
+</div>
+<!-- QR Code Placeholder -->
+<div class="my-6 p-4 bg-surface-container-low border border-outline-variant rounded-sm">
+<img class="w-48 h-48 object-cover" data-alt="A clean, minimalist high-contrast black and white QR code. The QR code is sharp and perfectly square, isolated on a stark white background. The overall aesthetic is functional and analytical, fitting a modern low-fidelity UI design. There are no shadows or gradients, just pure structural data representation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKVKmx9A98xD8RueIynjgjmhqJdzXZGA--GU_w9ryDD9p7akqlFITbLkPMdmrTjNW39o0nQj0xCIQ9-ENqK5cSKM-a6hFjOnqZVB0WForawC4gQkBndY5MmO80T_7xZlH9LOguMliVxRaUYH6Wqr7o1OE1UOr2OLHaYDVa7oyEWJDAWYVsDkxF9wmz3O_nYnFmjQziI--uUvWpn3rlYwaSJyhnakrtiwUdjnr45wfgr9qoSzYMOntGEw">
+</div>
+<!-- Details -->
+<div class="w-full text-left bg-surface-container-low p-4 border border-outline-variant rounded-sm mb-8 space-y-3">
+<div>
+<span class="block text-label-sm font-label-sm text-secondary">Movie</span>
+<span class="block text-label-md font-label-md">Dune: Part Two</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="block text-label-sm font-label-sm text-secondary">Date &amp; Time</span>
+<span class="block text-body-sm font-body-sm">Oct 24, 7:30 PM</span>
+</div>
+<div>
+<span class="block text-label-sm font-label-sm text-secondary">Hall &amp; Seats</span>
+<span class="block text-body-sm font-body-sm">Hall 4 • G12, G13</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full flex flex-col gap-3">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-sm text-label-md font-label-md flex items-center justify-center gap-2 hover:bg-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">download</span>
+                    Download Ticket
+                </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="w-full bg-surface-container-lowest border border-primary text-primary py-2 px-4 rounded-sm text-label-md font-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">calendar_add_on</span>
+                        Calendar
+                    </button>
+<button class="w-full bg-surface-container-lowest border border-primary text-primary py-2 px-4 rounded-sm text-label-md font-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">home</span>
+                        Home
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-gutter flex flex-col items-center gap-4 mt-auto bg-surface-container border-t border-outline-variant">
+<div class="text-label-md font-label-md font-bold">CineBook</div>
+<div class="flex gap-4">
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-opacity duration-200" href="#">Contact Us</a>
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-opacity duration-200" href="#">About</a>
+</div>
+<div class="text-body-sm font-body-sm text-secondary">© 2024 CineBook Systems. All rights reserved.</div>
+</footer>
+
+
+<script src="../cinebook-shared.js"></script>
+</body></html>

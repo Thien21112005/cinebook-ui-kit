@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineBook - Login &amp; Register</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#dce2f3",
+                        "surface-container": "#edeeef",
+                        "primary-container": "#1b1b1b",
+                        "surface": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#4c4546",
+                        "surface-container-low": "#f3f4f5",
+                        "outline-variant": "#cfc4c5",
+                        "on-secondary-fixed": "#151c27",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#404754",
+                        "primary": "#000000",
+                        "outline": "#7e7576",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-container": "#848484",
+                        "on-primary-fixed-variant": "#474747",
+                        "secondary": "#585f6c",
+                        "primary-fixed": "#e2e2e2",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-primary-container": "#848484",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-surface": "#2e3132",
+                        "tertiary": "#000000",
+                        "tertiary-container": "#1b1b1b",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed": "#1b1b1b",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9fa",
+                        "surface-dim": "#d9dadb",
+                        "on-secondary-container": "#5e6572",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#c6c6c6",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#dce2f3",
+                        "on-background": "#191c1d",
+                        "background": "#f8f9fa",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "surface-tint": "#5e5e5e",
+                        "on-surface": "#191c1d",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-fixed": "#1b1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "sidebar-width": "240px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "mono-sm": ["Courier Prime"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "mono-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Tab functionality */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-btn.active {
+            border-bottom: 2px solid theme('colors.primary');
+            color: theme('colors.primary');
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar: Suppressed on transactional/linear pages like Login/Register -->
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center p-gutter">
+<div class="w-full max-w-md bg-surface border border-outline-variant p-6 rounded-lg shadow-none">
+<!-- Brand / Header -->
+<div class="text-center mb-8">
+<h1 class="text-display-lg font-display-lg text-primary mb-2">CineBook</h1>
+<p class="text-body-md font-body-md text-secondary">Welcome back to the premiere experience.</p>
+</div>
+<!-- Tab Controls -->
+<div class="flex border-b border-outline-variant mb-6">
+<button class="tab-btn active flex-1 pb-3 text-label-md font-label-md text-secondary transition-colors duration-200" onclick="switchTab('login')">
+                    Login
+                </button>
+<button class="tab-btn flex-1 pb-3 text-label-md font-label-md text-secondary transition-colors duration-200" onclick="switchTab('register')">
+                    Register
+                </button>
+</div>
+<!-- Login Form -->
+<div class="tab-content active" id="login-tab">
+<form class="space-y-4">
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface mb-1" for="login-email">Email Address</label>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 text-body-md font-body-md focus:border-primary focus:ring-0 placeholder:text-outline bg-surface-container-lowest" id="login-email" placeholder="john@example.com" required="" type="email"/>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="block text-label-sm font-label-sm text-on-surface" for="login-password">Password</label>
+<a class="text-label-sm font-label-sm text-secondary hover:text-primary transition-colors" href="#">Forgot password?</a>
+</div>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 text-body-md font-body-md focus:border-primary focus:ring-0 placeholder:text-outline bg-surface-container-lowest" id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex items-center mt-2">
+<input class="h-4 w-4 rounded-sm border-outline-variant text-primary focus:ring-primary" id="remember-me" type="checkbox"/>
+<label class="ml-2 block text-body-sm font-body-sm text-secondary" for="remember-me">Remember me</label>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-sm text-label-md font-label-md hover:bg-surface-tint transition-colors mt-6" type="submit">
+                        Login
+                    </button>
+</form>
+</div>
+<!-- Register Form -->
+<div class="tab-content" id="register-tab">
+<form class="space-y-4">
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface mb-1" for="reg-name">Full Name</label>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 text-body-md font-body-md focus:border-primary focus:ring-0 placeholder:text-outline bg-surface-container-lowest" id="reg-name" placeholder="John Doe" required="" type="text"/>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface mb-1" for="reg-email">Email Address</label>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 text-body-md font-body-md focus:border-primary focus:ring-0 placeholder:text-outline bg-surface-container-lowest" id="reg-email" placeholder="john@example.com" required="" type="email"/>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface mb-1" for="reg-password">Password</label>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 text-body-md font-body-md focus:border-primary focus:ring-0 placeholder:text-outline bg-surface-container-lowest" id="reg-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface mb-1" for="reg-confirm">Confirm Password</label>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 text-body-md font-body-md focus:border-primary focus:ring-0 placeholder:text-outline bg-surface-container-lowest" id="reg-confirm" placeholder="••••••••" required="" type="password"/>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-sm text-label-md font-label-md hover:bg-surface-tint transition-colors mt-6" type="submit">
+                        Sign Up
+                    </button>
+</form>
+</div>
+<!-- Social Login Divider -->
+<div class="mt-8">
+<div class="relative">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant"></div>
+</div>
+<div class="relative flex justify-center text-label-sm font-label-sm">
+<span class="px-2 bg-surface text-secondary">Or continue with</span>
+</div>
+</div>
+<div class="mt-6 grid grid-cols-2 gap-3">
+<button class="flex justify-center items-center py-2 px-4 border border-outline-variant rounded-sm bg-surface-container-lowest hover:bg-surface-container-low transition-colors">
+<span class="text-label-md font-label-md text-on-surface">Google</span>
+</button>
+<button class="flex justify-center items-center py-2 px-4 border border-outline-variant rounded-sm bg-surface-container-lowest hover:bg-surface-container-low transition-colors">
+<span class="text-label-md font-label-md text-on-surface">Facebook</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-gutter flex flex-col items-center gap-4 mt-auto bg-surface-container border-t border-outline-variant">
+<div class="text-label-md font-label-md font-bold text-secondary">
+            CineBook
+        </div>
+<div class="flex gap-6">
+<a class="text-secondary text-body-sm font-body-sm hover:text-primary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-secondary text-body-sm font-body-sm hover:text-primary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="text-secondary text-body-sm font-body-sm hover:text-primary transition-opacity duration-200" href="#">Contact Us</a>
+<a class="text-secondary text-body-sm font-body-sm hover:text-primary transition-opacity duration-200" href="#">About</a>
+</div>
+<div class="text-secondary text-body-sm font-body-sm mt-4">
+            © 2024 CineBook Systems. All rights reserved.
+        </div>
+</footer>
+<script>
+        function switchTab(tabName) {
+            // Hide all content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active state from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected content
+            document.getElementById(tabName + '-tab').classList.add('active');
+            
+            // Add active state to clicked button
+            const btnIndex = tabName === 'login' ? 0 : 1;
+            document.querySelectorAll('.tab-btn')[btnIndex].classList.add('active');
+        }
+    </script>
+<script src="../cinebook-shared.js"></script>
+</body></html>

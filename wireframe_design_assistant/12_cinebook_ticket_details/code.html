@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CineBook - Ticket Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#dce2f3",
+                        "surface-container": "#edeeef",
+                        "primary-container": "#1b1b1b",
+                        "surface": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#4c4546",
+                        "surface-container-low": "#f3f4f5",
+                        "outline-variant": "#cfc4c5",
+                        "on-secondary-fixed": "#151c27",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#404754",
+                        "primary": "#000000",
+                        "outline": "#7e7576",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-container": "#848484",
+                        "on-primary-fixed-variant": "#474747",
+                        "secondary": "#585f6c",
+                        "primary-fixed": "#e2e2e2",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-primary-container": "#848484",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-surface": "#2e3132",
+                        "tertiary": "#000000",
+                        "tertiary-container": "#1b1b1b",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed": "#1b1b1b",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9fa",
+                        "surface-dim": "#d9dadb",
+                        "on-secondary-container": "#5e6572",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#c6c6c6",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#dce2f3",
+                        "on-background": "#191c1d",
+                        "background": "#f8f9fa",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "surface-tint": "#5e5e5e",
+                        "on-surface": "#191c1d",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-fixed": "#1b1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "sidebar-width": "240px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "mono-sm": ["Courier Prime"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "mono-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- TopNavBar -->
+<nav class="bg-surface border-b border-outline-variant w-full top-0 z-50">
+<div class="max-w-container-max mx-auto px-gutter flex justify-between items-center h-16 transition-colors duration-200"><div class="flex items-center gap-8"><a class="text-headline-md font-headline-md font-bold text-primary" href="#">CineBook</a><div class="hidden md:flex gap-6"><a class="text-secondary hover:bg-surface-container-low transition-colors duration-200 px-3 py-2 rounded text-body-md font-body-md" href="#">Movies</a><a class="text-secondary hover:bg-surface-container-low transition-colors duration-200 px-3 py-2 rounded text-body-md font-body-md" href="#">Offers</a></div></div><div class="flex items-center gap-4"><div class="relative hidden md:block"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">search</span><input type="text" placeholder="Search movies..." class="w-[400px] bg-surface-container-low border-none rounded py-2 pl-10 pr-4 text-body-sm focus:ring-1 focus:ring-primary"></div><button class="hidden md:flex items-center gap-2 text-primary hover:bg-surface-container-low transition-colors duration-200 px-4 py-2 rounded text-body-md font-body-md"><span class="material-symbols-outlined text-[20px]">auto_awesome</span><span class="">Ask AI</span></button><button class="flex items-center gap-2 text-primary hover:bg-surface-container-low transition-colors duration-200 px-4 py-2 rounded text-body-md font-body-md"><span class="material-symbols-outlined text-[20px]">account_circle</span><span class="">Account</span></button></div></div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow max-w-container-max mx-auto w-full px-gutter py-8 flex flex-col items-center">
+<div class="w-full max-w-2xl">
+<a class="inline-flex items-center gap-2 text-secondary hover:text-primary mb-6 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span class="text-label-md font-label-md">Back to Bookings</span>
+</a>
+<!-- Ticket Card -->
+<div class="bg-surface-container-lowest border border-outline outline outline-1 outline-outline rounded-sm flex flex-col overflow-hidden">
+<!-- Movie Info Header -->
+<div class="p-6 border-b border-outline-variant flex gap-6 items-start">
+<div class="w-24 h-36 bg-surface-container-high border border-outline-variant flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="A minimalist, monochromatic movie poster design featuring sharp geometric shapes and stark contrasts. The aesthetic is highly structured and objective, fitting a low-fidelity wireframe style, with deep blacks and stark whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKCshmb5WuGQDILL_0os98XqXdkFVoI-bnQlEpzJXqkKFqu6XSaSYyY0d2sb0iO38F26zW1Nj3R9-ODSBfEVdrMNuPTh-XRzCNy4wYmlCrAFkKz87h38pLOX4F2tgCpM0uy4hPsOEa74JekPtuPApqsy2mjTx_YtbMFVU_-GeoaU30w59CedvegEOjiB42AgcFLBRZEx7tpNYhxM9AgWaoAC0gER13fHQbxavHUAIIBW4a9TlLE0q9og">
+</div>
+<div class="flex-grow">
+<h1 class="text-headline-sm font-headline-sm text-primary mb-1">Oppenheimer</h1>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Historical Drama • 180 min</p>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-label-sm font-label-sm text-secondary">Date &amp; Time</p>
+<p class="text-body-md font-body-md text-primary font-medium">Oct 24, 2024 • 19:30</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary">Location</p>
+<p class="text-body-md font-body-md text-primary font-medium">Downtown Cinema</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary">Hall</p>
+<p class="text-body-md font-body-md text-primary font-medium">IMAX Screen 1</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary">Seats</p>
+<p class="text-body-md font-body-md text-primary font-medium">H12, H13</p>
+</div>
+</div>
+</div>
+</div>
+<!-- QR Code & Actions -->
+<div class="p-6 flex flex-col md:flex-row items-center justify-between gap-8 bg-surface">
+<div class="flex flex-col items-center">
+<div class="w-48 h-48 bg-white border-2 border-primary p-2 flex items-center justify-center mb-2">
+<img class="w-full h-full object-contain" data-alt="A clean, stark black and white QR code, perfectly square and highly defined, centered against a pure white background. The image represents a functional digital ticket for scanning, aligning with an objective, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ_I3y1_LupFFKqgrowTxEtL_zdhLKYhaGNv0eHoGQHNkdo2ZLwxK-wMys-uZgkU8Q0B2AFJkTM8LxgBveIrUA3c9U_uzuiZYUyCSqzH57IR7fOAsLyDbEIXOHAUSpl5bpN-T6q6ZycP--9ARihxxl7Pa3JsULZ6H_mTVgYoHerWXgXiMTgVh5jpmzdsTHwqe324VzUf0aUtBDq6KtjZeuP-vnYFf05tlwiEx_lBD0OcK2hBiemH8X5g">
+</div>
+<p class="text-mono-sm font-mono-sm text-secondary tracking-widest">TKT-8924-A7X</p>
+</div>
+<div class="w-full md:w-auto flex flex-col gap-4">
+<div class="border border-outline-variant p-4 rounded-sm bg-surface-container-lowest">
+<h3 class="text-label-md font-label-md text-primary mb-2 border-b border-outline-variant pb-2">Payment Summary</h3>
+<div class="flex justify-between text-body-sm font-body-sm text-secondary mb-1">
+<span class="">Adult Ticket x2</span>
+<span class="">$36.00</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-secondary mb-2 border-b border-outline-variant pb-2">
+<span class="">Booking Fee</span>
+<span class="">$2.50</span>
+</div>
+<div class="flex justify-between text-body-md font-body-md text-primary font-bold">
+<span class="">Total Paid</span>
+<span class="">$38.50</span>
+</div>
+</div>
+<div class="flex gap-2 w-full">
+<button class="flex-1 bg-surface-container-lowest border border-primary text-primary hover:bg-surface-container-low py-2 px-4 rounded-sm text-label-md font-label-md transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                                Download
+                            </button>
+<button class="flex-1 bg-surface-container-lowest border border-primary text-primary hover:bg-surface-container-low py-2 px-4 rounded-sm text-label-md font-label-md transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">print</span>
+                                Print
+                            </button>
+</div>
+<button class="w-full border border-error text-error hover:bg-error-container py-2 px-4 rounded-sm text-label-md font-label-md transition-colors mt-2">
+                            Cancel Ticket
+                        </button>
+</div>
+</div>
+<!-- Perforated Edge Decoration -->
+<div class="h-4 bg-surface-container-lowest border-t border-outline-variant relative overflow-hidden flex items-center justify-evenly">
+<div class="w-2 h-2 rounded-full bg-background border border-outline-variant -mt-4"></div>
+<div class="w-2 h-2 rounded-full bg-background border border-outline-variant -mt-4"></div>
+<div class="w-2 h-2 rounded-full bg-background border border-outline-variant -mt-4"></div>
+<div class="w-2 h-2 rounded-full bg-background border border-outline-variant -mt-4"></div>
+<div class="w-2 h-2 rounded-full bg-background border border-outline-variant -mt-4"></div>
+<div class="w-2 h-2 rounded-full bg-background border border-outline-variant -mt-4"></div>
+<div class="w-2 h-2 rounded-full bg-background border border-outline-variant -mt-4"></div>
+<div class="w-2 h-2 rounded-full bg-background border border-outline-variant -mt-4"></div>
+<div class="w-2 h-2 rounded-full bg-background border border-outline-variant -mt-4"></div>
+<div class="w-2 h-2 rounded-full bg-background border border-outline-variant -mt-4"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant mt-auto">
+<div class="w-full py-8 px-gutter flex flex-col items-center gap-4 max-w-container-max mx-auto transition-opacity duration-200">
+<div class="text-label-md font-label-md font-bold text-secondary">
+                CineBook
+            </div>
+<div class="flex gap-6">
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-colors" href="#">Contact Us</a>
+<a class="text-body-sm font-body-sm text-secondary hover:text-primary transition-colors" href="#">About</a>
+</div>
+<div class="text-body-sm font-body-sm text-secondary">
+                © 2024 CineBook Systems. All rights reserved.
+            </div>
+</div>
+</footer>
+
+
+<script src="../cinebook-shared.js"></script>
+</body></html>

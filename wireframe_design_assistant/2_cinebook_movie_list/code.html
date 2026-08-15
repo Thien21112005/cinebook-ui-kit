@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CineBook - Movie List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#5e5e5e",
+                        "surface-dim": "#d9dadb",
+                        "inverse-primary": "#c6c6c6",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container": "#edeeef",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary": "#000000",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary-fixed-variant": "#404754",
+                        "surface-container-low": "#f3f4f5",
+                        "on-error": "#ffffff",
+                        "outline": "#7e7576",
+                        "background": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed-variant": "#474747",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-secondary-container": "#5e6572",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#cfc4c5",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "on-secondary-fixed": "#151c27",
+                        "primary-container": "#1b1b1b",
+                        "primary": "#000000",
+                        "on-primary-container": "#848484",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-container": "#1b1b1b",
+                        "secondary-container": "#dce2f3",
+                        "secondary-fixed": "#dce2f3",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#848484",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-primary-fixed": "#1b1b1b",
+                        "secondary": "#585f6c",
+                        "surface-bright": "#f8f9fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "sidebar-width": "240px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "mono-sm": ["Courier Prime"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "mono-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline transition-colors duration-200">
+<div class="max-w-container-max mx-auto px-gutter flex justify-between items-center h-16"><div class="flex items-center gap-8">
+  <a class="text-headline-md font-headline-md font-bold text-primary dark:text-on-surface" href="#">CineBook</a>
+  <div class="hidden md:flex gap-6">
+    <a class="text-primary dark:text-on-surface font-bold border-b-2 border-primary text-body-md font-body-md py-5" href="#">Movies</a>
+    <a class="text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high text-body-md font-body-md py-5 transition-colors duration-200" href="#">Offers</a>
+  </div>
+</div>
+<div class="flex items-center gap-4">
+  <div class="relative hidden sm:block">
+    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+    <input class="bg-surface-container-low border border-outline-variant text-body-sm font-body-sm text-on-surface placeholder:text-outline rounded-full pl-10 pr-4 py-2 focus:border-primary focus:ring-0 w-[400px] transition-colors" placeholder="Search movies..." type="text">
+  </div>
+  <button class="bg-surface-container-low border border-outline-variant text-primary hover:bg-surface-container-high px-3 py-2 rounded-sm flex items-center gap-2 transition-colors">
+    <span class="material-symbols-outlined text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+    <span class="text-label-md font-label-md">Ask AI</span>
+  </button>
+  <button class="bg-primary text-on-primary text-label-md font-label-md px-4 py-2 rounded-sm hover:bg-surface-tint transition-colors flex items-center gap-2">
+    <span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+    Account
+  </button>
+</div></div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 max-w-container-max mx-auto w-full px-margin-mobile md:px-gutter py-6 flex flex-col md:flex-row gap-8">
+<!-- Sidebar Filter -->
+<aside class="w-full md:w-[240px] shrink-0 space-y-6">
+<div>
+<h3 class="text-label-md font-label-md font-bold border-b border-outline-variant pb-2 mb-4">Filters</h3>
+<div class="space-y-4">
+<!-- Genre -->
+<div>
+<label class="block text-label-sm font-label-sm text-secondary mb-2">Genre</label>
+<select class="w-full border border-outline-variant bg-surface text-body-sm font-body-sm rounded-sm px-3 py-2 focus:border-primary focus:ring-0">
+<option>All Genres</option>
+<option>Action</option>
+<option>Sci-Fi</option>
+<option>Drama</option>
+</select>
+</div>
+<!-- Location -->
+<div>
+<label class="block text-label-sm font-label-sm text-secondary mb-2">Cinema Location</label>
+<select class="w-full border border-outline-variant bg-surface text-body-sm font-body-sm rounded-sm px-3 py-2 focus:border-primary focus:ring-0">
+<option>All Locations</option>
+<option>Downtown IMAX</option>
+<option>Starlight Drive-in</option>
+</select>
+</div>
+<!-- Date -->
+<div>
+<label class="block text-label-sm font-label-sm text-secondary mb-2">Date</label>
+<input class="w-full border border-outline-variant bg-surface text-body-sm font-body-sm rounded-sm px-3 py-2 focus:border-primary focus:ring-0" type="date">
+</div>
+<!-- Format -->
+<div>
+<label class="block text-label-sm font-label-sm text-secondary mb-2">Format</label>
+<div class="space-y-2">
+<label class="flex items-center gap-2 text-body-sm font-body-sm">
+<input checked="" class="border-outline-variant text-primary focus:ring-primary rounded-sm" type="checkbox"> 2D Standard
+                            </label>
+<label class="flex items-center gap-2 text-body-sm font-body-sm">
+<input class="border-outline-variant text-primary focus:ring-primary rounded-sm" type="checkbox"> 3D Experience
+                            </label>
+<label class="flex items-center gap-2 text-body-sm font-body-sm">
+<input class="border-outline-variant text-primary focus:ring-primary rounded-sm" type="checkbox"> IMAX
+                            </label>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full border border-primary text-primary bg-surface hover:bg-surface-container-low text-label-md font-label-md py-2 rounded-sm transition-colors">Apply Filters</button>
+</aside>
+<!-- Movie Grid -->
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h1 class="text-display-lg font-display-lg text-on-background">Now Showing</h1>
+<p class="text-body-md font-body-md text-secondary mt-1">Discover the latest blockbusters.</p>
+</div>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Movie Card 1 -->
+<article class="bg-surface border border-outline-variant rounded-sm flex flex-col overflow-hidden hover:border-primary transition-colors group">
+<div class="aspect-[2/3] bg-surface-container-low relative border-b border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A stark, minimalist movie poster featuring a solitary figure silhouetted against a vast, sterile white landscape. The composition is highly structured and geometric, relying on sharp lines and deep black shadows for contrast. The lighting is harsh and clinical, creating a dramatic, high-contrast light-mode aesthetic. A single slash of vivid crimson red cuts across the horizon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOBcpDREOhEsEeAKgvHdAunZnEnLl1gK6xBO2eNtZf2OV1l5J2ajnoH-PMj6UPzBG2jpFQfPF2aj9yA4Qt3ZuwvtdeO_dd_0lydyBm3rBLhmj5tIAkhGw7HD1KDLpKboo8pZ1wiYBkVJJP_qcXOe31BXLBBOfKrBSO8Q6mIqs2W0hZCOB2YU2Jy-G_cowRrm2GaWj7HTASRAVS2YUyPkHbssFuRdfnCQwL3uGKtUYrrCw6AaHyD9GoLQ">
+<div class="absolute top-2 right-2 bg-surface border border-outline-variant px-2 py-1 rounded-sm text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                        </div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-1 truncate">Neon Horizon</h2>
+<div class="flex gap-2 mb-4 flex-wrap">
+<span class="text-[10px] font-label-sm uppercase tracking-wider text-secondary border border-outline-variant px-1.5 py-0.5 rounded-sm">Sci-Fi</span>
+<span class="text-[10px] font-label-sm uppercase tracking-wider text-secondary border border-outline-variant px-1.5 py-0.5 rounded-sm">Action</span>
+</div>
+<button class="mt-auto w-full bg-primary text-on-primary hover:bg-surface-tint text-label-md font-label-md py-2 rounded-sm transition-colors">Book Now</button>
+</div>
+</article>
+<!-- Movie Card 2 -->
+<article class="bg-surface border border-outline-variant rounded-sm flex flex-col overflow-hidden hover:border-primary transition-colors group">
+<div class="aspect-[2/3] bg-surface-container-low relative border-b border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, structured movie poster for a dramatic film. The design features a perfectly centered architectural element, perhaps a stark white staircase or a rigid concrete pillar, shot in high-key daylight. The shadows are deep and precise, emphasizing the minimalist geometry. The overall palette is dominated by stark whites and varying shades of gray, with a small, strategic touch of desaturated blue." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3yjEH4M1yngpMyvNk2JSRfFkLa9l-q3OpmRYELz1OFP5H4ELklFpDYNjkk_66HpF8DZCJi1mVHrbxuKYEL-hUmAZnDka9mhLU1A7b6nFf_iUG86BbhJJowA8FxzyiQDvgFA4YTNWY1tXo1MnX_gevugz-rZj-pRaGHVr5RmMDHFGASdpKG6DIjX_mblM8P0GnhEAluo7odTze_Nz7M0SFZMkb1GaO048sROxa6wDc2WK_Ow3hj2T_wA">
+<div class="absolute top-2 right-2 bg-surface border border-outline-variant px-2 py-1 rounded-sm text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span> 4.5
+                        </div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-1 truncate">The Architect</h2>
+<div class="flex gap-2 mb-4 flex-wrap">
+<span class="text-[10px] font-label-sm uppercase tracking-wider text-secondary border border-outline-variant px-1.5 py-0.5 rounded-sm">Drama</span>
+<span class="text-[10px] font-label-sm uppercase tracking-wider text-secondary border border-outline-variant px-1.5 py-0.5 rounded-sm">Thriller</span>
+</div>
+<button class="mt-auto w-full bg-primary text-on-primary hover:bg-surface-tint text-label-md font-label-md py-2 rounded-sm transition-colors">Book Now</button>
+</div>
+</article>
+<!-- Movie Card 3 -->
+<article class="bg-surface border border-outline-variant rounded-sm flex flex-col overflow-hidden hover:border-primary transition-colors group">
+<div class="aspect-[2/3] bg-surface-container-low relative border-b border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="An abstract, grid-based movie poster design. It features a stark white background intersected by thin, precise black lines forming a complex matrix. Within one of the grid squares, a single object—a pristine, metallic sphere—is rendered with hyper-realistic detail. The lighting is diffused and bright, creating a clean, analytical mood that perfectly aligns with a low-fidelity minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4-A6qSCMSm3yrNmneXgn-KMOd1qW9NCAHkP4HLcgGMgBWLOOry5OxnaRlMHNI1rwxKvlYQHfhPM1-DjcftenZxFVN0tjRBVHVMcNRbxS80CXtrUZbGfJy-AAh8bho05dZQn_Fg6vsV6ayxYXNGz4FGPpkSnXjYX478XtWnQHmxlAmtgT3jhD58UoJXo1ifeh7MGUbfjHOub8xpO-bEgVFcE8ic-3BWrzAtkcqbQ_MiwtgQpAFsmOleA">
+<div class="absolute top-2 right-2 bg-surface border border-outline-variant px-2 py-1 rounded-sm text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span> 4.2
+                        </div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-1 truncate">System Failure</h2>
+<div class="flex gap-2 mb-4 flex-wrap">
+<span class="text-[10px] font-label-sm uppercase tracking-wider text-secondary border border-outline-variant px-1.5 py-0.5 rounded-sm">Documentary</span>
+</div>
+<button class="mt-auto w-full bg-primary text-on-primary hover:bg-surface-tint text-label-md font-label-md py-2 rounded-sm transition-colors">Book Now</button>
+</div>
+</article>
+<!-- Movie Card 4 -->
+<article class="bg-surface border border-outline-variant rounded-sm flex flex-col overflow-hidden hover:border-primary transition-colors group">
+<div class="aspect-[2/3] bg-surface-container-low relative border-b border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-[48px]" data-icon="block">block</span>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-1 truncate">Untitled Project</h2>
+<div class="flex gap-2 mb-4 flex-wrap">
+<span class="text-[10px] font-label-sm uppercase tracking-wider text-secondary border border-outline-variant px-1.5 py-0.5 rounded-sm">Mystery</span>
+</div>
+<button class="mt-auto w-full bg-primary text-on-primary hover:bg-surface-tint text-label-md font-label-md py-2 rounded-sm transition-colors">Book Now</button>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm text-secondary hover:border-primary hover:text-primary transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border-2 border-primary rounded-sm text-primary font-label-md bg-surface">1</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm text-secondary hover:border-primary hover:text-primary font-label-md transition-colors bg-surface">2</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm text-secondary hover:border-primary hover:text-primary font-label-md transition-colors bg-surface">3</button>
+<span class="text-secondary font-label-md px-1">...</span>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm text-secondary hover:border-primary hover:text-primary transition-colors bg-surface">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline transition-opacity duration-200 mt-auto">
+<div class="w-full py-8 px-gutter flex flex-col items-center gap-4">
+<div class="text-label-md font-label-md font-bold text-on-surface">CineBook</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-on-surface text-body-sm font-body-sm transition-colors" href="#">Privacy Policy</a>
+<a class="text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-on-surface text-body-sm font-body-sm transition-colors" href="#">Terms of Service</a>
+<a class="text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-on-surface text-body-sm font-body-sm transition-colors" href="#">Contact Us</a>
+<a class="text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-on-surface text-body-sm font-body-sm transition-colors" href="#">About</a>
+</div>
+<div class="text-secondary dark:text-on-secondary-fixed-variant text-body-sm font-body-sm mt-4 text-center">
+                © 2024 CineBook Systems. All rights reserved.
+            </div>
+</div>
+</footer>
+
+
+<script src="../cinebook-shared.js"></script>
+</body></html>

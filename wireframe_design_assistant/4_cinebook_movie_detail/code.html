@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>[4] CineBook - Movie Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#5e5e5e",
+                      "surface-dim": "#d9dadb",
+                      "inverse-primary": "#c6c6c6",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container": "#edeeef",
+                      "surface-variant": "#e1e3e4",
+                      "tertiary": "#000000",
+                      "on-surface-variant": "#4c4546",
+                      "on-secondary-fixed-variant": "#404754",
+                      "surface-container-low": "#f3f4f5",
+                      "on-error": "#ffffff",
+                      "outline": "#7e7576",
+                      "background": "#f8f9fa",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "primary-fixed": "#e2e2e2",
+                      "surface-container-high": "#e7e8e9",
+                      "on-primary-fixed-variant": "#474747",
+                      "on-background": "#191c1d",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-secondary-container": "#5e6572",
+                      "on-surface": "#191c1d",
+                      "outline-variant": "#cfc4c5",
+                      "secondary-fixed-dim": "#c0c7d6",
+                      "on-secondary-fixed": "#151c27",
+                      "primary-container": "#1b1b1b",
+                      "primary": "#000000",
+                      "on-primary-container": "#848484",
+                      "inverse-on-surface": "#f0f1f2",
+                      "tertiary-container": "#1b1b1b",
+                      "secondary-container": "#dce2f3",
+                      "secondary-fixed": "#dce2f3",
+                      "surface-container-highest": "#e1e3e4",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-container": "#848484",
+                      "on-primary": "#ffffff",
+                      "inverse-surface": "#2e3132",
+                      "surface": "#f8f9fa",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "on-primary-fixed": "#1b1b1b",
+                      "secondary": "#585f6c",
+                      "surface-bright": "#f8f9fa"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "unit": "4px",
+                      "sidebar-width": "240px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "mono-sm": ["Courier Prime"],
+                      "label-md": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- TopNavBar -->
+<nav class="bg-surface text-primary text-body-md font-body-md docked full-width top-0 border-b border-outline-variant flat no shadows"><div class="max-w-container-max mx-auto px-gutter flex justify-between items-center h-16"><div class="flex items-center gap-8"><a class="text-headline-md font-headline-md font-bold text-primary" href="#">CineBook</a><div class="hidden md:flex space-x-6 h-full items-center"><a class="text-primary font-bold border-b-2 border-primary h-16 flex items-center transition-colors duration-200 hover:bg-surface-container-low px-4" href="#">Movies</a><a class="text-secondary h-16 flex items-center transition-colors duration-200 hover:bg-surface-container-low px-4" href="#">Offers</a></div></div><div class="flex items-center gap-4 justify-end"><div class="relative hidden md:block w-[400px]"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span><input class="bg-surface-container-low border border-outline-variant rounded-sm py-2 pl-10 pr-4 text-body-sm font-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full" placeholder="Search movies..." type="text"></div><button class="flex items-center gap-2 bg-primary text-on-primary rounded-sm px-4 py-2 text-label-md font-label-md hover:bg-primary/90 transition-colors duration-200"><span class="material-symbols-outlined text-[20px]">auto_awesome</span>Ask AI</button><button class="flex items-center gap-2 bg-surface text-primary border border-outline-variant rounded-sm px-4 py-2 text-label-md font-label-md hover:bg-surface-container-low transition-colors duration-200"><span class="material-symbols-outlined text-[20px]">person</span>Account</button></div></div></nav>
+<!-- Main Content -->
+<main class="flex-grow max-w-container-max mx-auto w-full px-gutter py-8 space-y-12">
+<!-- Movie Info Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Poster -->
+<div class="md:col-span-4 lg:col-span-3">
+<div class="aspect-[2/3] border border-outline-variant bg-surface-container-low overflow-hidden relative group">
+<img class="w-full h-full object-cover grayscale opacity-90 transition-opacity duration-300 group-hover:opacity-100" data-alt="A dramatic movie poster featuring a stark, high-contrast black and white composition. A solitary figure stands against a vast, empty architectural landscape. The lighting is harsh and angular, casting deep, sharp shadows. The aesthetic perfectly matches the app's minimalist, low-fidelity design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGnoepbz9dPrSkUqWkxBlLmYo9JrquiV9Q59ADD_7xbDAsgcNCwobnr0ZeVRAMQZZKd2TEno5Cam7vvANz5lmuW0gqmMqocktKAIcC_BiJ7AKVNQrlYDmXzpb_vGxDasWPmaW4AYev5BcTuL38Cr6UyLD5rmBuizV4I8FAAnHtCNymUEnO4CLpIIBpLQI77c_7u0-iKMhiBCPCBfLZeu_pilFRPaYfICqAXB379jBKqi_8fVbEYSe3SQ">
+</div>
+</div>
+<!-- Details -->
+<div class="md:col-span-8 lg:col-span-9 flex flex-col">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+<div>
+<h1 class="text-display-lg font-display-lg text-primary mb-2">The Minimalist Architect</h1>
+<div class="flex flex-wrap items-center gap-4 text-secondary text-body-sm font-body-sm">
+<span class="flex items-center gap-1 border border-outline-variant px-2 py-1 bg-surface"><span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span> 142 min</span>
+<span class="border border-outline-variant px-2 py-1 bg-surface">Drama / Thriller</span>
+<span class="border border-outline-variant px-2 py-1 bg-surface">PG-13</span>
+<span class="flex items-center gap-1 border border-outline-variant px-2 py-1 bg-surface font-bold text-primary"><span class="material-symbols-outlined text-[16px] text-primary" data-icon="star" data-weight="fill">star</span> 4.8</span>
+</div>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-3xl mb-8">
+                    In a world obsessed with ornamentation, one architect dares to design structures comprised entirely of load-bearing walls and 90-degree angles. A gripping tale of structural integrity and stylistic rebellion set against the backdrop of a sprawling, chaotic metropolis.
+                </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 text-body-sm font-body-sm">
+<div>
+<span class="text-label-md font-label-md text-primary block mb-1">Director</span>
+<span class="text-secondary">Jane Doe</span>
+</div>
+<div>
+<span class="text-label-md font-label-md text-primary block mb-1">Cast</span>
+<span class="text-secondary">John Smith, Emily Chen, Robert Taylor</span>
+</div>
+</div>
+<!-- Trailer Placeholder -->
+<div class="mt-auto aspect-video border border-outline-variant bg-surface-container-low flex items-center justify-center cursor-pointer hover:bg-surface-container transition-colors max-w-2xl relative overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center grayscale opacity-50" data-alt="A still frame from a movie trailer showing a stark, concrete hallway vanishing into infinity. The lighting is dim, utilizing only functional overhead fluorescent tubes that cast harsh, structural shadows. The overall aesthetic is strictly monochromatic, fitting perfectly within the minimalist low-fidelity design system." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFqTgUW0Hn_i028i4ye4Bs-VO1DqJ0dzLvhEIu6Hq4QYKGUcAfeoPTyc4mx_AZDg6SiFYDuIN2RVYvZdLRalgS1eKIgysRrJkg4yE6uG7Ynsth8Qs6baMcavb8n3fu8QutEQVuosgGN_53sISAXswj3VgKUbjcN6Hf5rIAo5mS_wJomj_eMg_ZqdSQXdBXTrXfo7w7_nORYzm1c0jzfeKwFCszXeN8acSZxGtKdwVp4Q1afqcpHltjeg')"></div>
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors"></div>
+<span class="material-symbols-outlined text-display-lg text-primary bg-surface border-2 border-primary rounded-sm p-4 z-10" data-icon="play_arrow">play_arrow</span>
+</div>
+</div>
+</section>
+<!-- Showtime Selector -->
+<section class="border-t border-outline-variant pt-8">
+<h2 class="text-headline-md font-headline-md text-primary mb-6">Select Showtime</h2>
+<!-- Date Tabs -->
+<div class="flex overflow-x-auto border-b border-outline-variant mb-6 no-scrollbar">
+<button class="px-6 py-4 border-b-2 border-primary text-primary font-bold text-label-md bg-surface-container-low">Today, Oct 24</button>
+<button class="px-6 py-4 text-secondary hover:bg-surface-container-lowest hover:text-primary transition-colors text-label-md">Fri, Oct 25</button>
+<button class="px-6 py-4 text-secondary hover:bg-surface-container-lowest hover:text-primary transition-colors text-label-md">Sat, Oct 26</button>
+<button class="px-6 py-4 text-secondary hover:bg-surface-container-lowest hover:text-primary transition-colors text-label-md">Sun, Oct 27</button>
+<button class="px-6 py-4 text-secondary hover:bg-surface-container-lowest hover:text-primary transition-colors text-label-md">Mon, Oct 28</button>
+</div>
+<!-- Time Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+<button class="border border-outline-variant bg-surface py-3 px-4 hover:bg-surface-container-low transition-colors flex flex-col items-center">
+<span class="text-body-md font-label-md text-primary">10:30 AM</span>
+<span class="text-label-sm font-label-sm text-secondary">Standard</span>
+</button>
+<button class="border border-outline-variant bg-surface py-3 px-4 hover:bg-surface-container-low transition-colors flex flex-col items-center">
+<span class="text-body-md font-label-md text-primary">1:15 PM</span>
+<span class="text-label-sm font-label-sm text-secondary">Standard</span>
+</button>
+<button class="border border-outline-variant bg-surface-container-high py-3 px-4 flex flex-col items-center opacity-50 cursor-not-allowed">
+<span class="text-body-md font-label-md text-on-surface-variant line-through">4:00 PM</span>
+<span class="text-label-sm font-label-sm text-secondary">Sold Out</span>
+</button>
+<button class="border-2 border-primary bg-surface py-3 px-4 hover:bg-surface-container-low transition-colors flex flex-col items-center relative">
+<div class="absolute -top-2 -right-2 bg-primary text-on-primary text-[10px] px-1 font-bold">FILLING FAST</div>
+<span class="text-body-md font-label-md text-primary">7:45 PM</span>
+<span class="text-label-sm font-label-sm text-secondary">Premium</span>
+</button>
+<button class="border border-outline-variant bg-surface py-3 px-4 hover:bg-surface-container-low transition-colors flex flex-col items-center">
+<span class="text-body-md font-label-md text-primary">10:30 PM</span>
+<span class="text-label-sm font-label-sm text-secondary">Standard</span>
+</button>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="bg-primary text-on-primary text-label-md font-label-md px-8 py-3 rounded-sm hover:bg-primary/90 transition-colors">
+                    Continue to Booking
+                </button>
+</div>
+</section>
+<!-- Review Section -->
+<section class="border-t border-outline-variant pt-8">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-headline-md font-headline-md text-primary">Audience Reviews</h2>
+<button class="border border-outline-variant bg-surface text-primary px-4 py-2 text-label-md font-label-md hover:bg-surface-container-low transition-colors">Write Review</button>
+</div>
+<div class="space-y-4">
+<!-- Review 1 -->
+<div class="border border-outline-variant bg-surface p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border border-outline-variant rounded-full flex items-center justify-center bg-surface-container">
+<span class="material-symbols-outlined text-secondary" data-icon="person">person</span>
+</div>
+<div>
+<span class="text-label-md font-label-md text-primary block">Alex R.</span>
+<span class="text-label-sm font-label-sm text-secondary">Oct 22, 2024</span>
+</div>
+</div>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant">
+                        A masterclass in structural storytelling. The absence of unnecessary visual flair allowed the core narrative to stand strong, much like the buildings depicted in the film. Highly recommended for fans of uncompromising design.
+                    </p>
+</div>
+<!-- Review 2 -->
+<div class="border border-outline-variant bg-surface p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border border-outline-variant rounded-full flex items-center justify-center bg-surface-container">
+<span class="material-symbols-outlined text-secondary" data-icon="person">person</span>
+</div>
+<div>
+<span class="text-label-md font-label-md text-primary block">Sam K.</span>
+<span class="text-label-sm font-label-sm text-secondary">Oct 20, 2024</span>
+</div>
+</div>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[18px] text-outline-variant" data-icon="star">star</span>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant">
+                        Slightly slow pacing in the second act, but the cinematography makes up for it. The use of stark contrasts and rigid geometry created an incredibly tense atmosphere.
+                    </p>
+</div>
+</div>
+<button class="w-full mt-4 py-3 border border-outline-variant bg-surface text-secondary hover:bg-surface-container-low transition-colors text-label-md font-label-md">
+                Load More Reviews
+            </button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container text-secondary text-body-sm font-body-sm full-width bottom border-t border-outline-variant flat no shadows w-full py-8 px-gutter flex flex-col items-center gap-4 mt-auto">
+<div class="text-label-md font-label-md font-bold text-primary">CineBook</div>
+<div class="flex gap-6">
+<a class="text-secondary hover:text-primary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-secondary hover:text-primary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="text-secondary hover:text-primary transition-opacity duration-200" href="#">Contact Us</a>
+<a class="text-secondary hover:text-primary transition-opacity duration-200" href="#">About</a>
+</div>
+<div class="mt-4">
+            © 2024 CineBook Systems. All rights reserved.
+        </div>
+</footer>
+
+
+<script src="../cinebook-shared.js"></script>
+</body></html>

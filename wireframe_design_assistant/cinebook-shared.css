@@ -1,0 +1,332 @@
+/* ==========================================================================
+   CineBook Low-Fidelity Blueprint — Standardized TopNavBar & Floating AI
+   Strictly adheres to DESIGN.md (Grayscale, Bold Outlines, Clean Grid, Inter)
+   ========================================================================== */
+
+/* Top Navigation Bar */
+.cb-nav-wrapper {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #d1d5db !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+}
+
+.cb-nav-inner {
+  max-width: 1280px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  height: 64px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 24px !important;
+}
+
+/* Brand Logo (Pure Typography, No Emojis) */
+.cb-logo {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 22px !important;
+  color: #000000 !important;
+  text-decoration: none !important;
+  letter-spacing: -0.02em !important;
+  flex-shrink: 0 !important;
+}
+
+.cb-logo:hover {
+  opacity: 0.85 !important;
+}
+
+/* Nav Links */
+.cb-nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  height: 64px !important;
+}
+
+.cb-nav-link {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #4b5563 !important;
+  text-decoration: none !important;
+  padding: 0 14px !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  border-bottom: 2px solid transparent !important;
+  transition: color 0.15s ease, border-color 0.15s ease !important;
+}
+
+.cb-nav-link:hover {
+  color: #000000 !important;
+}
+
+.cb-nav-link.active {
+  color: #000000 !important;
+  font-weight: 700 !important;
+  border-bottom-color: #000000 !important;
+}
+
+/* Right Section */
+.cb-nav-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Search Bar (Clean Wireframe Input) */
+.cb-search-bar {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 360px !important;
+}
+
+.cb-search-input {
+  width: 100% !important;
+  background-color: #f9fafb !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 4px !important;
+  padding: 8px 12px 8px 36px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  color: #111827 !important;
+  outline: none !important;
+  transition: border-color 0.15s ease, background-color 0.15s ease !important;
+}
+
+.cb-search-input:focus {
+  border-color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+.cb-search-icon {
+  position: absolute !important;
+  left: 10px !important;
+  color: #6b7280 !important;
+  font-size: 18px !important;
+  pointer-events: none !important;
+}
+
+/* Ask AI Button (Clean Wireframe Container Button) */
+.cb-btn-ai {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background-color: #f3f4f6 !important;
+  border: 1px solid #d1d5db !important;
+  color: #000000 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 8px 14px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease !important;
+}
+
+.cb-btn-ai:hover {
+  background-color: #e5e7eb !important;
+  border-color: #000000 !important;
+}
+
+/* Account Button (Primary Black Button) */
+.cb-btn-account {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background-color: #000000 !important;
+  border: 1px solid #000000 !important;
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  transition: opacity 0.15s ease !important;
+}
+
+.cb-btn-account:hover {
+  opacity: 0.85 !important;
+}
+
+/* ==========================================================================
+   FLOATING AI ASSISTANT WIDGET (Clean Low-Fidelity Wireframe Modal/Drawer)
+   ========================================================================== */
+#cb-floating-ai-trigger {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 9999 !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 9999px !important;
+  padding: 10px 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+  user-select: none !important;
+}
+
+#cb-floating-ai-trigger:hover {
+  border-color: #000000 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+#cb-floating-ai-widget {
+  position: fixed !important;
+  bottom: 80px !important;
+  right: 24px !important;
+  width: 380px !important;
+  max-width: calc(100vw - 32px) !important;
+  height: 520px !important;
+  max-height: calc(100vh - 120px) !important;
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15) !important;
+  z-index: 9999 !important;
+  display: none !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+#cb-floating-ai-widget.open {
+  display: flex !important;
+}
+
+.cb-chat-header {
+  background: #f9fafb !important;
+  border-bottom: 1px solid #d1d5db !important;
+  padding: 12px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-shrink: 0 !important;
+}
+
+.cb-chat-title {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.cb-chat-body {
+  flex: 1 !important;
+  padding: 14px !important;
+  overflow-y: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  background: #ffffff !important;
+}
+
+.cb-msg {
+  max-width: 88% !important;
+  padding: 10px 12px !important;
+  border-radius: 4px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+.cb-msg.ai {
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+  border: 1px solid #d1d5db !important;
+  align-self: flex-start !important;
+}
+
+.cb-msg.user {
+  background: #000000 !important;
+  color: #ffffff !important;
+  align-self: flex-end !important;
+}
+
+.cb-suggestion-chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-top: 4px !important;
+}
+
+.cb-chip {
+  background: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  color: #374151 !important;
+  padding: 4px 10px !important;
+  border-radius: 4px !important;
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.cb-chip:hover {
+  border-color: #000000 !important;
+  color: #000000 !important;
+  background: #f9fafb !important;
+}
+
+.cb-chat-footer {
+  padding: 10px 12px !important;
+  background: #f9fafb !important;
+  border-top: 1px solid #d1d5db !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-shrink: 0 !important;
+}
+
+.cb-chat-input {
+  flex: 1 !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 4px !important;
+  padding: 8px 10px !important;
+  font-size: 13px !important;
+  outline: none !important;
+  font-family: inherit !important;
+  background: #ffffff !important;
+}
+
+.cb-chat-input:focus {
+  border-color: #000000 !important;
+}
+
+.cb-chat-send {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: none !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+}
+
+.cb-chat-send:hover {
+  opacity: 0.85 !important;
+}

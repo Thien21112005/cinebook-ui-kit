@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CineBook - Payment &amp; Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#848484",
+                      "outline-variant": "#cfc4c5",
+                      "secondary-fixed": "#dce2f3",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#191c1d",
+                      "surface-dim": "#d9dadb",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#4c4546",
+                      "tertiary": "#000000",
+                      "surface-container-high": "#e7e8e9",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#7e7576",
+                      "on-primary-container": "#848484",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "inverse-surface": "#2e3132",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#404754",
+                      "secondary": "#585f6c",
+                      "on-primary-fixed": "#1b1b1b",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "surface-container": "#edeeef",
+                      "on-secondary-container": "#5e6572",
+                      "surface-variant": "#e1e3e4",
+                      "tertiary-container": "#1b1b1b",
+                      "primary": "#000000",
+                      "on-secondary-fixed": "#151c27",
+                      "primary-fixed": "#e2e2e2",
+                      "on-primary-fixed-variant": "#474747",
+                      "on-primary": "#ffffff",
+                      "surface": "#f8f9fa",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "secondary-fixed-dim": "#c0c7d6",
+                      "surface-container-low": "#f3f4f5",
+                      "surface-container-highest": "#e1e3e4",
+                      "error": "#ba1a1a",
+                      "primary-container": "#1b1b1b",
+                      "background": "#f8f9fa",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-background": "#191c1d",
+                      "secondary-container": "#dce2f3",
+                      "surface-bright": "#f8f9fa",
+                      "surface-tint": "#5e5e5e",
+                      "inverse-primary": "#c6c6c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sidebar-width": "240px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "mono-sm": [
+                              "Courier Prime"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "mono-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface text-primary text-body-md font-body-md docked full-width top-0 border-b border-outline-variant flat no shadows transition-colors duration-200"><div class="max-w-container-max mx-auto px-gutter flex justify-between items-center h-16"><div class="flex items-center gap-8"><a class="text-headline-md font-headline-md font-bold text-primary" href="#">CineBook</a><div class="hidden md:flex gap-6"><a class="text-secondary hover:bg-surface-container-low px-3 py-2 rounded-sm transition-colors duration-200" href="#">Movies</a><a class="text-secondary hover:bg-surface-container-low px-3 py-2 rounded-sm transition-colors duration-200" href="#">Offers</a></div></div><div class="flex items-center gap-4 ml-auto"><div class="hidden md:block relative max-w-[400px] w-[400px]"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-label-md">search</span><input class="border border-outline-variant rounded-sm pl-9 pr-3 py-2 bg-surface text-body-sm focus:outline-none focus:border-primary w-full" placeholder="Search..." type="text"></div><a class="text-secondary hover:bg-surface-container-low px-3 py-2 rounded-sm transition-colors duration-200 flex items-center gap-2" href="#"><span class="material-symbols-outlined text-label-md">account_circle</span><span class="hidden md:inline">Account</span></a></div></div></nav>
+<!-- Main Content -->
+<main class="flex-grow max-w-container-max mx-auto px-gutter py-8 w-full">
+<div class="mb-8">
+<a class="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors text-body-sm font-body-sm" href="#">
+<span class="material-symbols-outlined text-label-md">arrow_back</span>
+                Back to Seat Selection
+            </a>
+<h1 class="text-display-lg font-display-lg mt-4 text-on-surface">Secure Checkout</h1>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Order Summary -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<section class="bg-surface-container-lowest border border-outline-variant p-6 rounded-sm">
+<h2 class="text-headline-sm font-headline-sm mb-6 border-b border-outline-variant pb-4">Order Summary</h2>
+<div class="flex gap-4 mb-6">
+<div class="w-24 h-36 bg-surface-variant border border-outline-variant shrink-0 flex items-center justify-center relative overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A cinematic poster for a highly anticipated sci-fi thriller movie, featuring deep space, stark lighting, and bold typography. Minimalist, high contrast, analytical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAZJ8VOOkaIdZiSz2ciU6EY_VD_au8MiluIOZW1L7nrHB1_Z0bCnUIrigMU3zBOYX1KZcSh4n5-IX0Fx4Bpx1MPAanNaQcKzr5giQSdgj-i99y8rNCHO7LBUvUEnswdyrLFXKikVW-2ispk2h7EPgT1uV-ZdFDfKrfARafWhJ_dDMoOSaqG2XQgC1xc-EkaNPWNDsywlPEGjopOXK6wORWn_Z3xPChE9ZeIqORSs0SDPjsLER7ojbPnA">
+</div>
+<div class="flex flex-col">
+<h3 class="text-label-md font-label-md text-on-surface">The Quantum Paradox</h3>
+<p class="text-body-sm font-body-sm text-secondary mt-1">IMAX 2D • English</p>
+<div class="mt-auto grid grid-cols-2 gap-x-4 gap-y-2">
+<div>
+<span class="text-label-sm font-label-sm text-secondary block">Date</span>
+<span class="text-body-sm font-body-sm text-on-surface">Oct 24, 2024</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary block">Time</span>
+<span class="text-body-sm font-body-sm text-on-surface">19:30</span>
+</div>
+<div class="col-span-2">
+<span class="text-label-sm font-label-sm text-secondary block">Cinema</span>
+<span class="text-body-sm font-body-sm text-on-surface">Cineplex Downtown, Screen 4</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-4 mb-4">
+<div class="flex justify-between items-center mb-2">
+<span class="text-body-sm font-body-sm text-on-surface">Tickets (2x Adult)</span>
+<span class="text-body-sm font-body-sm text-on-surface">$36.00</span>
+</div>
+<div class="text-label-sm font-label-sm text-secondary mb-4">
+                            Seats: G12, G13 (VIP Recliner)
+                        </div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-body-sm font-body-sm text-on-surface">Combos (1x Large Popcorn, 2x Soda)</span>
+<span class="text-body-sm font-body-sm text-on-surface">$14.50</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-body-sm font-body-sm text-on-surface">Convenience Fee</span>
+<span class="text-body-sm font-body-sm text-on-surface">$2.50</span>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-4 flex justify-between items-end">
+<span class="text-headline-sm font-headline-sm text-on-surface">Total Payable</span>
+<span class="text-headline-md font-headline-md text-primary">$53.00</span>
+</div>
+</section>
+<section class="bg-surface-container-lowest border border-outline-variant p-6 rounded-sm">
+<h2 class="text-label-md font-label-md mb-4 text-on-surface">Promo Code</h2>
+<div class="flex gap-2">
+<input class="flex-grow border border-outline-variant rounded-sm px-3 py-2 bg-surface text-body-sm focus:outline-none focus:border-primary placeholder:text-outline" placeholder="Enter code here" type="text">
+<button class="bg-surface-container-low border border-outline-variant px-4 py-2 text-label-md font-label-md text-on-surface hover:bg-surface-variant transition-colors rounded-sm">Apply</button>
+</div>
+</section>
+</div>
+<!-- Right Column: Payment Method -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<section class="bg-surface-container-lowest border border-outline-variant p-6 rounded-sm h-full flex flex-col">
+<h2 class="text-headline-sm font-headline-sm mb-6 border-b border-outline-variant pb-4">Payment Method</h2>
+<div class="flex flex-col gap-4 flex-grow">
+<!-- Credit Card -->
+<label class="block cursor-pointer group">
+<div class="border-2 border-primary p-4 rounded-sm bg-surface flex flex-col gap-4 transition-colors">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<input checked="" class="w-4 h-4 text-primary focus:ring-primary border-outline-variant" name="payment_method" type="radio" value="card">
+<span class="text-label-md font-label-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-label-md">credit_card</span>
+                                            Credit / Debit Card
+                                        </span>
+</div>
+<div class="flex gap-2 opacity-60">
+<span class="material-symbols-outlined text-label-md">payments</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-2">
+<div class="col-span-2">
+<label class="block text-label-sm font-label-sm text-secondary mb-1">Card Number</label>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-surface-container-lowest text-body-sm focus:outline-none focus:border-primary placeholder:text-outline font-mono-sm" placeholder="0000 0000 0000 0000" type="text">
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-secondary mb-1">Expiry Date</label>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-surface-container-lowest text-body-sm focus:outline-none focus:border-primary placeholder:text-outline font-mono-sm" placeholder="MM/YY" type="text">
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-secondary mb-1">CVV</label>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-surface-container-lowest text-body-sm focus:outline-none focus:border-primary placeholder:text-outline font-mono-sm" placeholder="***" type="password">
+</div>
+<div class="col-span-2">
+<label class="block text-label-sm font-label-sm text-secondary mb-1">Name on Card</label>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 bg-surface-container-lowest text-body-sm focus:outline-none focus:border-primary placeholder:text-outline" placeholder="John Doe" type="text">
+</div>
+</div>
+</div>
+</label>
+<!-- E-Wallet -->
+<label class="block cursor-pointer group">
+<div class="border border-outline-variant p-4 rounded-sm hover:bg-surface-container-low transition-colors flex items-center justify-between">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 text-primary focus:ring-primary border-outline-variant" name="payment_method" type="radio" value="ewallet">
+<span class="text-label-md font-label-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-label-md">account_balance_wallet</span>
+                                        E-Wallet
+                                    </span>
+</div>
+</div>
+</label>
+<!-- Bank Transfer -->
+<label class="block cursor-pointer group">
+<div class="border border-outline-variant p-4 rounded-sm hover:bg-surface-container-low transition-colors flex items-center justify-between">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 text-primary focus:ring-primary border-outline-variant" name="payment_method" type="radio" value="bank">
+<span class="text-label-md font-label-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-label-md">account_balance</span>
+                                        Bank Transfer
+                                    </span>
+</div>
+</div>
+</label>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant">
+<label class="flex items-start gap-3 mb-6 cursor-pointer">
+<input class="mt-1 w-4 h-4 text-primary focus:ring-primary border-outline-variant rounded-sm" type="checkbox">
+<span class="text-body-sm font-body-sm text-secondary">
+                                I agree to the <a class="text-on-surface underline hover:text-primary" href="#">Terms and Conditions</a> and acknowledge the <a class="text-on-surface underline hover:text-primary" href="#">Privacy Policy</a>. All ticket sales are final.
+                            </span>
+</label>
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded-sm text-label-md font-label-md hover:bg-inverse-surface transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-label-md">lock</span>
+                            Complete Payment - $53.00
+                        </button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container text-secondary text-body-sm font-body-sm w-full py-8 px-gutter flex flex-col items-center gap-4 mt-auto border-t border-outline-variant flat no shadows transition-opacity duration-200">
+<div class="text-label-md font-label-md font-bold text-on-surface">CineBook</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-secondary hover:text-primary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-secondary hover:text-primary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="text-secondary hover:text-primary transition-opacity duration-200" href="#">Contact Us</a>
+<a class="text-secondary hover:text-primary transition-opacity duration-200" href="#">About</a>
+</div>
+<div class="">© 2024 CineBook Systems. All rights reserved.</div>
+</footer>
+
+
+<script src="../cinebook-shared.js"></script>
+</body></html>

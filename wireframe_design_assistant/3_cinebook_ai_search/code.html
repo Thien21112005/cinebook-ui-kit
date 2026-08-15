@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CineBook - AI Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#5e5e5e",
+                        "surface-dim": "#d9dadb",
+                        "inverse-primary": "#c6c6c6",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container": "#edeeef",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary": "#000000",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary-fixed-variant": "#404754",
+                        "surface-container-low": "#f3f4f5",
+                        "on-error": "#ffffff",
+                        "outline": "#7e7576",
+                        "background": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed-variant": "#474747",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-secondary-container": "#5e6572",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#cfc4c5",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "on-secondary-fixed": "#151c27",
+                        "primary-container": "#1b1b1b",
+                        "primary": "#000000",
+                        "on-primary-container": "#848484",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-container": "#1b1b1b",
+                        "secondary-container": "#dce2f3",
+                        "secondary-fixed": "#dce2f3",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#848484",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-primary-fixed": "#1b1b1b",
+                        "secondary": "#585f6c",
+                        "surface-bright": "#f8f9fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "sidebar-width": "240px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "mono-sm": ["Courier Prime"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Minimalist toggle switch styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: black;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: black;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #e2e8f0;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            width: 3rem;
+            height: 1.5rem;
+            background-color: #e2e8f0;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .toggle-label::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        .toggle-checkbox:checked + .toggle-label::after {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- TopNavBar Component -->
+<nav class="bg-surface dark:bg-surface w-full top-0 border-b border-outline-variant dark:border-outline flat no shadows">
+<div class="max-w-container-max mx-auto px-gutter flex justify-between items-center h-16"><!-- Left Side: Brand + Nav Links -->
+<div class="flex items-center gap-8">
+    <a class="text-headline-md font-headline-md font-bold text-primary dark:text-on-surface" href="#">
+        CineBook
+    </a>
+    <div class="hidden md:flex gap-6">
+        <a class="text-secondary dark:text-on-secondary-fixed-variant hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#">
+            Movies
+        </a>
+        <a class="text-secondary dark:text-on-secondary-fixed-variant hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#">
+            Offers
+        </a>
+    </div>
+</div>
+
+<!-- Right Side: Search, AI, and Account -->
+<div class="flex items-center gap-4">
+    <!-- Search Bar -->
+    <div class="hidden lg:flex items-center relative w-[400px]">
+        <span class="material-symbols-outlined absolute left-3 text-outline" data-icon="search">search</span>
+        <input type="text" placeholder="Search movies..." class="w-full pl-10 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded-full text-body-sm focus:outline-none focus:border-primary">
+    </div>
+    
+    <!-- Ask AI Button -->
+    <button class="hidden sm:flex items-center gap-2 px-4 py-1.5 bg-primary text-on-primary rounded-full text-label-md hover:bg-surface-tint transition-colors">
+        <span class="material-symbols-outlined text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+        Ask AI
+    </button>
+
+    <!-- Account Action -->
+    <a class="flex items-center gap-2 text-body-md font-body-md text-secondary hover:text-primary transition-colors duration-200" href="#">
+        <span class="material-symbols-outlined" data-icon="person">person</span>
+        <span class="hidden md:inline">Account</span>
+    </a>
+    
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden text-primary p-2">
+        <span class="material-symbols-outlined" data-icon="menu">menu</span>
+    </button>
+</div></div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-8">
+<!-- Search Section Header -->
+<div class="mb-12 text-center max-w-3xl mx-auto">
+<h1 class="text-display-lg font-display-lg text-primary mb-4">Discover Your Next Watch</h1>
+<p class="text-body-lg font-body-lg text-secondary">Use natural language to find exactly what you're in the mood for. Describe the vibe, the plot, or the feeling.</p>
+</div>
+<!-- Search Input Area -->
+<div class="max-w-4xl mx-auto bg-surface border border-outline-variant p-6 rounded-lg mb-12">
+<div class="relative mb-6">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-2xl" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-body-lg font-body-lg text-primary placeholder:text-outline rounded-sm py-4 pl-14 pr-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="e.g. &quot;gentle action movies for family&quot; or &quot;a visually stunning sci-fi with a sad ending&quot;" type="text">
+</div>
+<!-- Search Controls -->
+<div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+<!-- Toggle -->
+<div class="flex items-center gap-3">
+<span class="text-body-sm font-body-sm text-secondary">Exact Search</span>
+<div class="relative inline-block w-12 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="ai-toggle" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer" for="ai-toggle"></label>
+</div>
+<span class="text-body-sm font-body-sm text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+                        AI-Powered
+                    </span>
+</div>
+<!-- Action Buttons -->
+<div class="flex gap-4 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-6 py-2 bg-surface-container-lowest border border-outline-variant text-primary text-label-md font-label-md hover:bg-surface-container-low transition-colors rounded-sm">
+                        Clear
+                    </button>
+<button class="flex-1 sm:flex-none px-8 py-2 bg-primary text-on-primary text-label-md font-label-md hover:bg-surface-tint transition-colors rounded-sm flex items-center justify-center gap-2">
+                        Search
+                    </button>
+</div>
+</div>
+</div>
+<!-- Active Filters / Context (AI Suggested) -->
+<div class="max-w-4xl mx-auto mb-8 flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant text-label-sm font-label-sm text-primary rounded-sm flex items-center gap-1">
+                Family Friendly
+                <button class="hover:text-error"><span class="material-symbols-outlined text-[14px]" data-icon="close">close</span></button>
+</span>
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant text-label-sm font-label-sm text-primary rounded-sm flex items-center gap-1">
+                Light Action
+                <button class="hover:text-error"><span class="material-symbols-outlined text-[14px]" data-icon="close">close</span></button>
+</span>
+<span class="px-3 py-1 border border-outline-variant border-dashed text-label-sm font-label-sm text-secondary rounded-sm flex items-center gap-1 hover:bg-surface-container-low cursor-pointer">
+<span class="material-symbols-outlined text-[14px]" data-icon="add">add</span>
+                Add Constraint
+            </span>
+</div>
+<!-- Results Section -->
+<div class="mb-6 flex justify-between items-end border-b border-outline-variant pb-4">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-primary">Top Matches</h2>
+<p class="text-body-sm font-body-sm text-secondary">Based on semantic relevance to your query</p>
+</div>
+<!-- View Toggle -->
+<div class="hidden sm:flex border border-outline-variant rounded-sm overflow-hidden">
+<button class="p-2 bg-surface-container-low text-primary border-r border-outline-variant" title="Grid View">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-2 bg-surface text-secondary hover:bg-surface-container-low transition-colors" title="List View">
+<span class="material-symbols-outlined" data-icon="view_list">view_list</span>
+</button>
+</div>
+</div>
+<!-- Movie Grid (Bento/Asymmetric style for top results) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Result 1: High Relevance (Spans more columns) -->
+<article class="col-span-1 md:col-span-8 bg-surface-container-lowest border-2 border-primary flex flex-col sm:flex-row rounded-sm overflow-hidden group">
+<div class="w-full sm:w-2/5 aspect-[2/3] sm:aspect-auto sm:h-full relative bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="A cinematic movie poster placeholder showing a stylized, high-contrast black and white illustration of a family running towards a glowing, futuristic portal. The lighting is dramatic but soft, indicating a lighthearted sci-fi adventure suitable for all ages. Minimalist design with strong geometric framing." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCt_BZ2z56o1ekw98NntV886rqNWmucZ7KVyqx2cKApRNjh12bu_bwAxY-ma3BBd-qiIJYWn-bpK2R9mWDbAY_Ctxm6WxC3GXB21tN4PwbZGbCkcY1ucy0ahP4kdmVSEbOqJwCor9C7TyJIM5dFTKKkV_ZdDZKCQmwRywCCWsF-x0Ve3Hchx3uZhKaWZ1H7JTt7H51cxsqLO-51Z1BvuGp9BZtJYxH15mH5InNnB3Xtb17RQI75FSjBIw')"></div>
+<div class="absolute top-2 left-2 bg-surface-container-lowest border border-outline px-2 py-1 text-label-sm font-label-sm text-primary flex items-center gap-1 rounded-sm shadow-sm">
+<span class="material-symbols-outlined filled-icon text-[14px] text-green-600" data-icon="star">star</span>
+                        98% Match
+                    </div>
+</div>
+<div class="p-6 flex flex-col justify-between flex-grow">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-md font-headline-md text-primary group-hover:underline cursor-pointer">The Journey Beyond</h3>
+<span class="px-2 py-1 border border-outline-variant text-mono-sm font-mono-sm text-secondary rounded-sm">PG</span>
+</div>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Adventure • Sci-Fi • Family</p>
+<div class="bg-surface-variant p-3 border-l-2 border-primary mb-4">
+<p class="text-body-sm font-body-sm text-primary">
+<span class="font-bold">Why this matches:</span> Features "gentle action" sequences driven by exploration rather than conflict. Highly rated for family viewing.
+                            </p>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant line-clamp-3 mb-6">
+                            When a mysterious artifact activates in their backyard, the Miller family is transported to a parallel world. To get home, they must navigate a landscape of bizarre creatures and gentle challenges that test their bonds.
+                        </p>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-primary text-on-primary py-2 px-4 text-label-md font-label-md rounded-sm hover:bg-surface-tint transition-colors text-center">
+                            Book Now
+                        </button>
+<button class="px-4 py-2 border border-outline text-primary hover:bg-surface-container-low transition-colors rounded-sm flex items-center justify-center" title="Add to Watchlist">
+<span class="material-symbols-outlined" data-icon="bookmark_add">bookmark_add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Result 2: Medium Relevance -->
+<article class="col-span-1 md:col-span-4 bg-surface-container-lowest border border-outline-variant flex flex-col rounded-sm overflow-hidden hover:border-primary transition-colors">
+<div class="w-full aspect-[2/3] relative bg-surface-container border-b border-outline-variant">
+<div class="w-full h-full bg-cover bg-center" data-alt="A minimalist movie poster placeholder showing a silhouette of a dog wearing a tiny superhero cape against a stark white background with subtle geometric shadows. The design implies a lighthearted, clean, action-comedy aesthetic suitable for a modern family film." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXPrZ4w7_VB9nH_jH6Kn1MTd5f92onbB7BTYGHOHtl6JRFc3NLlnMXVATwL491BB4vokv8jKS-283p_aKRgehyfvRbNS1N9DqGJ2zuKAAnhl1HrjPkOVhDQ5CND4Pxl3CWts516Z_mjeHTT8ODmblQOcivcQD7Ifu0DiRteYVKqVk6gD65HPmLHdyzWEjWW1fyKYsVU4pOADtB98pULuqyTNBDLSrSP_v1YcazOzZD5-eST-KN87Fa3g')"></div>
+<div class="absolute top-2 left-2 bg-surface-container-lowest border border-outline px-2 py-1 text-label-sm font-label-sm text-primary flex items-center gap-1 rounded-sm">
+<span class="material-symbols-outlined filled-icon text-[14px] text-green-600" data-icon="star_half">star_half</span>
+                        85% Match
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1 truncate hover:underline cursor-pointer">Canine Crusaders</h3>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Comedy • Action • Family</p>
+<div class="mt-auto">
+<button class="w-full bg-surface text-primary border border-outline-variant py-2 px-4 text-label-md font-label-md rounded-sm hover:border-primary transition-colors text-center">
+                            Book Now
+                        </button>
+</div>
+</div>
+</article>
+<!-- Secondary Grid Row -->
+<!-- Result 3 -->
+<article class="col-span-1 md:col-span-4 bg-surface-container-lowest border border-outline-variant flex flex-col rounded-sm overflow-hidden hover:border-primary transition-colors">
+<div class="w-full aspect-[2/3] relative bg-surface-container border-b border-outline-variant">
+<div class="w-full h-full bg-cover bg-center" data-alt="Movie poster placeholder depicting a stylized, abstract landscape of floating islands rendered in flat, low-fi geometric shapes. A tiny figure stands on the edge looking out. The color palette is strictly grayscale with stark white highlights, conveying a calm, imaginative fantasy setting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcGCQhTMiAsBBWFRCN0TUkTVfBHX1JrFjxVyH0oJJ7t8AxovIc74x_2-3zkkEhf_Y7_qg7A2SJAojfyZaznsq7SFPGOaJBKeUKrRhBVTuZi6HCpLsEwH-RLhJ2n2B05YJ4IPhQKGSG1-zkTmPsixEJYmVYIK4NHiR9W_mqdFTe6oAMZflckXMzMitdoMp1MqLs85esQr0UDTWeC2RNk-OmcWvagG67Z4KVdwCbCBClru8GuAyzLcfs5g')"></div>
+<div class="absolute top-2 left-2 bg-surface-container-lowest border border-outline px-2 py-1 text-label-sm font-label-sm text-primary flex items-center gap-1 rounded-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="star_outline">star_outline</span>
+                        72% Match
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1 truncate hover:underline cursor-pointer">Cloud Walkers</h3>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Fantasy • Adventure</p>
+<div class="mt-auto">
+<button class="w-full bg-surface text-primary border border-outline-variant py-2 px-4 text-label-md font-label-md rounded-sm hover:border-primary transition-colors text-center">
+                            Book Now
+                        </button>
+</div>
+</div>
+</article>
+<!-- Result 4 -->
+<article class="col-span-1 md:col-span-4 bg-surface-container-lowest border border-outline-variant flex flex-col rounded-sm overflow-hidden hover:border-primary transition-colors">
+<div class="w-full aspect-[2/3] relative bg-surface-container border-b border-outline-variant">
+<div class="w-full h-full bg-cover bg-center" data-alt="A minimalist movie poster placeholder showing a vintage bicycle leaning against a simple white brick wall. A stark shadow is cast diagonally across the frame. The design is highly structured, objective, and analytical, suggesting an indie slice-of-life film with subtle motion." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDTu19fqvvBizOMIzF6Dfd_A3mLLPa8Ob5rKsNYEWos0-CRJiT7GIAidkwb_5AJYG7EdHppO6Lcw4V8mDJLHmxc-0y_sjiPzTP48ACVPZpWUD1tk4Xm6TNuI0RbyVR3Zo5bGBxOACuoMryaKDcROTwHtM8AY9p3L2vGOUN1eD9AMBfkx7J9vML7trA9bvRa_WeBQyCRlxR44Tkn4l2qMoEhidv0goDzFumjW3gIa-iyNzhyHSbUkPJ06g')"></div>
+<div class="absolute top-2 left-2 bg-surface-container-lowest border border-outline px-2 py-1 text-label-sm font-label-sm text-primary flex items-center gap-1 rounded-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="star_outline">star_outline</span>
+                        68% Match
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1 truncate hover:underline cursor-pointer">Summer Wheels</h3>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Drama • Family</p>
+<div class="mt-auto">
+<button class="w-full bg-surface text-primary border border-outline-variant py-2 px-4 text-label-md font-label-md rounded-sm hover:border-primary transition-colors text-center">
+                            Book Now
+                        </button>
+</div>
+</div>
+</article>
+<!-- Semantic Explore Card -->
+<article class="col-span-1 md:col-span-4 bg-surface-container-low border border-outline-variant border-dashed flex flex-col justify-center items-center p-8 rounded-sm hover:bg-surface-container-high transition-colors cursor-pointer text-center group">
+<div class="w-16 h-16 rounded-full bg-surface border border-outline-variant flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="tune">tune</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Refine Search</h3>
+<p class="text-body-sm font-body-sm text-secondary mb-6">Not exactly what you wanted? Adjust parameters to guide the AI.</p>
+<button class="border border-primary text-primary px-4 py-2 text-label-md font-label-md rounded-sm hover:bg-primary hover:text-on-primary transition-colors">
+                    Advanced Filters
+                </button>
+</article>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container dark:bg-surface-container-highest w-full border-t border-outline-variant dark:border-outline flat no shadows mt-auto">
+<div class="w-full py-8 px-gutter flex flex-col items-center gap-4">
+<!-- Brand -->
+<div class="text-label-md font-label-md font-bold text-primary dark:text-on-surface">
+                CineBook
+            </div>
+<!-- Links -->
+<nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="text-secondary dark:text-on-secondary-fixed-variant text-body-sm font-body-sm hover:text-primary dark:hover:text-on-surface transition-opacity duration-200" href="#">
+                    Privacy Policy
+                </a>
+<a class="text-secondary dark:text-on-secondary-fixed-variant text-body-sm font-body-sm hover:text-primary dark:hover:text-on-surface transition-opacity duration-200" href="#">
+                    Terms of Service
+                </a>
+<a class="text-secondary dark:text-on-secondary-fixed-variant text-body-sm font-body-sm hover:text-primary dark:hover:text-on-surface transition-opacity duration-200" href="#">
+                    Contact Us
+                </a>
+<a class="text-secondary dark:text-on-secondary-fixed-variant text-body-sm font-body-sm hover:text-primary dark:hover:text-on-surface transition-opacity duration-200" href="#">
+                    About
+                </a>
+</nav>
+<!-- Copyright -->
+<div class="text-body-sm font-body-sm text-secondary dark:text-on-secondary-fixed-variant">
+                © 2024 CineBook Systems. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        // Simple toggle interaction logic visual feedback
+        document.getElementById('ai-toggle').addEventListener('change', function(e) {
+            const labelSpan = this.closest('div').nextElementSibling;
+            if(e.target.checked) {
+                labelSpan.classList.remove('text-secondary', 'font-normal');
+                labelSpan.classList.add('text-primary', 'font-bold');
+            } else {
+                labelSpan.classList.add('text-secondary', 'font-normal');
+                labelSpan.classList.remove('text-primary', 'font-bold');
+            }
+        });
+    </script>
+
+
+<script src="../cinebook-shared.js"></script>
+</body></html>

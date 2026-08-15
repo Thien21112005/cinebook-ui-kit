@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineBook Admin - User Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#5e6572",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#dce2f3",
+                        "surface-container": "#edeeef",
+                        "tertiary-fixed": "#e2e2e2",
+                        "outline-variant": "#cfc4c5",
+                        "secondary-fixed": "#dce2f3",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#848484",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#5e5e5e",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "primary": "#000000",
+                        "primary-container": "#1b1b1b",
+                        "on-surface": "#191c1d",
+                        "tertiary-container": "#1b1b1b",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "error-container": "#ffdad6",
+                        "surface": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e2e2e2",
+                        "on-primary-fixed-variant": "#474747",
+                        "outline": "#7e7576",
+                        "inverse-surface": "#2e3132",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-tertiary-container": "#848484",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary-fixed-variant": "#404754",
+                        "surface-bright": "#f8f9fa",
+                        "on-secondary-fixed": "#151c27",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed": "#1b1b1b",
+                        "inverse-primary": "#c6c6c6",
+                        "surface-variant": "#e1e3e4",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-error-container": "#93000a",
+                        "secondary": "#585f6c",
+                        "surface-dim": "#d9dadb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "sidebar-width": "240px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "mono-sm": ["Courier Prime"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "mono-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for data tables to maintain clean look */
+        .table-container::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .table-container::-webkit-scrollbar-track {
+            background: theme('colors.surface');
+        }
+        .table-container::-webkit-scrollbar-thumb {
+            background-color: theme('colors.outline-variant');
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar (Admin) -->
+<nav class="bg-surface-container-low text-primary text-label-md font-label-md docked sidebar-width left-0 h-full border-r border-outline-variant flat no shadows transition-all duration-200 fixed left-0 top-0 w-[240px] h-screen flex flex-col p-4 z-50">
+<!-- Header/Brand Area -->
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-outline flex items-center justify-center overflow-hidden shrink-0">
+<img alt="Staff Profile Picture" class="w-full h-full object-cover" data-alt="A minimalist low-fidelity icon depicting a generic user avatar outline. It uses bold outlines in deep black against a pristine white background. The style is objective, architectural, and devoid of shadows or gradients, suitable for an administrative management console." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc62kdvCg6aqgP6D9y-uLWUzrk_fTPSq23dU-RYA1pdWNCsWF6BpsS68kq0yTwHcAeL0Ytze4vzDBQk5ikbtYgdTTpKPsyFaJBFjiaSYcK1fuVN6cV1HzswWTLFXJ53IOvqLhFI3MYcHDOZYpoLbs6D9vTlls1QHkyPB0CmG7uC9UlfeMKIn7ny1gKsQQvKT-ArsOrdKm0C3DbDFVP7J97NkZuzZ6GRuobZPtknOIw-NxGUhtBUx2ypA"/>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-bold text-primary truncate">Admin Portal</span>
+<span class="text-label-sm font-label-sm text-secondary truncate">Management Console</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-1 flex-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-secondary hover:bg-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-secondary hover:bg-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">movie</span>
+                Movies
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-secondary hover:bg-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">badge</span>
+                Staff
+            </a>
+<!-- Active State for Users -->
+<a class="flex items-center gap-3 px-3 py-2 bg-primary text-on-primary rounded hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">group</span>
+                Users
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-secondary hover:bg-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">assessment</span>
+                Reports
+            </a>
+</div>
+<!-- Call to Action -->
+<div class="mt-auto pt-4">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-sm text-label-md font-label-md hover:bg-surface-tint transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Entry
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-[240px] flex flex-col min-h-screen relative w-[calc(100%-240px)]">
+<!-- Top App Bar (Contextual for Admin) -->
+<header class="h-16 border-b border-outline-variant bg-surface flex items-center justify-between px-6 sticky top-0 z-40">
+<h1 class="text-headline-md font-headline-md font-bold text-primary tracking-tight">User Management</h1>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">search</span>
+<input class="pl-10 pr-4 py-1.5 border border-outline-variant rounded-sm text-body-sm font-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-surface w-64 placeholder:text-on-primary-container" placeholder="Search users..." type="text"/>
+</div>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary text-[20px]">notifications</span>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-6 flex-1 flex flex-col gap-6">
+<!-- Controls & Filters Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 bg-surface-container-lowest border border-outline p-4 rounded-sm">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Filter Role:</span>
+<select class="border border-outline-variant rounded-sm text-body-sm font-body-sm py-1.5 pl-3 pr-8 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-surface cursor-pointer">
+<option value="all">All Roles</option>
+<option value="admin">Admin</option>
+<option value="staff">Staff</option>
+<option value="user">User</option>
+</select>
+</div>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Status:</span>
+<select class="border border-outline-variant rounded-sm text-body-sm font-body-sm py-1.5 pl-3 pr-8 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-surface cursor-pointer">
+<option value="all">All Status</option>
+<option value="active">Active</option>
+<option value="banned">Banned</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 bg-surface-container-lowest border border-primary text-primary px-4 py-1.5 rounded-sm text-label-md font-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export CSV
+                    </button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-surface-container-lowest border border-outline rounded-sm flex-1 flex flex-col overflow-hidden">
+<div class="overflow-x-auto table-container flex-1">
+<table class="w-full text-left border-collapse whitespace-nowrap">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline text-label-md font-label-md text-secondary">
+<th class="p-4 w-12 text-center">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary h-4 w-4 cursor-pointer" type="checkbox"/>
+</th>
+<th class="p-4 cursor-pointer hover:text-primary transition-colors group">
+<div class="flex items-center gap-1">
+                                        Name
+                                        <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span>
+</div>
+</th>
+<th class="p-4">Email</th>
+<th class="p-4">Role</th>
+<th class="p-4">Status</th>
+<th class="p-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary h-4 w-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="p-4 font-label-md text-primary">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border border-outline flex items-center justify-center bg-surface-container text-label-sm">JD</div>
+                                        John Doe
+                                    </div>
+</td>
+<td class="p-4 text-on-surface-variant font-mono-sm">john.doe@example.com</td>
+<td class="p-4">
+<span class="inline-block px-2 py-0.5 border border-outline rounded-sm text-label-sm font-label-sm text-secondary bg-surface">User</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-primary rounded-sm text-label-sm font-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary block"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface hover:text-primary text-secondary transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:border-error hover:text-error text-secondary transition-colors" title="Lock Account">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary h-4 w-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="p-4 font-label-md text-primary">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border border-outline flex items-center justify-center bg-surface-container text-label-sm">JS</div>
+                                        Jane Smith
+                                    </div>
+</td>
+<td class="p-4 text-on-surface-variant font-mono-sm">jane.admin@cinebook.sys</td>
+<td class="p-4">
+<span class="inline-block px-2 py-0.5 border border-primary bg-primary text-on-primary rounded-sm text-label-sm font-label-sm tracking-wide">ADMIN</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-primary rounded-sm text-label-sm font-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary block"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface hover:text-primary text-secondary transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:border-error hover:text-error text-secondary transition-colors" title="Lock Account">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 (Banned) -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group bg-surface-container-low/50">
+<td class="p-4 text-center">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary h-4 w-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="p-4 font-label-md text-secondary line-through opacity-70">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border border-outline flex items-center justify-center bg-surface-container text-label-sm">BW</div>
+                                        Bruce Wayne
+                                    </div>
+</td>
+<td class="p-4 text-on-surface-variant font-mono-sm opacity-70">bruce@got.ham</td>
+<td class="p-4 opacity-70">
+<span class="inline-block px-2 py-0.5 border border-outline rounded-sm text-label-sm font-label-sm text-secondary bg-surface">User</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-error bg-error-container text-error rounded-sm text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">block</span>
+                                        BANNED
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="px-3 py-1 flex items-center gap-1 border border-primary text-primary rounded-sm hover:bg-primary hover:text-on-primary transition-colors text-label-sm font-label-sm" title="Unlock Account">
+<span class="material-symbols-outlined text-[16px]">lock_open</span>
+                                            Unlock
+                                        </button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary h-4 w-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="p-4 font-label-md text-primary">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border border-outline flex items-center justify-center bg-surface-container text-label-sm">CK</div>
+                                        Clark Kent
+                                    </div>
+</td>
+<td class="p-4 text-on-surface-variant font-mono-sm">clark@dailyplanet.news</td>
+<td class="p-4">
+<span class="inline-block px-2 py-0.5 border border-outline rounded-sm text-label-sm font-label-sm text-secondary bg-surface-container-highest">Staff</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-primary rounded-sm text-label-sm font-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary block"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface hover:text-primary text-secondary transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:border-error hover:text-error text-secondary transition-colors" title="Lock Account">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary h-4 w-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="p-4 font-label-md text-primary">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border border-outline flex items-center justify-center bg-surface-container text-label-sm">DP</div>
+                                        Diana Prince
+                                    </div>
+</td>
+<td class="p-4 text-on-surface-variant font-mono-sm">diana@themyscira.gov</td>
+<td class="p-4">
+<span class="inline-block px-2 py-0.5 border border-outline rounded-sm text-label-sm font-label-sm text-secondary bg-surface">User</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-primary rounded-sm text-label-sm font-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary block"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface hover:text-primary text-secondary transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:border-error hover:text-error text-secondary transition-colors" title="Lock Account">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="border-t border-outline-variant bg-surface-container-lowest p-4 flex items-center justify-between text-body-sm text-secondary">
+<div>Showing 1 to 5 of 124 users</div>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface-container-low transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-primary bg-primary text-on-primary rounded-sm text-label-sm font-label-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface-container-low transition-colors text-label-sm font-label-sm">2</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface-container-low transition-colors text-label-sm font-label-sm">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface-container-low transition-colors text-label-sm font-label-sm">25</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

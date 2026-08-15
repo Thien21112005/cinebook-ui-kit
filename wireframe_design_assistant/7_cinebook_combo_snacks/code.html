@@ -1,0 +1,447 @@
+﻿<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CineBook - Combo &amp; Snacks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#848484",
+                      "outline-variant": "#cfc4c5",
+                      "secondary-fixed": "#dce2f3",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#191c1d",
+                      "surface-dim": "#d9dadb",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#4c4546",
+                      "tertiary": "#000000",
+                      "surface-container-high": "#e7e8e9",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#7e7576",
+                      "on-primary-container": "#848484",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "inverse-surface": "#2e3132",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#404754",
+                      "secondary": "#585f6c",
+                      "on-primary-fixed": "#1b1b1b",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "surface-container": "#edeeef",
+                      "on-secondary-container": "#5e6572",
+                      "surface-variant": "#e1e3e4",
+                      "tertiary-container": "#1b1b1b",
+                      "primary": "#000000",
+                      "on-secondary-fixed": "#151c27",
+                      "primary-fixed": "#e2e2e2",
+                      "on-primary-fixed-variant": "#474747",
+                      "on-primary": "#ffffff",
+                      "surface": "#f8f9fa",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "secondary-fixed-dim": "#c0c7d6",
+                      "surface-container-low": "#f3f4f5",
+                      "surface-container-highest": "#e1e3e4",
+                      "error": "#ba1a1a",
+                      "primary-container": "#1b1b1b",
+                      "background": "#f8f9fa",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-background": "#191c1d",
+                      "secondary-container": "#dce2f3",
+                      "surface-bright": "#f8f9fa",
+                      "surface-tint": "#5e5e5e",
+                      "inverse-primary": "#c6c6c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sidebar-width": "240px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "mono-sm": [
+                              "Courier Prime"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "mono-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased">
+<!-- TopNavBar -->
+<header class="bg-surface text-primary font-body-md docked full-width top-0 flat no shadows transition-colors duration-200 z-50 sticky">
+<div class="max-w-container-max mx-auto px-gutter flex justify-between items-center h-16"><div class="flex items-center gap-8">
+  <a class="text-headline-md font-headline-md font-bold text-primary tracking-tight" href="#">CineBook</a>
+  <nav class="hidden md:flex items-center gap-6">
+    <a class="text-secondary hover:bg-surface-container-low transition-colors duration-200 px-2 py-1 rounded" href="#">Movies</a>
+    <a class="text-primary font-bold border-b-2 border-primary hover:bg-surface-container-low transition-colors duration-200 px-2 py-1" href="#">Offers</a>
+  </nav>
+</div>
+<div class="flex items-center gap-4 ml-auto">
+  <div class="hidden md:flex items-center relative w-[400px]">
+    <span class="material-symbols-outlined absolute left-3 text-on-surface-variant z-10" data-icon="search">search</span>
+    <input class="bg-surface-container-low border border-outline-variant rounded-sm pl-10 pr-4 py-2 text-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full transition-all" placeholder="Search movies..." type="text">
+  </div>
+  <button class="flex items-center gap-2 text-body-sm font-label-md text-primary hover:bg-surface-container-low px-3 py-2 rounded-sm transition-colors border border-transparent">
+    <span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+    <span class="hidden sm:inline">Account</span>
+  </button>
+</div></div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto flex flex-col md:flex-row items-stretch">
+<!-- Left Column: Combo & Snacks Grid -->
+<div class="flex-grow p-gutter pt-8">
+<div class="mb-8">
+<h1 class="text-display-lg font-display-lg text-primary mb-2">Enhance Your Experience</h1>
+<p class="text-body-lg font-body-lg text-secondary">Pre-order combos and snacks to skip the queue.</p>
+</div>
+<!-- Bento Grid Layout for Snacks -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1: Solo Combo -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 flex flex-col h-full group hover:bg-surface-container-low transition-colors duration-200">
+<div class="aspect-video w-full bg-surface-container-high mb-4 border border-outline-variant overflow-hidden relative">
+<img class="object-cover w-full h-full mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-500" data-alt="A meticulously styled cinematic photograph of a classic solo movie theater combo. A large bucket of golden buttery popcorn sits next to a tall, icy fountain drink with a red straw. The items are placed on a sleek, dark granite counter. The lighting is low-key, dramatic, and moody, evoking a premium cinema experience. The overall aesthetic is clean, minimalist, and appetizing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk_M7kDvmEq_LHWf1o41z4ehLSNUu1pEnnt78xZDQWry-pIWNLHw1o05TZuvhBqiXbixr6svLaLJRyZVUcWzRACwdyEldfxCgM0xyR-S7StsQIujWJPN7ZceS8IrLI-HDtVJSRBh7vDCqr0zqSk2GgKa-3PghzILCCe9y9LPg4u24G_FmGHZLS7RFYq6nbhju79ZoeSd0mrWoCxNgDiVAqm5YE02jn7m5yKKAbTHKn71KFihqJ-hbsrA">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-sm font-headline-sm text-primary">Solo Combo</h3>
+<span class="text-label-md font-label-md text-primary bg-surface-container px-2 py-1 border border-outline-variant">$12.50</span>
+</div>
+<p class="text-body-sm font-body-sm text-secondary mb-4">1x Regular Popcorn, 1x Regular Drink</p>
+</div>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant pt-4">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Quantity</span>
+<div class="flex items-center gap-3 border border-outline-variant bg-surface-container-lowest p-1">
+<button aria-label="Decrease quantity" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="text-label-md font-label-md text-primary w-4 text-center">1</span>
+<button aria-label="Increase quantity" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Couple Combo -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 flex flex-col h-full group hover:bg-surface-container-low transition-colors duration-200">
+<div class="aspect-video w-full bg-surface-container-high mb-4 border border-outline-variant overflow-hidden relative">
+<img class="object-cover w-full h-full mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-500" data-alt="A meticulously styled cinematic photograph of a couple's movie theater combo. One extra-large bucket of golden buttery popcorn sits between two tall, icy fountain drinks with red straws. The items are placed on a sleek, dark granite counter. The lighting is low-key, dramatic, and moody, evoking a premium cinema experience. The overall aesthetic is clean, minimalist, and appetizing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs_pJgHqwHmpdpmSYZJ-DHfIcWsS7OfTjQluld17tG6TigMoI3TEdhpXJ0uBmWmOLK_pxLXvXRjR-M00is1D1H63bj4BZHhuTWH-yvJso2r2PQCxYK1vuh9l1FCb6FUvNKobD6cAH32LoCq2ZUaP_SkptOXASBFz5rjBjI_OeRfqEehskfVZFfzNsLQv6EjAYs9xubDaz_1ivdaa6SuCgUjZ9swRK9afnij18FdnJ9NVlD9MJAcJpJ_Q">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-sm font-headline-sm text-primary">Couple Combo</h3>
+<span class="text-label-md font-label-md text-primary bg-surface-container px-2 py-1 border border-outline-variant">$22.00</span>
+</div>
+<p class="text-body-sm font-body-sm text-secondary mb-4">1x Large Popcorn, 2x Regular Drinks</p>
+</div>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant pt-4">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Quantity</span>
+<div class="flex items-center gap-3 border border-outline-variant bg-surface-container-lowest p-1">
+<button aria-label="Decrease quantity" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="text-label-md font-label-md text-primary w-4 text-center">0</span>
+<button aria-label="Increase quantity" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Family Pack -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 flex flex-col h-full group hover:bg-surface-container-low transition-colors duration-200">
+<div class="aspect-video w-full bg-surface-container-high mb-4 border border-outline-variant overflow-hidden relative">
+<img class="object-cover w-full h-full mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-500" data-alt="A meticulously styled cinematic photograph of a family movie theater combo. Two large buckets of golden buttery popcorn sit alongside four tall, icy fountain drinks with red straws and a box of chocolate candies. The items are placed on a sleek, dark granite counter. The lighting is low-key, dramatic, and moody, evoking a premium cinema experience. The overall aesthetic is clean, minimalist, and appetizing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYPFIz2naEom3sguO0hO5nKBHFFSMpDSvpU961dZ8x7gjfWHFOGqTdbhCPJIfy48c4RUZS-915gVzyARV2oy-UZehuyAOmWbMS1eMaKs5m7bYOSTS9_WvIVF9bUVyTf_fyq6ON2bJAk8T828xuSPblYYf1mXEi_omSSj5OGWQvkpzHGGOpgE6IfNzPwj9WVgs-ztbMI0OKegn0ytOiHJfOLcrIfLeFuwB1FHKGKaRp41GK2zQz5yOzdQ">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-sm font-headline-sm text-primary">Family Pack</h3>
+<span class="text-label-md font-label-md text-primary bg-surface-container px-2 py-1 border border-outline-variant">$38.50</span>
+</div>
+<p class="text-body-sm font-body-sm text-secondary mb-4">2x Large Popcorn, 4x Regular Drinks, 1x Candy Box</p>
+</div>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant pt-4">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Quantity</span>
+<div class="flex items-center gap-3 border border-outline-variant bg-surface-container-lowest p-1">
+<button aria-label="Decrease quantity" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="text-label-md font-label-md text-primary w-4 text-center">0</span>
+<button aria-label="Increase quantity" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4: Nacho Supreme -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 flex flex-col h-full group hover:bg-surface-container-low transition-colors duration-200">
+<div class="aspect-video w-full bg-surface-container-high mb-4 border border-outline-variant overflow-hidden relative">
+<img class="object-cover w-full h-full mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-500" data-alt="A meticulously styled cinematic photograph of a plate of supreme nachos in a movie theater setting. Crisp tortilla chips are piled high, covered in melting cheddar cheese sauce, jalapeños, and a dollop of sour cream. The dish sits on a sleek, dark granite counter. The lighting is low-key, dramatic, and moody, evoking a premium cinema experience. The overall aesthetic is clean, minimalist, and appetizing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN3zl1AIB0gkuqLigC4MZaUhkGunaS9wDxrrIW5GE43IUY8ywz6J2J3eACr3stN0td0AY2N9uTo8WUnYXVZUZpBauAzDzZx0n4TDrHzsDw3NifST8rzoTkkvhC9e7DqyRUdwrNBdVSMHsD6KNHcPJWiHHEGbHQRvewQi26JGelLl7iUFo7uEkJU6Vo__Y6rGeteI-39n873PWU3Qq027d5_6hRA_qKrVdNYuq0_YcxMU7qWNVWsYgiLQ">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-sm font-headline-sm text-primary">Nacho Supreme</h3>
+<span class="text-label-md font-label-md text-primary bg-surface-container px-2 py-1 border border-outline-variant">$9.00</span>
+</div>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Crispy chips with melted cheese, jalapeños, and salsa.</p>
+</div>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant pt-4">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Quantity</span>
+<div class="flex items-center gap-3 border border-outline-variant bg-surface-container-lowest p-1">
+<button aria-label="Decrease quantity" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="text-label-md font-label-md text-primary w-4 text-center">0</span>
+<button aria-label="Increase quantity" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 5: Candy Assortment -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 flex flex-col h-full group hover:bg-surface-container-low transition-colors duration-200">
+<div class="aspect-video w-full bg-surface-container-high mb-4 border border-outline-variant overflow-hidden relative">
+<img class="object-cover w-full h-full mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-500" data-alt="A meticulously styled cinematic photograph of an assortment of classic movie theater candy boxes. Several recognizable rectangular boxes of chocolate and gummy candies are neatly arranged on a sleek, dark granite counter. The lighting is low-key, dramatic, and moody, evoking a premium cinema experience. The overall aesthetic is clean, minimalist, and appetizing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtYvSwKAFrw0N11F3ZxpUXKrhKlDBgj5Ux3QdMkPqYQlf-hzawsRT8Swg73uBL6XPJmucYBCgJydyZlSrTJe_ilZrGvCQ67leDbIgMm63k2KOTzNA3xBsZappL8s6ff5tx4kZGSRm_J7cO4P9NdgK0DwFf9en0ePtQAwWabIATNAVU8xGXkArgk_vutZVQBONW3VYoDeLI4hPtu9e-muFyBXtqmudnxP6m9fQ1BzayNu6Mzz-YjlMocA">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-sm font-headline-sm text-primary">Candy Box</h3>
+<span class="text-label-md font-label-md text-primary bg-surface-container px-2 py-1 border border-outline-variant">$5.50</span>
+</div>
+<p class="text-body-sm font-body-sm text-secondary mb-4">Choice of M&amp;Ms, Skittles, or Milk Duds.</p>
+</div>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant pt-4">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Quantity</span>
+<div class="flex items-center gap-3 border border-outline-variant bg-surface-container-lowest p-1">
+<button aria-label="Decrease quantity" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="text-label-md font-label-md text-primary w-4 text-center">0</span>
+<button aria-label="Increase quantity" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Booking Summary (Persists from previous screen) -->
+<!-- User Booking Sidebar Style applied here -->
+<aside class="w-full md:w-[320px] bg-surface-container-lowest border-l-2 border-primary flex flex-col sticky top-16 h-[calc(100vh-64px)] shrink-0 overflow-y-auto hidden lg:flex">
+<div class="p-6 border-b border-outline-variant">
+<h2 class="text-headline-md font-headline-md text-primary mb-1">Order Summary</h2>
+<p class="text-body-sm font-body-sm text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="movie">movie</span>
+                    Dune: Part Two (IMAX)
+                </p>
+<p class="text-body-sm font-body-sm text-secondary mt-1">Fri, Oct 24 • 7:30 PM</p>
+</div>
+<div class="flex-grow p-6 flex flex-col gap-6">
+<!-- Selected Seats -->
+<div>
+<h3 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider mb-3">Tickets</h3>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant">
+<div>
+<span class="text-body-md font-body-md text-primary block">2x Adult</span>
+<span class="text-body-sm font-body-sm text-secondary font-mono-sm block">Seats: G12, G13</span>
+</div>
+<span class="text-label-md font-label-md text-primary">$36.00</span>
+</div>
+</div>
+<!-- Selected Combos -->
+<div>
+<h3 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider mb-3">Snacks &amp; Combos</h3>
+<!-- Dynamic List of Selected Items -->
+<div class="space-y-0">
+<div class="flex justify-between items-start py-3 border-b border-outline-variant group">
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 border border-outline-variant flex items-center justify-center bg-surface-container text-label-sm font-label-sm text-primary shrink-0 mt-0.5">1</div>
+<div>
+<span class="text-body-md font-body-md text-primary block">Solo Combo</span>
+<button class="text-label-sm font-label-sm text-secondary underline hover:text-error transition-colors mt-1">Remove</button>
+</div>
+</div>
+<span class="text-label-md font-label-md text-primary">$12.50</span>
+</div>
+<!-- Empty State Example (Hidden when items exist, shown for structural context) -->
+<!-- <div class="py-4 text-center">
+                            <p class="text-body-sm font-body-sm text-secondary">No snacks added yet.</p>
+                        </div> -->
+</div>
+</div>
+<!-- Convenience Fee -->
+<div class="mt-auto">
+<div class="flex justify-between items-center py-2">
+<span class="text-body-md font-body-md text-secondary">Convenience Fee</span>
+<span class="text-label-md font-label-md text-secondary">$2.50</span>
+</div>
+</div>
+</div>
+<!-- Total and CTA -->
+<div class="p-6 bg-surface border-t border-outline-variant mt-auto">
+<div class="flex justify-between items-end mb-6">
+<span class="text-headline-sm font-headline-sm text-primary">Total</span>
+<div class="text-right">
+<span class="text-display-lg font-display-lg text-primary block leading-none">$51.00</span>
+<span class="text-label-sm font-label-sm text-secondary">Taxes included</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-4 rounded-sm hover:bg-tertiary-container transition-colors duration-200 flex justify-center items-center gap-2 group">
+                    Continue to Payment
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</aside>
+<!-- Mobile Sticky Bottom Bar (Replaces Sidebar on small screens) -->
+<div class="lg:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t-2 border-primary p-4 z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] flex justify-between items-center">
+<div>
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Total (3 items)</p>
+<p class="text-headline-md font-headline-md text-primary leading-none mt-1">$51.00</p>
+</div>
+<button class="bg-primary text-on-primary text-label-md font-label-md px-6 py-3 rounded-sm hover:bg-tertiary-container transition-colors duration-200">
+                Checkout
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container text-secondary font-body-sm full-width bottom flat no shadows transition-opacity duration-200 border-t border-outline-variant mt-auto lg:hidden">
+<div class="w-full py-8 px-gutter flex flex-col items-center gap-4">
+<span class="text-label-md font-label-md font-bold text-on-surface">CineBook</span>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-secondary hover:text-primary transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200" href="#">Terms of Service</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200" href="#">Contact Us</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200" href="#">About</a>
+</div>
+<p class="text-secondary mt-4">© 2024 CineBook Systems. All rights reserved.</p>
+</div>
+</footer>
+<style>
+        /* Hide scrollbar for a cleaner look on the sidebar while keeping functionality */
+        aside::-webkit-scrollbar {
+            width: 4px;
+        }
+        aside::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        aside::-webkit-scrollbar-thumb {
+            background-color: var(--tw-colors-outline-variant);
+            border-radius: 4px;
+        }
+        aside:hover::-webkit-scrollbar-thumb {
+            background-color: var(--tw-colors-outline);
+        }
+    </style>
+
+
+<script src="../cinebook-shared.js"></script>
+</body></html>

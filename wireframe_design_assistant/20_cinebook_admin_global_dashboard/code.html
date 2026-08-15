@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineBook Admin - Global Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f8f9fa",
+                        "tertiary": "#000000",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#cfc4c5",
+                        "secondary-fixed": "#dce2f3",
+                        "surface-container-low": "#f3f4f5",
+                        "surface": "#f8f9fa",
+                        "on-primary-fixed": "#1b1b1b",
+                        "primary-container": "#1b1b1b",
+                        "tertiary-container": "#1b1b1b",
+                        "on-primary-fixed-variant": "#474747",
+                        "surface-container": "#edeeef",
+                        "on-error-container": "#93000a",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-tint": "#5e5e5e",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "surface-variant": "#e1e3e4",
+                        "outline": "#7e7576",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "on-primary-container": "#848484",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-secondary-container": "#5e6572",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "primary": "#000000",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#c6c6c6",
+                        "inverse-surface": "#2e3132",
+                        "on-surface-variant": "#4c4546",
+                        "surface-dim": "#d9dadb",
+                        "secondary": "#585f6c",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary-container": "#dce2f3",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#151c27",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-secondary-fixed-variant": "#404754",
+                        "primary-fixed": "#e2e2e2",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-container": "#848484",
+                        "on-background": "#191c1d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sidebar-width": "240px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "mono-sm": ["Courier Prime"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "mono-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 w-[240px] h-screen flex flex-col p-4 bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant dark:border-outline z-50">
+<div class="mb-8">
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary dark:text-on-surface">Admin Portal</h1>
+<p class="text-label-sm font-label-sm text-secondary mt-1">Management Console</p>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<!-- Active Tab -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary dark:bg-primary text-on-primary dark:text-on-primary rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+</li>
+<!-- Inactive Tabs -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined">movie</span>
+<span class="text-label-md font-label-md">Movies</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="text-label-md font-label-md">Staff</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="text-label-md font-label-md">Reports</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto flex flex-col gap-4">
+<button class="w-full py-2 px-4 bg-primary text-on-primary rounded-sm text-label-md font-label-md hover:bg-tertiary-container transition-colors">
+                New Entry
+            </button>
+<div class="flex items-center gap-3 border-t border-outline-variant pt-4">
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-secondary">person</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface">System Admin</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="ml-[240px] flex-1 p-6 md:p-8 flex flex-col gap-8 max-w-[1600px]">
+<!-- Header -->
+<header class="flex justify-between items-end pb-4 border-b border-outline-variant">
+<div>
+<h2 class="text-display-lg font-display-lg text-primary">Global Dashboard</h2>
+<p class="text-body-md font-body-md text-secondary mt-2">System overview and performance metrics.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-sm border border-outline-variant">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-label-sm font-label-sm text-primary">All systems operational</span>
+</div>
+</header>
+<!-- KPI Cards Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface p-6 border border-outline-variant rounded-DEFAULT flex flex-col gap-4 hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex justify-between items-start">
+<h3 class="text-label-md font-label-md text-secondary">Total System Revenue</h3>
+<span class="material-symbols-outlined text-outline">payments</span>
+</div>
+<div>
+<p class="text-display-lg font-display-lg text-primary">$2.4M</p>
+<p class="text-label-sm font-label-sm text-secondary mt-1 border border-outline-variant inline-block px-2 py-0.5">+12.5% this month</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface p-6 border border-outline-variant rounded-DEFAULT flex flex-col gap-4 hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex justify-between items-start">
+<h3 class="text-label-md font-label-md text-secondary">Total Tickets (All Branches)</h3>
+<span class="material-symbols-outlined text-outline">confirmation_number</span>
+</div>
+<div>
+<p class="text-display-lg font-display-lg text-primary">142,890</p>
+<p class="text-label-sm font-label-sm text-secondary mt-1 border border-outline-variant inline-block px-2 py-0.5">+8.2% this month</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface p-6 border border-outline-variant rounded-DEFAULT flex flex-col gap-4 hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex justify-between items-start">
+<h3 class="text-label-md font-label-md text-secondary">Total Active Users</h3>
+<span class="material-symbols-outlined text-outline">group</span>
+</div>
+<div>
+<p class="text-display-lg font-display-lg text-primary">89.4k</p>
+<p class="text-label-sm font-label-sm text-secondary mt-1 border border-outline-variant inline-block px-2 py-0.5">+4.1% this month</p>
+</div>
+</div>
+</section>
+<!-- Chart Section (Wireframe Style) -->
+<section class="bg-surface border border-outline-variant rounded-DEFAULT p-6">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-6">Revenue Growth</h3>
+<div class="h-64 border-l border-b border-outline-variant relative flex items-end justify-between px-4 pb-2 pt-8">
+<!-- Y-axis labels -->
+<div class="absolute left-[-40px] top-0 h-full flex flex-col justify-between text-mono-sm font-mono-sm text-secondary pb-2">
+<span>$3M</span>
+<span>$2M</span>
+<span>$1M</span>
+<span>0</span>
+</div>
+<!-- Grid lines (horizontal) -->
+<div class="absolute left-0 top-1/3 w-full border-t border-dashed border-outline-variant/50"></div>
+<div class="absolute left-0 top-2/3 w-full border-t border-dashed border-outline-variant/50"></div>
+<!-- Wireframe Line Chart Representation -->
+<div class="absolute left-0 bottom-0 w-full h-full p-4">
+<svg class="stroke-primary fill-none" height="100%" preserveaspectratio="none" style="stroke-width: 2px;" viewbox="0 0 100 100" width="100%">
+<polyline points="0,80 20,75 40,50 60,60 80,30 100,20"></polyline>
+</svg>
+</div>
+<!-- Data Points / X-axis labels -->
+<div class="flex flex-col items-center z-10">
+<div class="w-2 h-2 bg-primary rounded-full mb-2"></div>
+<span class="text-mono-sm font-mono-sm text-secondary">Jan</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<div class="w-2 h-2 bg-primary rounded-full mb-2" style="transform: translateY(-5px);"></div>
+<span class="text-mono-sm font-mono-sm text-secondary">Feb</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<div class="w-2 h-2 bg-primary rounded-full mb-2" style="transform: translateY(-30px);"></div>
+<span class="text-mono-sm font-mono-sm text-secondary">Mar</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<div class="w-2 h-2 bg-primary rounded-full mb-2" style="transform: translateY(-20px);"></div>
+<span class="text-mono-sm font-mono-sm text-secondary">Apr</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<div class="w-2 h-2 bg-primary rounded-full mb-2" style="transform: translateY(-50px);"></div>
+<span class="text-mono-sm font-mono-sm text-secondary">May</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<div class="w-2 h-2 bg-primary rounded-full mb-2" style="transform: translateY(-60px);"></div>
+<span class="text-mono-sm font-mono-sm text-secondary">Jun</span>
+</div>
+</div>
+</section>
+<!-- Lists Section (Bento Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Top Performing Cinemas -->
+<section class="bg-surface border border-outline-variant rounded-DEFAULT overflow-hidden flex flex-col">
+<div class="p-4 bg-surface-container-low border-b border-outline-variant flex justify-between items-center">
+<h3 class="text-headline-sm font-headline-sm text-primary">Top Performing Cinemas</h3>
+<button class="text-label-sm font-label-sm border border-outline-variant px-2 py-1 hover:bg-surface-variant transition-colors">View All</button>
+</div>
+<div class="flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-label-sm font-label-sm text-secondary">
+<th class="p-3 border-b border-outline-variant font-normal">Location</th>
+<th class="p-3 border-b border-outline-variant font-normal">Revenue</th>
+<th class="p-3 border-b border-outline-variant font-normal">Status</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm">
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant">
+<td class="p-3 text-primary font-medium">Downtown Metroplex</td>
+<td class="p-3 text-mono-sm font-mono-sm">$450k</td>
+<td class="p-3"><span class="border border-outline-variant px-1.5 py-0.5 text-xs text-primary bg-surface-bright">OPTIMAL</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant">
+<td class="p-3 text-primary font-medium">Westside Grand</td>
+<td class="p-3 text-mono-sm font-mono-sm">$380k</td>
+<td class="p-3"><span class="border border-outline-variant px-1.5 py-0.5 text-xs text-primary bg-surface-bright">OPTIMAL</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant">
+<td class="p-3 text-primary font-medium">North Hills Plaza</td>
+<td class="p-3 text-mono-sm font-mono-sm">$310k</td>
+<td class="p-3"><span class="border border-outline-variant px-1.5 py-0.5 text-xs text-secondary bg-surface-container">MAINTENANCE</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant">
+<td class="p-3 text-primary font-medium">Southpark Cinema</td>
+<td class="p-3 text-mono-sm font-mono-sm">$295k</td>
+<td class="p-3"><span class="border border-outline-variant px-1.5 py-0.5 text-xs text-primary bg-surface-bright">OPTIMAL</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Trending Movies -->
+<section class="bg-surface border border-outline-variant rounded-DEFAULT overflow-hidden flex flex-col">
+<div class="p-4 bg-surface-container-low border-b border-outline-variant flex justify-between items-center">
+<h3 class="text-headline-sm font-headline-sm text-primary">Trending Movies</h3>
+<button class="text-label-sm font-label-sm border border-outline-variant px-2 py-1 hover:bg-surface-variant transition-colors">View All</button>
+</div>
+<div class="flex-1 p-4 flex flex-col gap-4">
+<!-- Movie Item 1 -->
+<div class="flex items-center gap-4 p-3 border border-outline-variant hover:border-primary transition-colors">
+<div class="w-12 h-16 bg-surface-container-highest border border-outline flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline">image_not_supported</span>
+</div>
+<div class="flex-1">
+<h4 class="text-label-md font-label-md text-primary">Cosmic Drift</h4>
+<p class="text-label-sm font-label-sm text-secondary">Sci-Fi • 142 mins</p>
+</div>
+<div class="text-right">
+<p class="text-label-md font-label-md text-primary">45k</p>
+<p class="text-label-sm font-label-sm text-secondary">Tickets</p>
+</div>
+</div>
+<!-- Movie Item 2 -->
+<div class="flex items-center gap-4 p-3 border border-outline-variant hover:border-primary transition-colors">
+<div class="w-12 h-16 bg-surface-container-highest border border-outline flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline">image_not_supported</span>
+</div>
+<div class="flex-1">
+<h4 class="text-label-md font-label-md text-primary">The Last Protocol</h4>
+<p class="text-label-sm font-label-sm text-secondary">Action • 118 mins</p>
+</div>
+<div class="text-right">
+<p class="text-label-md font-label-md text-primary">38k</p>
+<p class="text-label-sm font-label-sm text-secondary">Tickets</p>
+</div>
+</div>
+<!-- Movie Item 3 -->
+<div class="flex items-center gap-4 p-3 border border-outline-variant hover:border-primary transition-colors">
+<div class="w-12 h-16 bg-surface-container-highest border border-outline flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline">image_not_supported</span>
+</div>
+<div class="flex-1">
+<h4 class="text-label-md font-label-md text-primary">Midnight Echoes</h4>
+<p class="text-label-sm font-label-sm text-secondary">Thriller • 105 mins</p>
+</div>
+<div class="text-right">
+<p class="text-label-md font-label-md text-primary">29k</p>
+<p class="text-label-sm font-label-sm text-secondary">Tickets</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

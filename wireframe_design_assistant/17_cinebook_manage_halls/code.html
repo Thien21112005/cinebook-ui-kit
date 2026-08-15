@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineBook - Hall Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000000",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-container": "#848484",
+                        "on-secondary-container": "#5e6572",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-container-low": "#f3f4f5",
+                        "on-background": "#191c1d",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9fa",
+                        "secondary": "#585f6c",
+                        "surface-dim": "#d9dadb",
+                        "surface-container": "#edeeef",
+                        "on-secondary-fixed": "#151c27",
+                        "surface-tint": "#5e5e5e",
+                        "tertiary-container": "#1b1b1b",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary-fixed": "#e2e2e2",
+                        "secondary-fixed": "#dce2f3",
+                        "on-primary-fixed-variant": "#474747",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-bright": "#f8f9fa",
+                        "primary-container": "#1b1b1b",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#1b1b1b",
+                        "inverse-primary": "#c6c6c6",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-surface": "#191c1d",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#4c4546",
+                        "on-primary-container": "#848484",
+                        "surface": "#f8f9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#404754",
+                        "tertiary": "#000000",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#cfc4c5",
+                        "outline": "#7e7576",
+                        "surface-container-highest": "#e1e3e4",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e1e3e4",
+                        "secondary-container": "#dce2f3",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-fixed-variant": "#474747"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "240px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "mono-sm": ["Courier Prime"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "mono-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background flex min-h-screen">
+<!-- SideNavBar from JSON -->
+<nav class="bg-surface-container-low text-primary text-label-md font-label-md border-r border-outline-variant fixed left-0 top-0 w-[240px] h-screen flex flex-col p-4 transition-all duration-200 z-50">
+<div class="mb-8 px-4">
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">Admin Portal</h1>
+<p class="text-secondary text-body-sm mt-1">Management Console</p>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-secondary hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-secondary hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">movie</span>
+                Movies
+            </a>
+<!-- Using Staff as a generic stand-in for management areas to keep active state logical if no exact match -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary text-on-primary rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">badge</span>
+                Staff
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-secondary hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+                Users
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-secondary hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assessment</span>
+                Reports
+            </a>
+</div>
+<div class="mt-auto">
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-3 px-4 rounded-sm flex items-center justify-center gap-2 hover:bg-tertiary-container transition-colors">
+<span class="material-symbols-outlined">add</span>
+                New Entry
+            </button>
+<div class="flex items-center gap-3 mt-6 px-4 pt-4 border-t border-outline-variant">
+<div class="w-10 h-10 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-secondary">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md">Admin User</span>
+<span class="text-label-sm font-label-sm text-secondary">admin@cinebook.com</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-1 flex flex-col min-h-screen">
+<!-- Header -->
+<header class="bg-surface border-b border-outline-variant px-gutter py-6 sticky top-0 z-40">
+<div class="max-w-container-max mx-auto flex justify-between items-center">
+<div>
+<h2 class="text-display-lg font-display-lg text-primary">Hall Management</h2>
+<p class="text-body-lg font-body-lg text-secondary mt-1">Configure cinema halls, seating layouts, and capacities.</p>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md py-2 px-4 rounded-sm flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">add_box</span>
+                    Add New Hall
+                </button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-gutter max-w-container-max mx-auto w-full flex-1 flex flex-col lg:flex-row gap-gutter">
+<!-- Halls Grid (Left Column) -->
+<div class="flex-1">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-headline-sm font-headline-sm text-primary">Active Halls</h3>
+<div class="flex items-center gap-2 border border-outline-variant rounded-sm px-3 py-1 bg-surface-container-lowest">
+<span class="material-symbols-outlined text-secondary text-[20px]">filter_list</span>
+<span class="text-label-sm font-label-sm text-secondary">Filter</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1 (Active/Selected) -->
+<div class="bg-surface-container-lowest border-2 border-primary rounded-sm p-5 cursor-pointer relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h4 class="text-headline-md font-headline-md text-primary">Hall 1</h4>
+<span class="border border-outline-variant text-label-sm font-label-sm px-2 py-0.5 bg-surface-container-low text-secondary rounded-[2px]">Standard</span>
+</div>
+<p class="text-body-sm font-body-sm text-secondary">Main Concourse</p>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest px-2 py-1 rounded-[2px] flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-label-sm font-label-sm text-primary">Active</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-outline-variant">
+<div>
+<span class="text-label-sm font-label-sm text-secondary block mb-1">Total Capacity</span>
+<span class="text-body-lg font-body-lg text-primary font-bold">120 Seats</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary block mb-1">Layout</span>
+<span class="text-body-md font-body-md text-primary">12 Rows x 10</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-low transition-colors duration-200 rounded-sm p-5 cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h4 class="text-headline-md font-headline-md text-primary">Hall 2</h4>
+<span class="border border-primary bg-primary text-on-primary text-label-sm font-label-sm px-2 py-0.5 rounded-[2px] font-bold">IMAX</span>
+</div>
+<p class="text-body-sm font-body-sm text-secondary">Upper Level</p>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest px-2 py-1 rounded-[2px] flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-label-sm font-label-sm text-primary">Active</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-outline-variant">
+<div>
+<span class="text-label-sm font-label-sm text-secondary block mb-1">Total Capacity</span>
+<span class="text-body-lg font-body-lg text-primary font-bold">250 Seats</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary block mb-1">Layout</span>
+<span class="text-body-md font-body-md text-primary">20 Rows x 15</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-low transition-colors duration-200 rounded-sm p-5 cursor-pointer opacity-70">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h4 class="text-headline-md font-headline-md text-primary text-opacity-80">Hall 3</h4>
+<span class="border border-outline-variant text-label-sm font-label-sm px-2 py-0.5 bg-surface-container-low text-secondary rounded-[2px]">Dolby Atmos</span>
+</div>
+<p class="text-body-sm font-body-sm text-secondary">Lower Level</p>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest px-2 py-1 rounded-[2px] flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span class="text-label-sm font-label-sm text-secondary">Maintenance</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-outline-variant">
+<div>
+<span class="text-label-sm font-label-sm text-secondary block mb-1">Total Capacity</span>
+<span class="text-body-lg font-body-lg text-secondary font-bold">80 Seats</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary block mb-1">Layout</span>
+<span class="text-body-md font-body-md text-secondary">8 Rows x 10</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Seat Layout Preview & Editor (Right Sidebar Panel) -->
+<aside class="w-full lg:w-[400px] bg-surface-container-lowest border border-outline-variant rounded-sm flex flex-col h-[calc(100vh-140px)] sticky top-[100px]">
+<div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-low rounded-t-sm">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Layout Preview</h3>
+<p class="text-body-sm font-body-sm text-secondary">Hall 1 - Standard</p>
+</div>
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Tools -->
+<div class="px-5 py-3 border-b border-outline-variant flex gap-2 overflow-x-auto bg-surface">
+<button class="flex items-center gap-1 border-2 border-primary bg-primary text-on-primary px-3 py-1.5 rounded-sm text-label-sm font-label-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">chair</span>
+                        Standard Seat
+                    </button>
+<button class="flex items-center gap-1 border border-outline-variant bg-surface-container-lowest text-primary px-3 py-1.5 rounded-sm text-label-sm font-label-sm hover:bg-surface-variant transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">chair</span>
+                        VIP Seat
+                    </button>
+<button class="flex items-center gap-1 border border-outline-variant bg-surface-container-lowest text-primary px-3 py-1.5 rounded-sm text-label-sm font-label-sm hover:bg-surface-variant transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">wheelchair_pickup</span>
+                        Accessible
+                    </button>
+</div>
+<!-- Screen Indicator -->
+<div class="p-5 flex-1 overflow-auto bg-surface-container-lowest">
+<div class="w-full flex justify-center mb-8">
+<div class="w-3/4 h-2 bg-outline-variant rounded-full relative">
+<span class="absolute top-4 left-1/2 -translate-x-1/2 text-label-sm font-label-sm text-secondary uppercase tracking-widest">Screen</span>
+</div>
+</div>
+<!-- Minimalist Seat Grid -->
+<div class="flex flex-col gap-3 items-center">
+<!-- Row A (VIP) -->
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-label-sm text-secondary w-4 text-right">A</span>
+<div class="flex gap-1.5">
+<div class="w-6 h-6 border-2 border-outline-variant bg-surface-container-high rounded-[2px] cursor-pointer hover:border-primary"></div>
+<div class="w-6 h-6 border-2 border-outline-variant bg-surface-container-high rounded-[2px] cursor-pointer hover:border-primary"></div>
+<div class="w-6 h-6 border-2 border-outline-variant bg-surface-container-high rounded-[2px] cursor-pointer hover:border-primary"></div>
+<div class="w-6 h-6 border-2 border-primary bg-primary rounded-[2px] cursor-pointer relative"><span class="absolute inset-0 flex items-center justify-center text-on-primary text-[10px] font-bold">V</span></div>
+<div class="w-6 h-6 border-2 border-primary bg-primary rounded-[2px] cursor-pointer relative"><span class="absolute inset-0 flex items-center justify-center text-on-primary text-[10px] font-bold">V</span></div>
+<div class="w-6 h-6 border-2 border-primary bg-primary rounded-[2px] cursor-pointer relative"><span class="absolute inset-0 flex items-center justify-center text-on-primary text-[10px] font-bold">V</span></div>
+<div class="w-6 h-6 border-2 border-outline-variant bg-surface-container-high rounded-[2px] cursor-pointer hover:border-primary"></div>
+<div class="w-6 h-6 border-2 border-outline-variant bg-surface-container-high rounded-[2px] cursor-pointer hover:border-primary"></div>
+<div class="w-6 h-6 border-2 border-outline-variant bg-surface-container-high rounded-[2px] cursor-pointer hover:border-primary"></div>
+</div>
+</div>
+<!-- Row B -->
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-label-sm text-secondary w-4 text-right">B</span>
+<div class="flex gap-1.5">
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+</div>
+</div>
+<!-- Row C -->
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-label-sm text-secondary w-4 text-right">C</span>
+<div class="flex gap-1.5">
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+</div>
+</div>
+<!-- Gap for walkway -->
+<div class="h-2 w-full"></div>
+<!-- Row D -->
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-label-sm text-secondary w-4 text-right">D</span>
+<div class="flex gap-1.5">
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors opacity-30 bg-surface-variant" title="Deleted Seat"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors opacity-30 bg-surface-variant" title="Deleted Seat"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+<div class="w-6 h-6 border border-outline-variant rounded-[2px] cursor-pointer hover:border-primary hover:bg-surface-variant transition-colors"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-5 border-t border-outline-variant bg-surface mt-auto">
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-3 rounded-sm hover:opacity-90 transition-opacity">
+                        Save Layout Changes
+                    </button>
+<p class="text-center text-label-sm font-label-sm text-secondary mt-3">Changes will not affect currently booked tickets.</p>
+</div>
+</aside>
+</div>
+<!-- Footer from JSON -->
+<footer class="bg-surface-container text-secondary text-body-sm font-body-sm border-t border-outline-variant w-full py-8 px-gutter flex flex-col items-center gap-4 mt-auto transition-opacity duration-200">
+<div class="text-label-md font-label-md font-bold text-primary mb-2">CineBook</div>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-opacity duration-200" href="#">Contact Us</a>
+<a class="hover:text-primary transition-opacity duration-200" href="#">About</a>
+</div>
+<p class="mt-4">© 2024 CineBook Systems. All rights reserved.</p>
+</footer>
+</main>
+</body></html>

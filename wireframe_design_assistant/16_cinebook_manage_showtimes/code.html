@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineBook - Showtime Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000000",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-container": "#848484",
+                        "on-secondary-container": "#5e6572",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-container-low": "#f3f4f5",
+                        "on-background": "#191c1d",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9fa",
+                        "secondary": "#585f6c",
+                        "surface-dim": "#d9dadb",
+                        "surface-container": "#edeeef",
+                        "on-secondary-fixed": "#151c27",
+                        "surface-tint": "#5e5e5e",
+                        "tertiary-container": "#1b1b1b",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary-fixed": "#e2e2e2",
+                        "secondary-fixed": "#dce2f3",
+                        "on-primary-fixed-variant": "#474747",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-bright": "#f8f9fa",
+                        "primary-container": "#1b1b1b",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#1b1b1b",
+                        "inverse-primary": "#c6c6c6",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-surface": "#191c1d",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#4c4546",
+                        "on-primary-container": "#848484",
+                        "surface": "#f8f9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#404754",
+                        "tertiary": "#000000",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#cfc4c5",
+                        "outline": "#7e7576",
+                        "surface-container-highest": "#e1e3e4",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e1e3e4",
+                        "secondary-container": "#dce2f3",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-fixed-variant": "#474747"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "240px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "mono-sm": ["Courier Prime"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "mono-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa; /* bg-background */
+            color: #191c1d; /* text-on-surface */
+        }
+        /* Modal Styles */
+        #addShowtimeModal {
+            display: none;
+        }
+        #addShowtimeModal.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 w-[240px] h-screen flex flex-col p-4 bg-surface-container-low border-r border-outline-variant z-10 hidden md:flex">
+<!-- Header -->
+<div class="flex items-center gap-3 mb-8 px-2">
+<img alt="Staff Profile Picture" class="w-10 h-10 rounded-full border border-primary object-cover" data-alt="A clean, minimalist circular avatar placeholder showing a generic user outline in light grey on a white background with a crisp black 1px border. The style is flat, low-fidelity, and wireframe-like, suitable for an administrative interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvUuSlAGVfOP6luxeIqOs78utPkd_zC5RZ7Uoalu-9jVBdxIPNkh2ixnE9v_tCk1HdnHwNhMBJs68HNjtiAx3IfqrHHrHH0zv2YYwLBbnxYSCCXgDVhFvtMQHu5McQw8U9fCszX6_pUyae7nD_-BWcXPuYMU0Mo6-d-Z3PkkY8p0gDKnUZ3UDYpW8bVT1mZeF3TveBxZ3FcnKEQCwxU5kqNZ0IsqnbEzYGMxewXBRvEo8BP_9x5wsEsQ"/>
+<div>
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">Admin Portal</h1>
+<p class="text-label-sm font-label-sm text-secondary">Management Console</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-secondary hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-primary text-on-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">movie</span>
+<span class="text-label-md font-label-md">Movies</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-secondary hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">badge</span>
+<span class="text-label-md font-label-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-secondary hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-secondary hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assessment</span>
+<span class="text-label-md font-label-md">Reports</span>
+</a>
+</nav>
+<!-- CTA -->
+<button class="w-full mt-4 bg-primary text-on-primary py-3 rounded-sm text-label-md font-label-md font-bold hover:bg-tertiary-container transition-colors duration-200" onclick="document.getElementById('addShowtimeModal').classList.add('active')">
+            New Entry
+        </button>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[240px] flex flex-col p-6 w-full max-w-container-max mx-auto">
+<!-- Top Bar (Mobile Only replacement for sidebar header context) -->
+<div class="md:hidden flex justify-between items-center mb-6">
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Showtimes</h1>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-sm text-label-md font-label-md font-bold" onclick="document.getElementById('addShowtimeModal').classList.add('active')">
+                Add New
+            </button>
+</div>
+<!-- Page Header (Desktop) -->
+<div class="hidden md:flex justify-between items-center mb-8">
+<div>
+<h1 class="text-display-lg font-display-lg text-primary mb-2">Showtime Management</h1>
+<p class="text-body-lg font-body-lg text-secondary">Manage and schedule movie screenings across all halls.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-sm text-label-md font-label-md font-bold hover:bg-tertiary-container transition-colors duration-200 shadow-none border-none flex items-center gap-2" onclick="document.getElementById('addShowtimeModal').classList.add('active')">
+<span class="material-symbols-outlined">add</span>
+                Add New Showtime
+            </button>
+</div>
+<!-- Filters Section -->
+<section class="bg-surface-container-lowest border border-outline-variant p-4 rounded-sm mb-6 flex flex-col sm:flex-row gap-4 items-end">
+<div class="w-full sm:w-auto flex-1">
+<label class="block text-label-sm font-label-sm text-on-surface-variant mb-1" for="dateFilter">Date</label>
+<input class="w-full border border-outline-variant rounded-sm px-3 py-2 text-body-md font-body-md focus:border-primary focus:ring-0 bg-surface-container-lowest" id="dateFilter" type="date"/>
+</div>
+<div class="w-full sm:w-auto flex-1">
+<label class="block text-label-sm font-label-sm text-on-surface-variant mb-1" for="hallFilter">Hall</label>
+<select class="w-full border border-outline-variant rounded-sm px-3 py-2 text-body-md font-body-md focus:border-primary focus:ring-0 bg-surface-container-lowest" id="hallFilter">
+<option value="">All Halls</option>
+<option value="1">Hall 1 (IMAX)</option>
+<option value="2">Hall 2</option>
+<option value="3">Hall 3 (VIP)</option>
+</select>
+</div>
+<div class="w-full sm:w-auto flex-1">
+<label class="block text-label-sm font-label-sm text-on-surface-variant mb-1" for="movieFilter">Movie</label>
+<select class="w-full border border-outline-variant rounded-sm px-3 py-2 text-body-md font-body-md focus:border-primary focus:ring-0 bg-surface-container-lowest" id="movieFilter">
+<option value="">All Movies</option>
+<option value="dune2">Dune: Part Two</option>
+<option value="oppenheimer">Oppenheimer</option>
+</select>
+</div>
+<button class="w-full sm:w-auto bg-surface-container-highest text-primary border border-outline px-6 py-2 rounded-sm text-label-md font-label-md hover:bg-surface-variant transition-colors duration-200">
+                Apply Filters
+            </button>
+</section>
+<!-- Showtimes List (Data Table format as per style guide) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-sm overflow-hidden flex-1">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-4 py-3 text-label-md font-label-md text-on-surface-variant font-semibold">Movie</th>
+<th class="px-4 py-3 text-label-md font-label-md text-on-surface-variant font-semibold">Date</th>
+<th class="px-4 py-3 text-label-md font-label-md text-on-surface-variant font-semibold">Time</th>
+<th class="px-4 py-3 text-label-md font-label-md text-on-surface-variant font-semibold">Hall</th>
+<th class="px-4 py-3 text-label-md font-label-md text-on-surface-variant font-semibold">Capacity</th>
+<th class="px-4 py-3 text-label-md font-label-md text-on-surface-variant font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-150">
+<td class="px-4 py-3 font-medium">Dune: Part Two</td>
+<td class="px-4 py-3">Oct 24, 2024</td>
+<td class="px-4 py-3 font-mono-sm">19:00</td>
+<td class="px-4 py-3">Hall 1 (IMAX)</td>
+<td class="px-4 py-3">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-surface-container-highest rounded-sm overflow-hidden border border-outline-variant">
+<div class="h-full bg-primary" style="width: 75%"></div>
+</div>
+<span class="text-label-sm font-label-sm">210/280</span>
+</div>
+</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-error hover:text-on-error-container transition-colors p-1" title="Cancel">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-150">
+<td class="px-4 py-3 font-medium">Oppenheimer</td>
+<td class="px-4 py-3">Oct 24, 2024</td>
+<td class="px-4 py-3 font-mono-sm">20:30</td>
+<td class="px-4 py-3">Hall 3 (VIP)</td>
+<td class="px-4 py-3">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-surface-container-highest rounded-sm overflow-hidden border border-outline-variant">
+<div class="h-full bg-primary" style="width: 95%"></div>
+</div>
+<span class="text-label-sm font-label-sm text-error font-medium">48/50</span>
+</div>
+</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-error hover:text-on-error-container transition-colors p-1" title="Cancel">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-150">
+<td class="px-4 py-3 font-medium">Poor Things</td>
+<td class="px-4 py-3">Oct 25, 2024</td>
+<td class="px-4 py-3 font-mono-sm">14:15</td>
+<td class="px-4 py-3">Hall 2</td>
+<td class="px-4 py-3">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-surface-container-highest rounded-sm overflow-hidden border border-outline-variant">
+<div class="h-full bg-primary" style="width: 20%"></div>
+</div>
+<span class="text-label-sm font-label-sm">30/150</span>
+</div>
+</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-error hover:text-on-error-container transition-colors p-1" title="Cancel">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer of table -->
+<div class="bg-surface-container-low p-3 flex justify-between items-center border-t border-outline-variant">
+<span class="text-label-sm font-label-sm text-secondary">Showing 1-3 of 45 showtimes</span>
+<div class="flex gap-1">
+<button class="px-3 py-1 border border-outline-variant rounded-sm bg-surface-container-lowest text-label-sm hover:bg-surface-variant disabled:opacity-50" disabled="">&lt;</button>
+<button class="px-3 py-1 border border-primary rounded-sm bg-primary text-on-primary text-label-sm">1</button>
+<button class="px-3 py-1 border border-outline-variant rounded-sm bg-surface-container-lowest text-label-sm hover:bg-surface-variant">2</button>
+<button class="px-3 py-1 border border-outline-variant rounded-sm bg-surface-container-lowest text-label-sm hover:bg-surface-variant">3</button>
+<button class="px-3 py-1 border border-outline-variant rounded-sm bg-surface-container-lowest text-label-sm hover:bg-surface-variant">&gt;</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Add Showtime Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-primary/50 backdrop-blur-sm" id="addShowtimeModal">
+<!-- Modal Content (Level 2 Elevation as per style guide: White, 2px border) -->
+<div class="bg-surface-container-lowest w-full max-w-md border-2 border-primary rounded-sm shadow-none p-6 m-4 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">Add New Showtime</h2>
+<button class="text-secondary hover:text-primary" onclick="document.getElementById('addShowtimeModal').classList.remove('active')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="flex flex-col gap-5">
+<div>
+<label class="block text-label-md font-label-md text-primary mb-2" for="newMovie">Movie</label>
+<select class="w-full border border-outline-variant focus:border-primary focus:ring-0 rounded-sm px-3 py-2 text-body-md font-body-md bg-surface-container-lowest" id="newMovie">
+<option disabled="" selected="" value="">Select a movie...</option>
+<option value="dune2">Dune: Part Two</option>
+<option value="oppenheimer">Oppenheimer</option>
+<option value="poor_things">Poor Things</option>
+</select>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-primary mb-2" for="newHall">Hall</label>
+<select class="w-full border border-outline-variant focus:border-primary focus:ring-0 rounded-sm px-3 py-2 text-body-md font-body-md bg-surface-container-lowest" id="newHall">
+<option disabled="" selected="" value="">Select a hall...</option>
+<option value="1">Hall 1 (IMAX - 280 seats)</option>
+<option value="2">Hall 2 (Standard - 150 seats)</option>
+<option value="3">Hall 3 (VIP - 50 seats)</option>
+</select>
+</div>
+<div class="flex gap-4">
+<div class="flex-1">
+<label class="block text-label-md font-label-md text-primary mb-2" for="newDate">Date</label>
+<input class="w-full border border-outline-variant focus:border-primary focus:ring-0 rounded-sm px-3 py-2 text-body-md font-body-md bg-surface-container-lowest" id="newDate" type="date"/>
+</div>
+<div class="flex-1">
+<label class="block text-label-md font-label-md text-primary mb-2" for="newTime">Start Time</label>
+<input class="w-full border border-outline-variant focus:border-primary focus:ring-0 rounded-sm px-3 py-2 text-body-md font-body-md bg-surface-container-lowest font-mono-sm" id="newTime" type="time"/>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant flex justify-end gap-3">
+<button class="px-5 py-2 border border-primary bg-surface-container-lowest text-primary rounded-sm text-label-md font-label-md hover:bg-surface-variant transition-colors" onclick="document.getElementById('addShowtimeModal').classList.remove('active')" type="button">
+                        Cancel
+                    </button>
+<button class="px-5 py-2 border-none bg-primary text-on-primary rounded-sm text-label-md font-label-md hover:bg-tertiary-container transition-colors" onclick="document.getElementById('addShowtimeModal').classList.remove('active')" type="button">
+                        Save Showtime
+                    </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Close modal on outside click (simple interaction) -->
+<script>
+        const modal = document.getElementById('addShowtimeModal');
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CineBook - Personalized Recommendations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#000000",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#5e6572",
+                      "inverse-on-surface": "#f0f1f2",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#dce2f3",
+                      "surface-container": "#edeeef",
+                      "tertiary-fixed": "#e2e2e2",
+                      "outline-variant": "#cfc4c5",
+                      "secondary-fixed": "#dce2f3",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-primary-container": "#848484",
+                      "secondary-fixed-dim": "#c0c7d6",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#5e5e5e",
+                      "surface-container-low": "#f3f4f5",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "primary": "#000000",
+                      "primary-container": "#1b1b1b",
+                      "on-surface": "#191c1d",
+                      "tertiary-container": "#1b1b1b",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "error-container": "#ffdad6",
+                      "surface": "#f8f9fa",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#e2e2e2",
+                      "on-primary-fixed-variant": "#474747",
+                      "outline": "#7e7576",
+                      "inverse-surface": "#2e3132",
+                      "on-background": "#191c1d",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "on-tertiary-container": "#848484",
+                      "on-surface-variant": "#4c4546",
+                      "on-secondary-fixed-variant": "#404754",
+                      "surface-bright": "#f8f9fa",
+                      "on-secondary-fixed": "#151c27",
+                      "surface-container-high": "#e7e8e9",
+                      "on-primary-fixed": "#1b1b1b",
+                      "inverse-primary": "#c6c6c6",
+                      "surface-variant": "#e1e3e4",
+                      "background": "#f8f9fa",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-error-container": "#93000a",
+                      "secondary": "#585f6c",
+                      "surface-dim": "#d9dadb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "sidebar-width": "240px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "mono-sm": [
+                              "Courier Prime"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "mono-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md antialiased">
+<!-- TopNavBar -->
+<header class="bg-surface text-primary sticky top-0 z-50 transition-colors duration-200">
+<div class="max-w-container-max mx-auto px-gutter flex justify-between items-center h-16"><div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md font-bold text-primary" href="#">CineBook</a>
+<nav class="hidden md:flex gap-6">
+<a class="text-secondary hover:text-primary transition-colors duration-200 py-2 text-body-md font-body-md" href="#">Movies</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 py-2 text-body-md font-body-md" href="#">Offers</a>
+</nav>
+</div>
+<div class="flex items-center gap-6 flex-grow justify-end"><div class="flex items-center gap-6 ml-auto">
+<div class="relative hidden md:block w-[400px] flex items-center">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-primary-container text-opacity-50">search</span>
+<input class="bg-surface-container-low border border-outline-variant focus:border-primary text-body-sm font-body-sm rounded pl-10 pr-4 py-2 w-full placeholder:text-on-primary-container outline-none transition-colors" placeholder="Search movies..." type="text">
+</div>
+<button class="flex items-center gap-2 text-primary hover:bg-surface-container-low transition-colors duration-200 px-3 py-2 rounded text-body-md font-body-md">
+<span class="material-symbols-outlined">person</span>
+<span class="hidden md:inline">Account</span>
+</button>
+</div></div></div>
+<!-- Shadow element for separation instead of border as per rules -->
+<div class="h-4 w-full bg-gradient-to-b from-black/5 to-transparent absolute -bottom-4 left-0 pointer-events-none"></div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-8 space-y-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-outline-variant">
+<div>
+<h1 class="text-display-lg font-display-lg text-primary mb-2">Recommended for You</h1>
+<p class="text-body-lg font-body-lg text-secondary">Curated selections based on your viewing history and preferences.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-md font-label-md text-secondary">Filter by:</span>
+<select class="bg-surface border border-outline-variant text-body-sm font-body-sm py-1.5 px-3 rounded focus:border-primary outline-none">
+<option>All Genres</option>
+<option>Sci-Fi</option>
+<option>Thriller</option>
+<option>Drama</option>
+</select>
+</div>
+</div>
+<!-- Movie Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Movie Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant flex flex-col group hover:border-primary transition-colors duration-200 relative overflow-hidden">
+<!-- Badge -->
+<div class="absolute top-3 left-3 z-10 bg-primary text-on-primary text-label-sm font-label-sm px-2 py-1 rounded-sm flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">stars</span>
+                    98% Match
+                </div>
+<!-- Image Placeholder -->
+<div class="w-full aspect-[2/3] relative bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 mix-blend-multiply" data-alt="A striking cinematic poster for a modern sci-fi thriller. The composition features a lone silhouette against a massive, glowing monolithic structure in a desolate landscape. The lighting is high-contrast, utilizing deep blacks and stark, almost blinding white neon accents. The mood is tense, mysterious, and analytical, perfectly matching the minimalist, structural aesthetic of the surrounding UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOGNCdjqe4wBqTPFOfqF9UitvGAjqd3Ac13MkjNjltZ4BG7RlKzAvFJspMvEH0ndlsNYdRwOCg-ukrXEGATVDrZ-wWUo5U9WEFQwgGoUmoqxIkfOB6fWGnlV1x9b5PvQTmQ6y19pC3G2KT9ID8sYDzqj5LlZSxodF9z7Rq9N_-QGLAItzlIrWS_tC-An4IR17IzG_eSU4YCkP8gZgYX5rqoDk88wTbK-UPZP8VR1acMbxuRjNplWe0zg">
+</div>
+<!-- Content -->
+<div class="p-4 flex flex-col flex-grow">
+<div class="mb-4">
+<h2 class="text-headline-sm font-headline-sm text-primary line-clamp-1 mb-1">The Monolith</h2>
+<p class="text-body-sm font-body-sm text-secondary">Sci-Fi • Thriller • 2h 14m</p>
+</div>
+<p class="text-label-sm font-label-sm text-on-primary-container mb-4 mt-auto">Based on your watch history: "Interstellar"</p>
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-3 rounded-sm hover:bg-surface-tint transition-colors duration-200">
+                        Book Now
+                    </button>
+</div>
+</article>
+<!-- Movie Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant flex flex-col group hover:border-primary transition-colors duration-200 relative overflow-hidden">
+<!-- Badge -->
+<div class="absolute top-3 left-3 z-10 bg-surface-container-lowest border border-primary text-primary text-label-sm font-label-sm px-2 py-1 rounded-sm shadow-sm">
+                    Top Pick
+                </div>
+<!-- Image Placeholder -->
+<div class="w-full aspect-[2/3] relative bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 mix-blend-multiply" data-alt="A minimalist architectural photograph serving as a movie poster backdrop. It depicts sharp, intersecting concrete brutalist structures against a flat, pale gray sky. The lighting is completely flat, removing all shadows to emphasize the pure geometry of the shapes. The stark black and white palette aligns with the low-fidelity wireframe design language of the interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvqSae7yzDokANjSeNCPIpVjH17huT2Eb1iPmgUGPVTnCGcMhrxu996Rv8T9xbeqU6o0ts5DAEdCu4I1tH69XtncmJECZRcHDdL-RfHdNvrpZBe1mTC-OENBfiWy46UGLBnp-qVsz7gPeAEOQktCjWw0mCINBZ4fHXLj-TAfowdRwiX5bB-BEZcq6WhUa1QdmyzG1AfIgbmuTMYSQfBC3TAsUYHELhaNDGvgALxEn7tHjjM0gCfOJOXA">
+</div>
+<!-- Content -->
+<div class="p-4 flex flex-col flex-grow">
+<div class="mb-4">
+<h2 class="text-headline-sm font-headline-sm text-primary line-clamp-1 mb-1">Concrete Echoes</h2>
+<p class="text-body-sm font-body-sm text-secondary">Drama • Mystery • 1h 58m</p>
+</div>
+<p class="text-label-sm font-label-sm text-on-primary-container mb-4 mt-auto">Because you liked "The Brutalist"</p>
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-3 rounded-sm hover:bg-surface-tint transition-colors duration-200">
+                        Book Now
+                    </button>
+</div>
+</article>
+<!-- Movie Card 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant flex flex-col group hover:border-primary transition-colors duration-200 relative overflow-hidden">
+<!-- Badge -->
+<div class="absolute top-3 left-3 z-10 bg-primary text-on-primary text-label-sm font-label-sm px-2 py-1 rounded-sm flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">stars</span>
+                    92% Match
+                </div>
+<!-- Image Placeholder -->
+<div class="w-full aspect-[2/3] relative bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 mix-blend-multiply" data-alt="Abstract structural design for a movie poster. A complex web of precise black gridlines on a stark white background, forming a three-dimensional illusion of an endless corridor. Sparse, austere lighting creates a sense of profound depth without using gradients or shadows. The visual style is entirely objective and analytical, evoking a high-functioning data visualization aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL6hqp_pItZyKYwkLjYzMD8ti7Iop_4eKNWOE6m84Kt_KXqM281hTp1OXubwba0KEO49A4BCygsQh-F7s46hDcEKqGmXLxEqRoIoQCN2Edw_gu3DyUZ4dth3RRMqF__-qPQGDpcCnqr3LZUyE2mSLBCFg2l4nf-Tw0_ByosGGxJgMNucjdmCT2s_MB4usE_xhPDchM6XSLQNawLY0xAePfPrkZZL4I51fGXgxK38BHSAlb4olfDURRow">
+</div>
+<!-- Content -->
+<div class="p-4 flex flex-col flex-grow">
+<div class="mb-4">
+<h2 class="text-headline-sm font-headline-sm text-primary line-clamp-1 mb-1">Gridlock Protocol</h2>
+<p class="text-body-sm font-body-sm text-secondary">Action • Tech • 2h 05m</p>
+</div>
+<p class="text-label-sm font-label-sm text-on-primary-container mb-4 mt-auto">Similar to "Matrix"</p>
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-3 rounded-sm hover:bg-surface-tint transition-colors duration-200">
+                        Book Now
+                    </button>
+</div>
+</article>
+<!-- Movie Card 4 -->
+<article class="bg-surface-container-lowest border border-outline-variant flex flex-col group hover:border-primary transition-colors duration-200 relative overflow-hidden">
+<!-- Badge -->
+<div class="absolute top-3 left-3 z-10 bg-surface-container-highest text-primary border border-outline-variant text-label-sm font-label-sm px-2 py-1 rounded-sm shadow-sm">
+                    Trending
+                </div>
+<!-- Image Placeholder -->
+<div class="w-full aspect-[2/3] relative bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 mix-blend-multiply" data-alt="A stark, high-contrast black and white photograph of a solitary, sharp-edged metallic cube resting on a perfectly flat plane. The image is devoid of color, utilizing only tonal layers of gray to define the form. The composition is entirely minimalist, echoing a wireframe structure. It conveys an objective, efficient, and slightly foreboding mood, suitable for an analytical UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUgE-BQguE9YpsAuqkrPY-vi_fezlWVWlAPjUgiodaT_pcyG-uBCzq92EsidggAq7dxaOYwLZZNG3YpmBjEUxz205A-InfFTHtzBtaOCS9Ty_aVLkccHfnl0Gj5OH09jeLZzVc00tLl5PsmtftH1pPROHFpLeyIdH_yQ3xtqUVP7poGHHq5q91-5V6eBjGsaHA0ig04MrqCArqSXHQAubVkZwO_HqKxu0RVxXwBN7Mi2IrNBc0E2kzXw">
+</div>
+<!-- Content -->
+<div class="p-4 flex flex-col flex-grow">
+<div class="mb-4">
+<h2 class="text-headline-sm font-headline-sm text-primary line-clamp-1 mb-1">The Variable</h2>
+<p class="text-body-sm font-body-sm text-secondary">Documentary • 1h 45m</p>
+</div>
+<p class="text-label-sm font-label-sm text-on-primary-container mb-4 mt-auto">Popular in your area</p>
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-3 rounded-sm hover:bg-surface-tint transition-colors duration-200">
+                        Book Now
+                    </button>
+</div>
+</article>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container text-secondary mt-auto border-t border-outline-variant">
+<div class="w-full py-8 px-gutter flex flex-col items-center gap-4 max-w-container-max mx-auto">
+<span class="text-label-md font-label-md font-bold text-primary">CineBook Systems</span>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-body-sm font-body-sm hover:text-primary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-body-sm font-body-sm hover:text-primary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="text-body-sm font-body-sm hover:text-primary transition-opacity duration-200" href="#">Contact Us</a>
+<a class="text-body-sm font-body-sm hover:text-primary transition-opacity duration-200" href="#">About</a>
+</div>
+<p class="text-body-sm font-body-sm mt-4 text-on-primary-container">© 2024 CineBook Systems. All rights reserved.</p>
+</div>
+</footer>
+
+
+<script src="../cinebook-shared.js"></script>
+</body></html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineBook - Promotions Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000000",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#5e6572",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#dce2f3",
+                    "surface-container": "#edeeef",
+                    "tertiary-fixed": "#e2e2e2",
+                    "outline-variant": "#cfc4c5",
+                    "secondary-fixed": "#dce2f3",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#848484",
+                    "secondary-fixed-dim": "#c0c7d6",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#5e5e5e",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "primary": "#000000",
+                    "primary-container": "#1b1b1b",
+                    "on-surface": "#191c1d",
+                    "tertiary-container": "#1b1b1b",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "error-container": "#ffdad6",
+                    "surface": "#f8f9fa",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#e2e2e2",
+                    "on-primary-fixed-variant": "#474747",
+                    "outline": "#7e7576",
+                    "inverse-surface": "#2e3132",
+                    "on-background": "#191c1d",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "on-tertiary-container": "#848484",
+                    "on-surface-variant": "#4c4546",
+                    "on-secondary-fixed-variant": "#404754",
+                    "surface-bright": "#f8f9fa",
+                    "on-secondary-fixed": "#151c27",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary-fixed": "#1b1b1b",
+                    "inverse-primary": "#c6c6c6",
+                    "surface-variant": "#e1e3e4",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-error-container": "#93000a",
+                    "secondary": "#585f6c",
+                    "surface-dim": "#d9dadb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "sidebar-width": "240px"
+            },
+            "fontFamily": {
+                    "display-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "headline-sm": [
+                            "Inter"
+                    ],
+                    "mono-sm": [
+                            "Courier Prime"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "display-lg": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-sm": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "mono-sm": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low text-label-md font-label-md docked sidebar-width left-0 h-full border-r border-outline-variant dark:border-outline flat no shadows transition-all duration-200 fixed left-0 top-0 w-[240px] h-screen flex flex-col p-4 z-20">
+<div class="mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center overflow-hidden shrink-0">
+<img alt="Staff Profile Picture" class="w-full h-full object-cover" data-alt="A clean, minimalist abstract geometric pattern in greyscale, used as a placeholder for a staff profile avatar. The design is simple, professional, and fits a light-mode admin dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLGTPT0S_oF3XTkJOfH3Hln1XqDwCT-gVT6R_8Y924QEwmPTDVq6V-YOImFsjCDAXN1Ov2nDporUIOVIGSulrdR23WOahopku5_MjSwmBB0oluvwXJCeQXHsVi2WaO8nG3cFNJamiUguvcUbRebJX-eMiPGBsRl8uuglK-hTGcRyYRgxr190K7eyH5Aiz5UOCNwZRE_1FTsesaZHvztVpQEB1a4eDk9-tFam8PWqaplkUfd_q6WIhzYg"/>
+</div>
+<div>
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary dark:text-on-surface">Admin Portal</h1>
+<p class="text-body-sm text-secondary">Management Console</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary rounded-sm px-4 py-2 w-full text-label-md font-label-md mb-6 hover:bg-surface-tint transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+             New Entry
+        </button>
+<ul class="flex-1 space-y-2">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined">movie</span>
+                    Movies
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined">badge</span>
+                    Staff
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Users
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary dark:bg-primary text-on-primary dark:text-on-primary rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">assessment</span>
+                    Promotions
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-on-secondary-fixed-variant hover:bg-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                    Reports
+                </a>
+</li>
+</ul>
+<div class="mt-auto border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-variant rounded transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-1 flex flex-col min-h-screen">
+<!-- Header Section -->
+<header class="h-20 border-b border-outline-variant px-6 flex items-center justify-between bg-surface-container-lowest shrink-0">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Promotions Management</h2>
+<p class="text-body-sm font-body-sm text-secondary">Manage active discount codes and special offers.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary">search</span>
+<input class="pl-10 pr-4 py-2 border border-outline-variant focus:border-primary focus:ring-0 rounded-sm text-body-sm w-64 bg-surface-container-lowest placeholder:text-outline" placeholder="Search promos..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary rounded-sm px-4 py-2 text-label-md font-label-md hover:bg-surface-tint transition-colors flex items-center gap-2" onclick="document.getElementById('promoModal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Create Promo
+                </button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-6 flex-1 overflow-auto">
+<!-- Summary Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-surface-container-lowest border border-outline-variant p-4 flex flex-col gap-2">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Active Promos</span>
+<div class="flex items-end gap-2">
+<span class="text-display-lg font-display-lg text-on-surface">12</span>
+<span class="text-body-sm text-secondary mb-1">codes</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-4 flex flex-col gap-2">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Total Uses (30 Days)</span>
+<div class="flex items-end gap-2">
+<span class="text-display-lg font-display-lg text-on-surface">1,452</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-4 flex flex-col gap-2">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Estimated Savings</span>
+<div class="flex items-end gap-2">
+<span class="text-display-lg font-display-lg text-on-surface">$4.2k</span>
+</div>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-surface-container-lowest border border-outline-variant flex flex-col">
+<div class="px-4 py-3 border-b border-outline-variant bg-surface-container flex items-center justify-between">
+<h3 class="text-label-md font-label-md text-on-surface">Active &amp; Scheduled Promotions</h3>
+<button class="text-label-md font-label-md text-secondary hover:text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filter
+                    </button>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary uppercase w-1/5">Promo Code</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary uppercase w-1/6">Discount</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary uppercase w-1/4">Conditions</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary uppercase w-1/6">Usage</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary uppercase w-1/6">Expiry</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary uppercase w-1/12 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3">
+<div class="font-mono-sm font-bold text-on-surface">SUMMER24</div>
+</td>
+<td class="px-4 py-3 text-on-surface">20% Off</td>
+<td class="px-4 py-3 text-secondary">Min spend $50. All genres.</td>
+<td class="px-4 py-3">
+<div class="flex items-center gap-2">
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden max-w-[80px]">
+<div class="bg-primary h-full w-[45%]"></div>
+</div>
+<span class="text-secondary text-[12px]">450/1000</span>
+</div>
+</td>
+<td class="px-4 py-3 text-on-surface">Aug 31, 2024</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3">
+<div class="font-mono-sm font-bold text-on-surface">STUDENT15</div>
+</td>
+<td class="px-4 py-3 text-on-surface">15% Off</td>
+<td class="px-4 py-3 text-secondary">Requires valid .edu email.</td>
+<td class="px-4 py-3">
+<div class="flex items-center gap-2">
+<span class="text-secondary text-[12px]">∞ uses</span>
+</div>
+</td>
+<td class="px-4 py-3 text-secondary italic">Never</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3">
+<div class="font-mono-sm font-bold text-on-surface">HORRORWKND</div>
+</td>
+<td class="px-4 py-3 text-on-surface">$5 Flat</td>
+<td class="px-4 py-3 text-secondary">Horror genre only. Fri-Sun.</td>
+<td class="px-4 py-3">
+<div class="flex items-center gap-2">
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden max-w-[80px]">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+<span class="text-secondary text-[12px]">425/500</span>
+</div>
+</td>
+<td class="px-4 py-3 text-error">Oct 31, 2024</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3">
+<div class="font-mono-sm font-bold text-secondary line-through">EARLYBIRD</div>
+</td>
+<td class="px-4 py-3 text-secondary">10% Off</td>
+<td class="px-4 py-3 text-secondary">Before 5PM screenings.</td>
+<td class="px-4 py-3">
+<div class="flex items-center gap-2">
+<span class="text-secondary text-[12px] border border-outline-variant px-1 rounded-sm uppercase">Expired</span>
+</div>
+</td>
+<td class="px-4 py-3 text-secondary">May 01, 2024</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-4 py-3 border-t border-outline-variant bg-surface-container-lowest flex justify-between items-center text-body-sm text-secondary">
+<span>Showing 1-4 of 12</span>
+<div class="flex gap-1">
+<button class="p-1 border border-outline-variant disabled:opacity-50 hover:bg-surface-container-low"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button class="p-1 border border-outline-variant hover:bg-surface-container-low"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Create Promo Modal Overlay -->
+<div class="fixed inset-0 bg-surface-tint/20 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" id="promoModal">
+<div class="bg-surface-container-lowest border-2 border-primary w-full max-w-[600px] shadow-none flex flex-col max-h-[90vh]">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center shrink-0">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Create New Promo Code</h2>
+<button class="text-secondary hover:text-primary" onclick="document.getElementById('promoModal').classList.add('hidden')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 overflow-y-auto flex-1 space-y-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-label-sm font-label-sm text-on-surface">Promo Code</label>
+<input class="px-3 py-2 border border-outline-variant focus:border-primary focus:ring-0 rounded-sm font-mono-sm uppercase placeholder:normal-case text-body-sm placeholder:text-outline" placeholder="e.g. VIP2024" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-label-sm font-label-sm text-on-surface">Status</label>
+<select class="px-3 py-2 border border-outline-variant focus:border-primary focus:ring-0 rounded-sm text-body-sm bg-surface-container-lowest">
+<option>Active</option>
+<option>Scheduled</option>
+<option>Draft</option>
+</select>
+</div>
+</div>
+<div class="border border-outline-variant p-4 bg-surface-container-low">
+<h4 class="text-label-md font-label-md mb-4">Discount Type</h4>
+<div class="flex gap-4 mb-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-primary focus:ring-primary border-outline-variant" name="discount_type" type="radio"/>
+<span class="text-body-sm text-on-surface">Percentage (%)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-primary focus:ring-primary border-outline-variant" name="discount_type" type="radio"/>
+<span class="text-body-sm text-on-surface">Fixed Amount ($)</span>
+</label>
+</div>
+<div class="flex flex-col gap-1 w-1/2">
+<label class="text-label-sm font-label-sm text-on-surface">Value</label>
+<div class="relative">
+<input class="pl-3 pr-8 py-2 border border-outline-variant focus:border-primary focus:ring-0 rounded-sm text-body-sm w-full placeholder:text-outline" placeholder="20" type="number"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-secondary text-body-sm">%</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-label-sm font-label-sm text-on-surface">Valid From</label>
+<input class="px-3 py-2 border border-outline-variant focus:border-primary focus:ring-0 rounded-sm text-body-sm text-on-surface" type="date"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-label-sm font-label-sm text-on-surface">Expiry Date (Optional)</label>
+<input class="px-3 py-2 border border-outline-variant focus:border-primary focus:ring-0 rounded-sm text-body-sm text-secondary" type="date"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-label-sm font-label-sm text-on-surface">Usage Limit</label>
+<div class="relative w-1/2">
+<input class="px-3 py-2 border border-outline-variant focus:border-primary focus:ring-0 rounded-sm text-body-sm w-full placeholder:text-outline" placeholder="Leave blank for unlimited" type="number"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-label-sm font-label-sm text-on-surface">Conditions / Notes</label>
+<textarea class="px-3 py-2 border border-outline-variant focus:border-primary focus:ring-0 rounded-sm text-body-sm resize-none placeholder:text-outline" placeholder="Internal notes or specific conditions for this promo..." rows="3"></textarea>
+</div>
+</div>
+<div class="px-6 py-4 border-t border-outline-variant flex justify-end gap-3 shrink-0 bg-surface-container-low">
+<button class="px-4 py-2 border border-primary text-primary bg-surface-container-lowest rounded-sm text-label-md font-label-md hover:bg-surface-variant transition-colors" onclick="document.getElementById('promoModal').classList.add('hidden')">
+                    Cancel
+                </button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-sm text-label-md font-label-md hover:bg-surface-tint transition-colors">
+                    Save Promo Code
+                </button>
+</div>
+</div>
+</div>
+</body></html>
