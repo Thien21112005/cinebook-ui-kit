@@ -48,6 +48,7 @@
 
     const isMoviesActive = currentFolder.includes('movie_list') || currentFolder.includes('movie_detail');
     const isAiSearchActive = currentFolder.includes('ai_search');
+    const isRecommendationsActive = currentFolder.includes('personalized_recommendations');
 
     const headerElem = document.createElement('header');
     headerElem.className = 'cb-header';
@@ -67,6 +68,10 @@
             <a href="../3_cinebook_ai_search/code.html" class="cb-nav-item ${isAiSearchActive ? 'active' : ''}">
               <span class="material-symbols-outlined" style="font-size: 18px;">auto_awesome</span>
               <span>AI Search</span>
+            </a>
+            <a href="../14_cinebook_personalized_recommendations/code.html" class="cb-nav-item ${isRecommendationsActive ? 'active' : ''}">
+              <span class="material-symbols-outlined" style="font-size: 18px;">recommend</span>
+              <span>For You</span>
             </a>
           </nav>
         </div>
