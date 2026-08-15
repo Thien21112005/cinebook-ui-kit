@@ -264,8 +264,11 @@
     const isStaffScreen = /^(15|16|17|18|19)_cinebook/.test(currentFolder);
     if (!isStaffScreen) return;
 
-    let aside = document.querySelector('aside');
-    if (!aside) return;
+    let sidebarContainer = document.querySelector('aside.w-\\[240px\\], nav.w-\\[240px\\]');
+    if (!sidebarContainer) {
+      sidebarContainer = document.querySelector('aside.fixed.left-0, nav.fixed.left-0');
+    }
+    if (!sidebarContainer) return;
 
     // Define links
     const links = [
@@ -292,7 +295,7 @@
       `;
     });
 
-    aside.innerHTML = `
+    sidebarContainer.innerHTML = `
       <div class="mb-8 flex items-center gap-3">
         <div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center overflow-hidden">
           <span class="material-symbols-outlined text-secondary">badge</span>
@@ -325,8 +328,11 @@
     const isAdminScreen = /^(20|21|22|23|24|25)_cinebook/.test(currentFolder);
     if (!isAdminScreen) return;
 
-    let aside = document.querySelector('aside');
-    if (!aside) return;
+    let sidebarContainer = document.querySelector('aside.w-\\[240px\\], nav.w-\\[240px\\]');
+    if (!sidebarContainer) {
+      sidebarContainer = document.querySelector('aside.fixed.left-0, nav.fixed.left-0');
+    }
+    if (!sidebarContainer) return;
 
     // Define links
     const links = [
@@ -354,7 +360,7 @@
       `;
     });
 
-    aside.innerHTML = `
+    sidebarContainer.innerHTML = `
       <div class="mb-8 flex items-center gap-3">
         <div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center overflow-hidden">
           <span class="material-symbols-outlined text-secondary">admin_panel_settings</span>
