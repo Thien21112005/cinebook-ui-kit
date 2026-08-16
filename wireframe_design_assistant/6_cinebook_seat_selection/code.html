@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html class="light" lang="en"><head>
+<!DOCTYPE html><html class="light" lang="en"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>CineBook - Seat Selection</title>
@@ -261,14 +261,14 @@
 <div class="flex justify-between items-center border border-outline-variant p-3 bg-surface-container-lowest">
 <div class="flex flex-col">
 <span class="font-mono-sm font-bold text-primary">F7</span>
-<span class="font-label-sm text-secondary">Adult Standard</span>
+<span class="font-label-sm text-secondary flex items-center gap-2">Adult Standard <button onclick="document.getElementById('ticketTypeModal').style.display='flex'" class="text-primary hover:underline" style="font-size: 10px;">Change</button></span>
 </div>
 <span class="font-label-md text-primary">$18.50</span>
 </div>
 <div class="flex justify-between items-center border border-outline-variant p-3 bg-surface-container-lowest">
 <div class="flex flex-col">
 <span class="font-mono-sm font-bold text-primary">F8</span>
-<span class="font-label-sm text-secondary">Adult Standard</span>
+<span class="font-label-sm text-secondary flex items-center gap-2">Adult Standard <button onclick="document.getElementById('ticketTypeModal').style.display='flex'" class="text-primary hover:underline" style="font-size: 10px;">Change</button></span>
 </div>
 <span class="font-label-md text-primary">$18.50</span>
 </div>
@@ -299,6 +299,63 @@
 <span class="text-body-sm font-body-sm text-secondary">© 2024 CineBook Systems. All rights reserved.</span>
 </footer>
 
+
+<!-- Ticket Type Modal (Extended Roadmap Feature) -->
+<div class="fixed inset-0 bg-[rgba(0,0,0,0.5)] z-50 flex items-center justify-center p-4" style="display: none;" id="ticketTypeModal">
+  <div class="bg-surface-container-lowest w-full max-w-md border border-outline-variant p-6 rounded-sm shadow-lg flex flex-col gap-6">
+    <div class="flex justify-between items-center border-b border-outline-variant pb-4">
+      <h2 class="text-headline-sm font-headline-sm text-primary">Select Ticket Type</h2>
+      <button class="text-secondary hover:text-primary transition-colors" onclick="document.getElementById('ticketTypeModal').style.display='none'">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    
+    <div class="flex flex-col gap-2">
+      <p class="text-body-sm text-secondary mb-2">Seat <span class="font-bold text-primary">F7</span></p>
+      
+      <!-- Option 1 -->
+      <label class="flex justify-between items-center border border-primary bg-surface-container-low p-4 cursor-pointer hover:bg-surface-variant transition-colors rounded-sm">
+        <div class="flex items-center gap-3">
+          <input type="radio" name="ticketType" checked class="w-4 h-4 text-primary bg-surface-container-lowest border-outline-variant focus:ring-primary focus:ring-offset-1 focus:ring-2 accent-primary">
+          <div class="flex flex-col">
+            <span class="text-label-md font-label-md text-primary">Adult Standard</span>
+            <span class="text-body-sm font-body-sm text-secondary">General admission</span>
+          </div>
+        </div>
+        <span class="text-label-md font-bold text-primary">$18.50</span>
+      </label>
+
+      <!-- Option 2 -->
+      <label class="flex justify-between items-center border border-outline-variant bg-surface-container-lowest p-4 cursor-pointer hover:bg-surface-container-low transition-colors rounded-sm mt-2">
+        <div class="flex items-center gap-3">
+          <input type="radio" name="ticketType" class="w-4 h-4 text-primary bg-surface-container-lowest border-outline-variant focus:ring-primary focus:ring-offset-1 focus:ring-2 accent-primary">
+          <div class="flex flex-col">
+            <span class="text-label-md font-label-md text-primary">Student</span>
+            <span class="text-body-sm font-body-sm text-secondary">Valid ID required</span>
+          </div>
+        </div>
+        <span class="text-label-md font-bold text-primary">$15.00</span>
+      </label>
+
+      <!-- Option 3 -->
+      <label class="flex justify-between items-center border border-outline-variant bg-surface-container-lowest p-4 cursor-pointer hover:bg-surface-container-low transition-colors rounded-sm mt-2">
+        <div class="flex items-center gap-3">
+          <input type="radio" name="ticketType" class="w-4 h-4 text-primary bg-surface-container-lowest border-outline-variant focus:ring-primary focus:ring-offset-1 focus:ring-2 accent-primary">
+          <div class="flex flex-col">
+            <span class="text-label-md font-label-md text-primary">Child</span>
+            <span class="text-body-sm font-body-sm text-secondary">Under 12 years old</span>
+          </div>
+        </div>
+        <span class="text-label-md font-bold text-primary">$12.50</span>
+      </label>
+    </div>
+
+    <div class="flex justify-end gap-3 mt-4 border-t border-outline-variant pt-4">
+      <button class="px-6 py-2 border border-outline-variant text-primary font-label-md hover:bg-surface-container-low transition-colors rounded-sm" onclick="document.getElementById('ticketTypeModal').style.display='none'">Cancel</button>
+      <button class="px-6 py-2 bg-primary text-on-primary font-label-md hover:bg-on-surface-variant transition-colors rounded-sm" onclick="document.getElementById('ticketTypeModal').style.display='none'">Confirm</button>
+    </div>
+  </div>
+</div>
 
 <script src="../cinebook-shared.js"></script>
 </body></html>

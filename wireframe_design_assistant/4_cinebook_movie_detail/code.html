@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html class="light" lang="en"><head>
+<!DOCTYPE html><html class="light" lang="en"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>[4] CineBook - Movie Detail</title>
@@ -129,7 +129,7 @@
 <div class="flex flex-wrap items-center gap-4 text-secondary text-body-sm font-body-sm">
 <span class="flex items-center gap-1 border border-outline-variant px-2 py-1 bg-surface"><span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span> 142 min</span>
 <span class="border border-outline-variant px-2 py-1 bg-surface">Drama / Thriller</span>
-<span class="border border-outline-variant px-2 py-1 bg-surface">PG-13</span>
+<span class="border border-error bg-error-container text-error font-bold px-2 py-1">T18</span>
 <span class="flex items-center gap-1 border border-outline-variant px-2 py-1 bg-surface font-bold text-primary"><span class="material-symbols-outlined text-[16px] text-primary" data-icon="star" data-weight="fill">star</span> 4.8</span>
 </div>
 </div>
@@ -190,7 +190,11 @@
 <span class="text-label-sm font-label-sm text-secondary">Standard</span>
 </button>
 </div>
-<div class="mt-8 flex justify-end">
+<div class="mt-8 flex flex-col items-end gap-4">
+    <label class="flex items-center gap-2 cursor-pointer text-body-sm font-body-sm text-secondary">
+        <input type="checkbox" class="w-4 h-4 text-primary bg-surface-container-lowest border-outline-variant focus:ring-primary focus:ring-offset-1 rounded-sm">
+        Tôi xác nhận đủ 18 tuổi để xem phim này
+    </label>
 <button class="bg-primary text-on-primary text-label-md font-label-md px-8 py-3 rounded-sm hover:bg-primary/90 transition-colors">
                     Continue to Booking
                 </button>
@@ -200,7 +204,7 @@
 <section class="border-t border-outline-variant pt-8">
 <div class="flex justify-between items-center mb-6">
 <h2 class="text-headline-md font-headline-md text-primary">Audience Reviews</h2>
-<button class="border border-outline-variant bg-surface text-primary px-4 py-2 text-label-md font-label-md hover:bg-surface-container-low transition-colors">Write Review</button>
+<button class="border border-outline-variant bg-surface text-primary px-4 py-2 text-label-md font-label-md hover:bg-surface-container-low transition-colors" onclick="document.getElementById('reviewModal').style.display='flex'">Write Review</button>
 </div>
 <div class="space-y-4">
 <!-- Review 1 -->
@@ -271,6 +275,43 @@
         </div>
 </footer>
 
+
+<!-- Review Modal (Extended Roadmap Feature) -->
+<div class="fixed inset-0 bg-[rgba(0,0,0,0.5)] z-50 flex items-center justify-center p-4" style="display: none;" id="reviewModal">
+  <div class="bg-surface-container-lowest w-full max-w-lg border border-outline-variant p-6 rounded-sm shadow-lg flex flex-col gap-6">
+    <div class="flex justify-between items-center border-b border-outline-variant pb-4">
+      <h2 class="text-headline-sm font-headline-sm text-primary">Write a Review</h2>
+      <button class="text-secondary hover:text-primary transition-colors" onclick="document.getElementById('reviewModal').style.display='none'">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    
+    <div class="flex flex-col gap-4">
+      <!-- Star Rating -->
+      <div>
+        <label class="text-label-md font-label-md text-primary mb-2 block">Your Rating</label>
+        <div class="flex gap-2">
+          <button class="text-outline-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[32px]">star</span></button>
+          <button class="text-outline-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[32px]">star</span></button>
+          <button class="text-outline-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[32px]">star</span></button>
+          <button class="text-outline-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[32px]">star</span></button>
+          <button class="text-outline-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[32px]">star</span></button>
+        </div>
+      </div>
+      
+      <!-- Text Area -->
+      <div>
+        <label class="text-label-md font-label-md text-primary mb-2 block">Your Review</label>
+        <textarea class="w-full bg-surface-container-low border border-outline-variant rounded-sm p-3 text-body-sm font-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary min-h-[120px]" placeholder="What did you think of the movie? (Note: All reviews are moderated before publishing)"></textarea>
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-3 mt-2 border-t border-outline-variant pt-4">
+      <button class="px-6 py-2 border border-outline-variant text-primary font-label-md hover:bg-surface-container-low transition-colors rounded-sm" onclick="document.getElementById('reviewModal').style.display='none'">Cancel</button>
+      <button class="px-6 py-2 bg-primary text-on-primary font-label-md hover:bg-on-surface-variant transition-colors rounded-sm" onclick="document.getElementById('reviewModal').style.display='none'">Submit Review</button>
+    </div>
+  </div>
+</div>
 
 <script src="../cinebook-shared.js"></script>
 </body></html>
