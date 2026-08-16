@@ -67,7 +67,7 @@ Since this prototype is built **without heavy build tools or bundlers**, it can 
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Thien21112005/cinebook-ui-kit.git
    ```
 2. **View the Prototype:**
    - Open `demo.html` in your browser to experience the interactive prototype with a built-in device viewport simulator.
@@ -148,7 +148,7 @@ Vì bản prototype này được xây dựng **không sử dụng các công c�
 
 1. **Tải repository về máy:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Thien21112005/cinebook-ui-kit.git
    ```
 2. **Trải nghiệm Bản mẫu:**
    - Mở file `demo.html` trên trình duyệt để trải nghiệm luồng tương tác thực tế với khung mô phỏng thiết bị (iPhone, Macbook...).
