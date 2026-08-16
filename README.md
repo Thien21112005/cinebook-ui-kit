@@ -1,6 +1,6 @@
 # CineBook Interactive UI Blueprint 🎬
 
-*[Đọc bản Tiếng Việt ở bên dưới / Scroll down for Vietnamese version](#-cinebook-interactive-ui-blueprint--vietnamese-version)*
+*[Đọc bản Tiếng Việt ở bên dưới / Scroll down for Vietnamese version](#vietnamese)*
 
 > A high-fidelity, interactive HTML/CSS prototype and comprehensive design system for the CineBook modern cinema management platform.
 
@@ -82,6 +82,7 @@ MIT License
 ---
 ---
 
+<a id="vietnamese"></a>
 # 🇻🇳 CineBook Interactive UI Blueprint (Vietnamese Version)
 
 > Bản mẫu (prototype) tương tác chất lượng cao và hệ thống thiết kế (design system) hoàn chỉnh cho nền tảng quản lý rạp chiếu phim hiện đại CineBook.
