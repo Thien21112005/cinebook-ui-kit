@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark">
+<html lang="vi" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,53 +13,28 @@
 
   <style>
     :root {
-      --bg-canvas: #0d1117;
-      --bg-panel: rgba(22, 27, 34, 0.85);
-      --bg-panel-solid: #161b22;
-      --bg-card: #1c2128;
-      --bg-card-header: #242c38;
-      --border-subtle: rgba(255, 255, 255, 0.1);
-      --border-strong: rgba(255, 255, 255, 0.2);
-      --text-primary: #f0f6fc;
-      --text-secondary: #8b949e;
-      --text-muted: #6e7681;
-      
-      --accent-blue: #58a6ff;
-      --accent-cyan: #39c5bb;
-      --accent-purple: #bc8cff;
-      --accent-green: #3fb950;
-      --accent-amber: #d29922;
-      --accent-red: #f85149;
-      
-      --grid-dot-color: rgba(255, 255, 255, 0.08);
-      --grid-line-color: rgba(255, 255, 255, 0.03);
-      --shadow-elevation: 0 16px 36px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
-      --shadow-active: 0 0 0 2px var(--accent-blue), 0 20px 48px rgba(88, 166, 255, 0.25);
-    }
-
-    html.light {
       --bg-canvas: #f6f8fa;
-      --bg-panel: rgba(255, 255, 255, 0.9);
+      --bg-panel: rgba(255, 255, 255, 0.95);
       --bg-panel-solid: #ffffff;
       --bg-card: #ffffff;
-      --bg-card-header: #f3f4f6;
-      --border-subtle: #d0d7de;
-      --border-strong: #afb8c1;
-      --text-primary: #1f2328;
-      --text-secondary: #57606a;
-      --text-muted: #8c959f;
+      --bg-card-header: #f8fafc;
+      --border-subtle: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
       
-      --accent-blue: #0969da;
-      --accent-cyan: #059669;
-      --accent-purple: #8250df;
-      --accent-green: #1a7f37;
-      --accent-amber: #9a6700;
-      --accent-red: #cf222e;
+      --accent-blue: #0284c7;
+      --accent-cyan: #0d9488;
+      --accent-purple: #7c3aed;
+      --accent-green: #16a34a;
+      --accent-amber: #d97706;
+      --accent-red: #dc2626;
       
       --grid-dot-color: rgba(0, 0, 0, 0.08);
       --grid-line-color: rgba(0, 0, 0, 0.03);
-      --shadow-elevation: 0 8px 24px rgba(140, 149, 159, 0.2), 0 1px 3px rgba(31, 35, 40, 0.12);
-      --shadow-active: 0 0 0 2px var(--accent-blue), 0 12px 32px rgba(9, 105, 218, 0.2);
+      --shadow-elevation: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-active: 0 0 0 2px var(--accent-blue), 0 12px 32px rgba(2, 132, 199, 0.15);
     }
 
     * {
@@ -944,7 +919,7 @@
   <!-- App Header -->
   <header class="app-header">
     <div class="brand" onclick="resetCanvasView()">
-      <div class="brand-logo">🎬</div>
+      <div class="brand-logo" style="background:#0f766e;font-size:14px;">CB</div>
       <div class="brand-title">
         <span>CineBook Stitch Canvas</span>
         <span class="brand-subtitle">Interactive Wireframe & Concurrency System Map</span>
@@ -955,23 +930,18 @@
     <div class="header-center">
       <div class="flow-tabs">
         <button class="flow-tab-btn active" onclick="setFlowFilter('all', this)">
-          <span class="material-symbols-outlined" style="font-size: 16px;">dashboard</span>
           Tất cả <span class="badge-count">25</span>
         </button>
         <button class="flow-tab-btn" onclick="setFlowFilter('booking', this)">
-          <span class="material-symbols-outlined" style="font-size: 16px; color: var(--accent-cyan);">confirmation_number</span>
           Core Booking Flow <span class="badge-count">8</span>
         </button>
         <button class="flow-tab-btn" onclick="setFlowFilter('ai', this)">
-          <span class="material-symbols-outlined" style="font-size: 16px; color: var(--accent-purple);">psychology</span>
           AI Search & RAG <span class="badge-count">4</span>
         </button>
         <button class="flow-tab-btn" onclick="setFlowFilter('staff', this)">
-          <span class="material-symbols-outlined" style="font-size: 16px; color: var(--accent-green);">badge</span>
           Staff & Check-in <span class="badge-count">5</span>
         </button>
         <button class="flow-tab-btn" onclick="setFlowFilter('admin', this)">
-          <span class="material-symbols-outlined" style="font-size: 16px; color: var(--accent-amber);">admin_panel_settings</span>
           Admin Governance <span class="badge-count">6</span>
         </button>
       </div>
@@ -988,13 +958,11 @@
 
       <!-- Interactive Demo Web Button -->
       <a href="demo.html" class="btn-primary" style="background: linear-gradient(135deg, #2563eb, #7c3aed); box-shadow: 0 2px 10px rgba(124, 58, 237, 0.4); text-decoration: none;" title="Trải nghiệm như 1 website thật với wireframe tương tác đầy đủ">
-        <span class="material-symbols-outlined" style="font-size: 16px;">language</span>
-        <span>🌐 Trải nghiệm Demo Web</span>
+        <span>Demo Web</span>
       </a>
 
       <!-- Guided Tour Button -->
       <button class="btn-primary" onclick="startGuidedTour()" style="background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-primary);">
-        <span class="material-symbols-outlined" style="font-size: 16px;">play_arrow</span>
         Bắt đầu Tour
       </button>
 
@@ -1003,10 +971,7 @@
         <span class="material-symbols-outlined">menu_book</span>
       </button>
 
-      <!-- Theme Toggle -->
-      <button class="btn-icon" title="Chuyển đổi Dark / Light theme" onclick="toggleTheme()">
-        <span class="material-symbols-outlined" id="themeIcon">light_mode</span>
-      </button>
+      <!-- Theme Toggle Removed -->
     </div>
   </header>
 
@@ -1019,35 +984,35 @@
       <!-- Functional Zones / Bounding Boxes -->
       <div class="canvas-zone" id="zone-discovery" style="top: 180px; left: 80px; width: 1880px; height: 960px;">
         <div class="canvas-zone-label">
-          <span>🎬 Module 1: Khám phá Phim & Trợ lý AI</span>
+          <span>Module 1: Khám phá Phim & Trợ lý AI</span>
           <span class="zone-tag discovery">Discovery & AI Flow</span>
         </div>
       </div>
 
       <div class="canvas-zone" id="zone-booking" style="top: 180px; left: 2060px; width: 2540px; height: 460px;">
         <div class="canvas-zone-label">
-          <span>🎟️ Module 2: Đặt vé Lõi & Concurrency Engine (Redis Redlock)</span>
+          <span>Module 2: Đặt vé Lõi & Concurrency Engine (Redis Redlock)</span>
           <span class="zone-tag booking">Core Booking Flow</span>
         </div>
       </div>
 
       <div class="canvas-zone" id="zone-auth" style="top: 680px; left: 2060px; width: 2540px; height: 460px;">
         <div class="canvas-zone-label">
-          <span>👤 Module 3: Xác thực JWT & Quản lý Tài khoản Cá nhân</span>
+          <span>Module 3: Xác thực JWT & Quản lý Tài khoản Cá nhân</span>
           <span class="zone-tag auth">Auth & Profile Flow</span>
         </div>
       </div>
 
       <div class="canvas-zone" id="zone-staff" style="top: 1200px; left: 80px; width: 1880px; height: 960px;">
         <div class="canvas-zone-label">
-          <span>🏢 Module 4: Vận hành Rạp & Soát vé QR (Cinema Staff)</span>
+          <span>Module 4: Vận hành Rạp & Soát vé QR (Cinema Staff)</span>
           <span class="zone-tag staff">Staff Operations Flow</span>
         </div>
       </div>
 
       <div class="canvas-zone" id="zone-admin" style="top: 1200px; left: 2060px; width: 2540px; height: 960px;">
         <div class="canvas-zone-label">
-          <span>🛡️ Module 5: Quản trị Toàn hệ thống & Giám sát Prometheus</span>
+          <span>Module 5: Quản trị Toàn hệ thống & Giám sát Prometheus</span>
           <span class="zone-tag admin">Admin Enterprise & Metrics</span>
         </div>
       </div>
