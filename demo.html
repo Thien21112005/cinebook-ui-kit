@@ -13,13 +13,13 @@
 
   <style>
     :root {
-      --bg-app: #0f141c;
-      --bg-bar: #18202c;
-      --border-bar: rgba(255, 255, 255, 0.12);
-      --text-white: #ffffff;
-      --text-gray: #94a3b8;
-      --accent: #3b82f6;
-      --accent-hover: #2563eb;
+      --bg-app: #f8fafc;
+      --bg-bar: #ffffff;
+      --border-bar: #e2e8f0;
+      --text-white: #0f172a;
+      --text-gray: #64748b;
+      --accent: #0f766e;
+      --accent-hover: #115e59;
     }
 
     * {
@@ -30,7 +30,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-app);
+      background-color: #f1f5f9;
       color: var(--text-white);
       height: 100vh;
       display: flex;
@@ -56,7 +56,7 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: #ffffff;
+      color: #0f172a;
     }
     .demo-logo {
       background: #000000;
@@ -75,7 +75,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 0, 0, 0.35);
+      background: #f1f5f9;
       border: 1px solid var(--border-bar);
       padding: 6px 14px;
       border-radius: 20px;
@@ -89,7 +89,7 @@
     .url-text {
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      color: #cbd5e1;
+      color: #334155;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -98,7 +98,7 @@
 
     /* Quick Flow Steps Dropdown */
     .flow-selector {
-      background: rgba(255, 255, 255, 0.06);
+      background: #ffffff;
       border: 1px solid var(--border-bar);
       color: #ffffff;
       padding: 6px 12px;
@@ -110,14 +110,14 @@
       outline: none;
     }
     .flow-selector option {
-      background: #18202c;
+      background: #ffffff;
       color: #ffffff;
     }
 
     /* Device Switcher */
     .device-group {
       display: flex;
-      background: rgba(0, 0, 0, 0.3);
+      background: #f1f5f9;
       border: 1px solid var(--border-bar);
       padding: 2px;
       border-radius: 8px;
@@ -140,7 +140,7 @@
       color: #ffffff;
     }
     .device-btn.active {
-      background: rgba(255, 255, 255, 0.12);
+      background: #ffffff; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
       color: #ffffff;
       font-weight: 600;
     }
@@ -171,7 +171,7 @@
       color: #cbd5e1;
     }
     .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: #f1f5f9;
       color: #ffffff;
     }
 
@@ -181,7 +181,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #090d13;
+      background: #f1f5f9;
       padding: 16px;
       overflow: hidden;
       position: relative;
@@ -235,7 +235,7 @@
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(24, 32, 44, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border-bar);
       border-radius: 30px;
@@ -243,12 +243,12 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
       z-index: 90;
     }
     .journey-step {
       font-size: 12px;
-      color: #94a3b8;
+      color: #64748b;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -262,12 +262,12 @@
       background: rgba(255, 255, 255, 0.08);
     }
     .journey-step.active {
-      color: #38bdf8;
+      color: #166534;
       font-weight: 700;
-      background: rgba(56, 189, 248, 0.15);
+      background: #f0fdf4; border: 1px solid #bbf7d0;
     }
     .journey-divider {
-      color: rgba(255, 255, 255, 0.2);
+      color: #cbd5e1;
       font-size: 10px;
     }
   </style>
@@ -278,7 +278,7 @@
   <header class="demo-bar">
     <div style="display: flex; align-items: center; gap: 16px;">
       <a href="index.html" class="demo-brand" title="Quay lại Canvas Board">
-        <div class="demo-logo">🎬</div>
+        <div class="demo-logo" style="background:#0f766e;color:#fff;font-weight:700;font-size:13px;border:none;">CB</div>
         <div style="display: flex; flex-direction: column;">
           <strong style="font-size: 14px;">CineBook Live Prototype</strong>
           <span style="font-size: 10.5px; color: var(--text-gray);">Interactive Wireframe Web App</span>
@@ -287,7 +287,7 @@
 
       <!-- Quick Step Selector -->
       <select class="flow-selector" id="screenSelector" onchange="jumpToScreen(this.value)">
-        <optgroup label="🎬 Hành trình Đặt vé Khách hàng (User Flow)">
+        <optgroup label="Hành trình Đặt vé Khách hàng (User Flow)">
           <option value="1_cinebook_home_page">1. Trang chủ (Home Page)</option>
           <option value="2_cinebook_movie_list">2. Danh sách phim & Bộ lọc</option>
           <option value="3_cinebook_ai_search">3. Tìm kiếm phim AI Semantic</option>
@@ -298,7 +298,7 @@
           <option value="8_cinebook_payment_checkout">8. Xác nhận đơn & Thanh toán</option>
           <option value="9_cinebook_booking_success">9. Đặt vé thành công & QR</option>
         </optgroup>
-        <optgroup label="🔒 Khách hàng (User Account & Auth)">
+        <optgroup label="Khách hàng (User Account & Auth)">
           <option value="10_cinebook_login_register">10. Đăng nhập & Đăng ký</option>
           <option value="11_cinebook_booking_history">11. Lịch sử đặt vé</option>
           <option value="12_cinebook_ticket_details">12. Chi tiết vé & Mã QR</option>
@@ -308,14 +308,14 @@
           <option value="28_cinebook_preferences">28. Cài đặt tài khoản</option>
           <option value="14_cinebook_personalized_recommendations">14. Gợi ý phim cá nhân hóa</option>
         </optgroup>
-        <optgroup label="🏢 Nhân viên Rạp & Soát vé (Staff Flow)">
+        <optgroup label="Nhân viên Rạp & Soát vé (Staff Flow)">
           <option value="18_cinebook_ticket_check_in">18. Soát vé QR tại quầy rạp</option>
           <option value="15_cinebook_staff_dashboard">15. Dashboard nhân viên rạp</option>
           <option value="16_cinebook_manage_showtimes">16. Quản lý suất & lịch chiếu</option>
           <option value="17_cinebook_manage_halls">17. Quản lý phòng chiếu & sơ đồ ghế</option>
           <option value="19_cinebook_staff_revenue_report">19. Báo cáo doanh thu rạp</option>
         </optgroup>
-        <optgroup label="🛡️ Quản trị Toàn hệ thống (Admin Flow)">
+        <optgroup label="Quản trị Toàn hệ thống (Admin Flow)">
           <option value="20_cinebook_admin_global_dashboard">20. Dashboard quản trị Admin</option>
           <option value="21_cinebook_manage_movies">21. Quản lý danh mục phim</option>
           <option value="22_cinebook_manage_cinemas">22. Quản lý cụm rạp toàn quốc</option>
