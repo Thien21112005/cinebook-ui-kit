@@ -1,5 +1,9 @@
 ﻿{
   "name": "cinebook-ui-kit",
   "version": "1.0.0",
-  "private": true
+  "scripts": {
+    "build": "node build.js",
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
 }
