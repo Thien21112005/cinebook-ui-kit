@@ -1,20 +1,5 @@
 ﻿{
-  "name": "cinebook-wireframe-canvas",
+  "name": "cinebook-ui-kit",
   "version": "1.0.0",
-  "description": "CineBook - Interactive Wireframe Canvas & Architecture Flow Explorer",
-  "main": "server.js",
-  "scripts": {
-    "build": "echo Static build complete",
-    "start": "node server.js",
-    "dev": "node server.js"
-  },
-  "keywords": [
-    "cinebook",
-    "wireframe",
-    "canvas",
-    "system-design",
-    "concurrency"
-  ],
-  "author": "CineBook Team",
-  "license": "MIT"
+  "private": true
 }
