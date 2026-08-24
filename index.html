@@ -257,7 +257,7 @@
       top: 0;
       left: 0;
       width: 4800px;
-      height: 2500px;
+      height: 2800px;
       transform-origin: 0 0;
       will-change: transform;
       background-image: 
@@ -996,21 +996,21 @@
         </div>
       </div>
 
-      <div class="canvas-zone" id="zone-auth" style="top: 680px; left: 2060px; width: 2540px; height: 460px;">
+      <div class="canvas-zone" id="zone-auth" style="top: 680px; left: 2060px; width: 2540px; height: 930px;">
         <div class="canvas-zone-label">
-          <span>Module 3: Xác thực JWT & Quản lý Tài khoản Cá nhân</span>
-          <span class="zone-tag auth">Auth & Profile Flow</span>
+          <span>Module 3: Xác thực JWT, Vé của tôi & Hồ sơ Thành viên</span>
+          <span class="zone-tag auth">Auth, Tickets & Profile Flow</span>
         </div>
       </div>
 
-      <div class="canvas-zone" id="zone-staff" style="top: 1200px; left: 80px; width: 1880px; height: 960px;">
+      <div class="canvas-zone" id="zone-staff" style="top: 1700px; left: 80px; width: 1880px; height: 960px;">
         <div class="canvas-zone-label">
           <span>Module 4: Vận hành Rạp & Soát vé QR (Cinema Staff)</span>
           <span class="zone-tag staff">Staff Operations Flow</span>
         </div>
       </div>
 
-      <div class="canvas-zone" id="zone-admin" style="top: 1200px; left: 2060px; width: 2540px; height: 960px;">
+      <div class="canvas-zone" id="zone-admin" style="top: 1700px; left: 2060px; width: 2540px; height: 960px;">
         <div class="canvas-zone-label">
           <span>Module 5: Quản trị Toàn hệ thống & Giám sát Prometheus</span>
           <span class="zone-tag admin">Admin Enterprise & Metrics</span>
@@ -1201,6 +1201,7 @@
        DATA: 25 SCREENS DEFINITION & TOPOLOGY
        ========================================================================== */
     const SCREENS = [
+      // ZONE 1: Discovery (Left Top)
       {
         id: 1,
         folder: "1_cinebook_home_page",
@@ -1212,7 +1213,7 @@
         y: 250,
         desc: "Hero banner phim hot, danh mục phim đang chiếu / sắp chiếu, thanh tìm kiếm nhanh, top trending.",
         techNote: "Next.js SSR, ISR cache 60s, metadata động cho SEO, OpenGraph tags.",
-        connections: [2, 3, 4, 5, 14]
+        connections: [2, 3, 14]
       },
       {
         id: 2,
@@ -1241,32 +1242,6 @@
         connections: [4]
       },
       {
-        id: 4,
-        folder: "4_cinebook_movie_detail",
-        title: "Chi tiết phim & Lịch chiếu",
-        titleEn: "Movie Detail & Showtimes",
-        role: "user",
-        category: "discovery",
-        x: 750,
-        y: 720,
-        desc: "Trailer, tóm tắt nội dung, dàn diễn viên, đánh giá, danh sách cụm rạp và các khung giờ chiếu.",
-        techNote: "Schema.org Movie & Event JSON-LD rich snippets, dynamic showtime matrix query.",
-        connections: [6, 5]
-      },
-      {
-        id: 5,
-        folder: "5_cinebook_ai_assistant",
-        title: "Trợ lý AI tư vấn phim (RAG Chatbot)",
-        titleEn: "AI Cinema Concierge Chatbot",
-        role: "user",
-        category: "discovery",
-        x: 1350,
-        y: 720,
-        desc: "Chatbot RAG tư vấn phim theo cảm xúc/nhóm bạn, gọi function calling đặt vé trực tiếp qua hội thoại.",
-        techNote: "Claude/OpenAI API + Function Calling (get_showtimes, check_seats, start_booking).",
-        connections: [6, 4]
-      },
-      {
         id: 14,
         folder: "14_cinebook_personalized_recommendations",
         title: "Gợi ý phim cá nhân hóa",
@@ -1279,6 +1254,34 @@
         techNote: "Collaborative filtering + vector embeddings user profile, BullMQ offline batch recommendation worker.",
         connections: [4]
       },
+      {
+        id: 4,
+        folder: "4_cinebook_movie_detail",
+        title: "Chi tiết phim & Lịch chiếu",
+        titleEn: "Movie Detail & Showtimes",
+        role: "user",
+        category: "discovery",
+        x: 750,
+        y: 720,
+        desc: "Trailer, tóm tắt nội dung, dàn diễn viên, đánh giá, danh sách cụm rạp và các khung giờ chiếu.",
+        techNote: "Schema.org Movie & Event JSON-LD rich snippets, dynamic showtime matrix query.",
+        connections: [5, 6]
+      },
+      {
+        id: 5,
+        folder: "5_cinebook_ai_assistant",
+        title: "Trợ lý AI tư vấn phim (RAG Chatbot)",
+        titleEn: "AI Cinema Concierge Chatbot",
+        role: "user",
+        category: "discovery",
+        x: 1350,
+        y: 720,
+        desc: "Chatbot RAG tư vấn phim theo cảm xúc/nhóm bạn, gọi function calling đặt vé trực tiếp qua hội thoại.",
+        techNote: "Claude/OpenAI API + Function Calling (get_showtimes, check_seats, start_booking).",
+        connections: [6]
+      },
+
+      // ZONE 2: Core Booking Flow (Right Top)
       {
         id: 6,
         folder: "6_cinebook_seat_selection",
@@ -1329,8 +1332,10 @@
         y: 250,
         desc: "Màn hình hoàn tất thanh toán, mã QR vé điện tử, thời gian đếm ngược suất chiếu và mã đặt chỗ.",
         techNote: "BullMQ worker tự động gửi email vé đính kèm QR code, generate encrypted check-in token.",
-        connections: [12, 11]
+        connections: [12, 26]
       },
+
+      // ZONE 3: Auth, My Tickets & Profile (Right Middle)
       {
         id: 10,
         folder: "10_cinebook_login_register",
@@ -1342,7 +1347,7 @@
         y: 720,
         desc: "Đăng nhập JWT, đăng ký tài khoản mới, phân quyền 3 Role (User, Cinema Staff, Admin).",
         techNote: "JWT access token + HTTP-only refresh token, RBAC Guard middleware, Redis rate limiting chống brute-force.",
-        connections: [1, 15, 20]
+        connections: [1, 15, 20, 11, 13]
       },
       {
         id: 11,
@@ -1371,18 +1376,59 @@
         connections: [18]
       },
       {
-        id: 13,
-        folder: "13_cinebook_user_profile",
-        title: "Hồ sơ cá nhân & Điểm thưởng",
-        titleEn: "User Profile & Loyalty Rewards",
+        id: 26,
+        folder: "26_cinebook_my_tickets",
+        title: "Vé của tôi (Quick Access)",
+        titleEn: "My Active & Upcoming Tickets",
         role: "user",
         category: "auth",
         x: 3950,
         y: 720,
-        desc: "Thông tin cá nhân, hạng thành viên (Silver, Gold, Diamond), điểm tích lũy và voucher quà tặng.",
-        techNote: "Tier calculation engine, transactional point ledger in PostgreSQL.",
-        connections: [14]
+        desc: "Truy cập nhanh danh sách vé sắp chiếu và vé đã xem của người dùng.",
+        techNote: "Fast indexed user active ticket cache.",
+        connections: [12]
       },
+      {
+        id: 13,
+        folder: "13_cinebook_user_profile",
+        title: "Hồ sơ cá nhân & Cài đặt",
+        titleEn: "User Profile & Personal Info",
+        role: "user",
+        category: "auth",
+        x: 2750,
+        y: 1190,
+        desc: "Thông tin cá nhân, cập nhật email, số điện thoại, mật khẩu và cài đặt tài khoản.",
+        techNote: "User profile service, secure password change with session invalidation.",
+        connections: [27, 28]
+      },
+      {
+        id: 27,
+        folder: "27_cinebook_membership_points",
+        title: "Điểm thưởng & Hạng thành viên",
+        titleEn: "Membership & Loyalty Points",
+        role: "user",
+        category: "auth",
+        x: 3350,
+        y: 1190,
+        desc: "Thông tin hạng thành viên (Bạc, Vàng, Kim Cương), điểm tích lũy và đổi ưu đãi.",
+        techNote: "Tier calculation engine, transactional point ledger in PostgreSQL.",
+        connections: []
+      },
+      {
+        id: 28,
+        folder: "28_cinebook_preferences",
+        title: "Cài đặt & Quyền riêng tư",
+        titleEn: "Preferences & Privacy Settings",
+        role: "user",
+        category: "auth",
+        x: 3950,
+        y: 1190,
+        desc: "Tùy chỉnh thông báo vé, ưu đãi khuyến mãi và chính sách bảo mật tài khoản.",
+        techNote: "User notification preference store.",
+        connections: []
+      },
+
+      // ZONE 4: Staff Operations (Left Bottom)
       {
         id: 15,
         folder: "15_cinebook_staff_dashboard",
@@ -1391,7 +1437,7 @@
         role: "staff",
         category: "staff",
         x: 150,
-        y: 1270,
+        y: 1770,
         desc: "Tổng quan các suất chiếu trong ngày tại chi nhánh, tỷ lệ lấp đầy ghế, cảnh báo check-in sát giờ.",
         techNote: "Staff branch-scoped RBAC guard, live stats aggregation with Redis cache.",
         connections: [16, 17, 18, 19]
@@ -1404,10 +1450,10 @@
         role: "staff",
         category: "staff",
         x: 750,
-        y: 1270,
+        y: 1770,
         desc: "Tạo mới, điều chỉnh khung giờ và kiểm tra xung đột lịch chiếu giữa các phòng chiếu trong rạp.",
         techNote: "Conflict detection algorithm (PostgreSQL OVERLAPS query), showtime lifecycle status machine.",
-        connections: [15]
+        connections: []
       },
       {
         id: 17,
@@ -1417,10 +1463,10 @@
         role: "staff",
         category: "staff",
         x: 1350,
-        y: 1270,
+        y: 1770,
         desc: "Cấu hình loại phòng (2D, 3D, IMAX, 4DX), thiết lập sơ đồ ma trận ghế và định dạng ghế đôi/VIP.",
         techNote: "JSONB seat grid representation, batch seat generation schema.",
-        connections: [15]
+        connections: []
       },
       {
         id: 18,
@@ -1430,10 +1476,10 @@
         role: "staff",
         category: "staff",
         x: 750,
-        y: 1720,
+        y: 2240,
         desc: "Quét camera QR code vé khách hàng, xác thực tính hợp lệ, đánh dấu vé đã check-in tránh quét lại lần 2.",
         techNote: "Atomic ticket status transition: BOOKED -> CHECKED_IN via DB transaction, instant sub-50ms verification.",
-        connections: [15]
+        connections: []
       },
       {
         id: 19,
@@ -1443,11 +1489,13 @@
         role: "staff",
         category: "staff",
         x: 1350,
-        y: 1720,
+        y: 2240,
         desc: "Thống kê doanh thu bán vé, doanh số F&B theo ngày, ca làm việc của nhân viên và từng suất chiếu.",
         techNote: "Materialized views for fast reporting, daily automated summary generation.",
-        connections: [15]
+        connections: []
       },
+
+      // ZONE 5: Admin Enterprise (Right Bottom)
       {
         id: 20,
         folder: "20_cinebook_admin_global_dashboard",
@@ -1456,7 +1504,7 @@
         role: "admin",
         category: "admin",
         x: 2150,
-        y: 1270,
+        y: 1770,
         desc: "Toàn cảnh hoạt động: tổng doanh thu toàn quốc, tổng vé bán ra, biểu đồ tăng trưởng, phân bố cụm rạp.",
         techNote: "Real-time metrics streaming, high-level business intelligence data aggregation.",
         connections: [21, 22, 23, 24, 25]
@@ -1469,10 +1517,10 @@
         role: "admin",
         category: "admin",
         x: 2750,
-        y: 1270,
+        y: 1770,
         desc: "Thêm/sửa/xóa phim, upload poster, trailer, kích hoạt tạo embedding vector tự động cho AI search.",
         techNote: "Trigger worker tự động gọi embedding model khi thêm mới phim để nạp vào pgvector.",
-        connections: [20]
+        connections: []
       },
       {
         id: 22,
@@ -1482,10 +1530,10 @@
         role: "admin",
         category: "admin",
         x: 3350,
-        y: 1270,
+        y: 1770,
         desc: "Quản lý danh sách các chi nhánh rạp trên toàn quốc, địa chỉ, số phòng chiếu và cấu hình vùng.",
         techNote: "Spatial geographic indexing, branch tiering.",
-        connections: [20]
+        connections: []
       },
       {
         id: 23,
@@ -1495,10 +1543,10 @@
         role: "admin",
         category: "admin",
         x: 3950,
-        y: 1270,
+        y: 1770,
         desc: "Danh sách tài khoản khách hàng, nhân viên rạp, gán quyền quản lý chi nhánh, khóa tài khoản gian lận.",
         techNote: "Fine-grained RBAC permissions, audit logging of administrative changes.",
-        connections: [20]
+        connections: []
       },
       {
         id: 24,
@@ -1508,10 +1556,10 @@
         role: "admin",
         category: "admin",
         x: 2750,
-        y: 1720,
+        y: 2240,
         desc: "Tạo chương trình ưu đãi, mã giảm giá, giới hạn số lượng sử dụng và thiết lập điều kiện áp dụng.",
         techNote: "Atomic voucher redemption counter in Redis, expiry validation engine.",
-        connections: [20]
+        connections: []
       },
       {
         id: 25,
@@ -1521,49 +1569,10 @@
         role: "admin",
         category: "admin",
         x: 3350,
-        y: 1720,
+        y: 2240,
         desc: "Dashboard giám sát kỹ thuật: Throughput TPS, Redis Redlock contention, RabbitMQ queue lag, latency benchmark.",
         techNote: "Prometheus exporter metrics + Grafana embed / live charts, k6 load testing monitor.",
-        connections: [20]
-      },
-      {
-        id: 26,
-        folder: "26_cinebook_my_tickets",
-        title: "Vé của tôi",
-        titleEn: "My Tickets",
-        role: "user",
-        category: "auth",
-        x: 4550,
-        y: 250,
-        desc: "Quản lý vé đã đặt và vé sắp tới.",
-        techNote: "API fetch from ticket service.",
-        connections: [13]
-      },
-      {
-        id: 27,
-        folder: "27_cinebook_membership_points",
-        title: "Điểm thưởng & Hạng thành viên",
-        titleEn: "Membership & Points",
-        role: "user",
-        category: "auth",
-        x: 4550,
-        y: 720,
-        desc: "Thông tin hạng thành viên và điểm thưởng tích lũy.",
-        techNote: "API fetch from loyalty service.",
-        connections: [13]
-      },
-      {
-        id: 28,
-        folder: "28_cinebook_preferences",
-        title: "Cài đặt tài khoản",
-        titleEn: "Preferences",
-        role: "user",
-        category: "auth",
-        x: 4550,
-        y: 1220,
-        desc: "Quản lý thông báo và quyền riêng tư.",
-        techNote: "API patch to user preferences.",
-        connections: [13]
+        connections: []
       }
     ];
 
@@ -1688,32 +1697,37 @@
       
       // Define Flows and color mapping
       const flows = [
-        // 1. Core User Booking Flow
-        { from: 1, to: 2, type: 'booking' },
-        { from: 2, to: 4, type: 'booking' },
+        // 1. Discovery & Search Flow
+        { from: 1, to: 2, type: 'ai' },
+        { from: 2, to: 4, type: 'ai' },
+        { from: 1, to: 3, type: 'ai' },
+        { from: 3, to: 4, type: 'ai' },
+        { from: 1, to: 14, type: 'ai' },
+        { from: 14, to: 4, type: 'ai' },
+        { from: 4, to: 5, type: 'ai' },
         { from: 4, to: 6, type: 'booking' },
+        { from: 5, to: 6, type: 'booking' },
+
+        // 2. Core Booking Flow (Step by Step)
         { from: 6, to: 7, type: 'booking' },
         { from: 7, to: 8, type: 'booking' },
         { from: 8, to: 9, type: 'booking' },
         { from: 9, to: 12, type: 'booking' },
+        { from: 9, to: 26, type: 'booking' },
 
-        // 2. AI Discovery Flow
-        { from: 1, to: 3, type: 'ai' },
-        { from: 3, to: 4, type: 'ai' },
-        { from: 4, to: 5, type: 'ai' },
-        { from: 5, to: 6, type: 'ai' },
-        { from: 1, to: 14, type: 'ai' },
-        { from: 14, to: 4, type: 'ai' },
-
-        // 3. Auth Connections
+        // 3. Auth, Tickets & User Profile Flow
         { from: 10, to: 1, type: 'auth' },
         { from: 10, to: 15, type: 'auth' },
         { from: 10, to: 20, type: 'auth' },
+        { from: 10, to: 11, type: 'auth' },
         { from: 11, to: 12, type: 'auth' },
-        { from: 13, to: 14, type: 'auth' },
+        { from: 26, to: 12, type: 'auth' },
+        { from: 10, to: 13, type: 'auth' },
+        { from: 13, to: 27, type: 'auth' },
+        { from: 13, to: 28, type: 'auth' },
 
         // 4. Staff Operations & QR Check-in
-        { from: 12, to: 18, type: 'staff' }, // Ticket QR -> Staff scanner
+        { from: 12, to: 18, type: 'staff' },
         { from: 15, to: 16, type: 'staff' },
         { from: 15, to: 17, type: 'staff' },
         { from: 15, to: 18, type: 'staff' },
