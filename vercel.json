@@ -1,14 +1,6 @@
 ﻿{
-  "version": 2,
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/demo",
-      "destination": "/demo.html"
-    }
-  ]
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "cleanUrls": false,
+  "trailingSlash": false
 }

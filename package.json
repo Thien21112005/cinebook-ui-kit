@@ -1,9 +1,10 @@
-{
+﻿{
   "name": "cinebook-wireframe-canvas",
   "version": "1.0.0",
   "description": "CineBook - Interactive Wireframe Canvas & Architecture Flow Explorer",
   "main": "server.js",
   "scripts": {
+    "build": "echo Static build complete",
     "start": "node server.js",
     "dev": "node server.js"
   },
